@@ -147,14 +147,14 @@ class JudgementSpider(scrapy.Spider):
         self.logger.info('Get decoded vl5x{}'.format(self.vl5x))
 
         def construct_number(urll):
-            self.logger.info("Start construct number,the url={}".format(urll))
+            # self.logger.info("Start construct number,the url={}".format(urll))
             if "&number" not in urll:
                 nyzm = -1
             else:
                 nyzm = urll.index("&number")
             subyzm = urll[(nyzm + 1):]
             yzm1 = subyzm[7:11]
-            self.logger.info("Constructed number={}".format(yzm1))
+            # self.logger.info("Constructed number={}".format(yzm1))
             return yzm1
 
         # init data request\
@@ -258,25 +258,81 @@ class JudgementSpider(scrapy.Spider):
                     yield scrapy.Request(url=content_js_url,
                                          headers=content_js_headers,
                                          method="GET",
-                                         callback=self.get_court_info
+                                         meta={'doc_id': doc_id},
+                                         callback=self.get_court_info_download
                                          )
 
-    def get_court_info(self, res: scrapy.http.Response):
+    def get_court_info_download(self, res: scrapy.http.Response):
+        doc_id = res.meta['doc_id']
         return_data = res.body.decode("utf-8").replace('\\', '')
         read_count = re.findall(r'"浏览\：(\d*)次"', return_data)[0]
         court_title = re.findall(r'\"Title\"\:\"(.*?)\"', return_data)[0]
         court_date = re.findall(r'\"PubDate\"\:\"(.*?)\"', return_data)[0]
         court_content = re.findall(r'\"Html\"\:\"(.*?)\"', return_data)[0]
-        #we need to store it
-        self.logger.info(
-            "Get court info;read_count={},court_title={},court_date={},court_content={}".format(
-                read_count,
-                court_title,
-                court_date,
-                court_content
-            ))
-        # todo proceed to download doc
+        # we need to store it
+        self.logger.info('Crawled court info {}'.format(court_title))
 
+        info = {
+            'court_title': court_title,
+            'court_date': court_date,
+            'read_count': read_count,
+            'court_content': court_content,
+            'doc_id': doc_id,
+        }
+        html_2_word_url = 'http://wenshu.court.gov.cn/Content/GetHtml2Word'
+        html_2_word_referer = 'http://wenshu.court.gov.cn/content/content?DocID={}&KeyWord='.format(
+            info['doc_id'])
+        html_2_word_headers = {
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+            'Accept-Encoding': 'gzip, deflate',
+            'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+            'Cache-Control': 'max-age=0',
+            'Connection': 'keep-alive',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Host': 'wenshu.court.gov.cn',
+            'Origin': 'http://wenshu.court.gov.cn',
+            'Referer': html_2_word_referer,
+            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36"
+        }
+        # get html content
+        with open(
+                '/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public/content.html') as file:
+            html_str = file.read()
+            file.close()
+        html_str = html_str \
+            .replace('court_title', info['court_title']) \
+            .replace('court_date', info['court_date']) \
+            .replace('read_count', info['read_count']) \
+            .replace('court_content', info['court_content'])
+        html_name = info['court_title']
+
+        html_2_word_data = {
+            'htmlStr': parse.quote(html_str),
+            'htmlName': parse.quote(html_name),
+            'DocID': info['doc_id']
+        }
+        self.logger.info('Initializing form request for {}'.format(html_name))
+        return scrapy.http.FormRequest(
+            url=html_2_word_url,
+            headers=html_2_word_headers,
+            method="POST",
+            formdata=html_2_word_data,
+            meta={'html_name': html_name},
+            callback=self.parse_word
+        )
+
+    def parse_word(self, res: scrapy.http.Response):
+        html_name = res.meta['html_name']
+        word_name = html_name
+        with open(
+                '/Users/stack/code/py3/wenshu/judgement_spider/crawls/{}.doc'.format(word_name),
+                'wb') as file:
+            file.write(res.body)
+            file.flush()
+            file.close()
+        self.logger.info('Downloaded {}.doc'.format(word_name))
+
+        # todo proceed to download doc
 
     def parse_validate_code(self, response: scrapy.http.Response):
         orc_code = None
