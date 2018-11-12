@@ -6,6 +6,7 @@ from urllib import parse
 from http.cookies import SimpleCookie
 import re
 from ..util.ocr import ocr
+from ..util.decoder import Decoder
 
 # 检索关键词
 keyword = '*'
@@ -54,16 +55,17 @@ class JudgementSpider(scrapy.Spider):
 
     def __init__(self, *a, **kwargs):
         super(JudgementSpider, self).__init__(*a, **kwargs)
-        with open(
-                '/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public/vl5x.js') as fp:
-            js = fp.read()
-            self.vl5x_ctx = execjs.compile(js)
-            fp.close()
-        with open(
-                '/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public/docid.js') as fp:
-            js = fp.read()
-            self.docid_ctx = execjs.compile(js)
-            fp.close()
+        # with open(
+        #         '/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public/vl5x.js') as fp:
+        #     js = fp.read()
+        #     self.vl5x_ctx = execjs.compile(js)
+        #     fp.close()
+        # with open(
+        #         '/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public/docid.js') as fp:
+        #     js = fp.read()
+        #     self.docid_ctx = execjs.compile(js)
+        #     fp.close()
+        self.decoder = Decoder()
 
         self.guid = None
         self.number = None
@@ -93,15 +95,15 @@ class JudgementSpider(scrapy.Spider):
     def __construct_request_for_check_code(self, callback):
         pass
 
-    def __decrypt_id(self, RunEval, id):
-        js = self.docid_ctx.call("GetJs", RunEval)
-        js_objs = js.split(";;")
-        js1 = js_objs[0] + ';'
-        js2 = re.findall(r"_\[_\]\[_\]\((.*?)\)\(\);", js_objs[1])[0]
-        key = self.docid_ctx.call("EvalKey", js1, js2)
-        key = re.findall(r"\"([0-9a-z]{32})\"", key)[0]
-        docid = self.docid_ctx.call("DecryptDocID", key, id)
-        return docid
+    # def __decrypt_id(self, RunEval, id):
+    #     js = self.docid_ctx.call("GetJs", RunEval)
+    #     js_objs = js.split(";;")
+    #     js1 = js_objs[0] + ';'
+    #     js2 = re.findall(r"_\[_\]\[_\]\((.*?)\)\(\);", js_objs[1])[0]
+    #     key = self.docid_ctx.call("EvalKey", js1, js2)
+    #     key = re.findall(r"\"([0-9a-z]{32})\"", key)[0]
+    #     docid = self.docid_ctx.call("DecryptDocID", key, id)
+    #     return docid
 
     # first start request for number and parse it
     def start_requests(self):
@@ -140,24 +142,37 @@ class JudgementSpider(scrapy.Spider):
     def parse_vjkl5(self, response: scrapy.http.Response):
         c = response.headers.getlist('Set-Cookie')[0].decode('utf-8')
         vjkl5 = c.split(";")[0].split("=")[1]
-        self.logger.info('Get encoded vjkl5'.format(vjkl5))
-        self.vl5x = self.vl5x_ctx.call("GetVl5x", vjkl5)
-        self.logger.info('Get decoded vl5x'.format(self.vl5x))
+        self.logger.info('Get encoded vjkl5{}'.format(vjkl5))
+        self.vl5x = self.decoder.decode_vl5x(vjkl5)
+        self.logger.info('Get decoded vl5x{}'.format(self.vl5x))
 
-        # init data request
+        def construct_number(urll):
+            self.logger.info("Start construct number,the url={}".format(urll))
+            if "&number" not in urll:
+                nyzm = -1
+            else:
+                nyzm = urll.index("&number")
+            subyzm = urll[(nyzm + 1):]
+            yzm1 = subyzm[7:11]
+            self.logger.info("Constructed number={}".format(yzm1))
+            return yzm1
+
+        # init data request\
         index = 1
         url = "http://wenshu.court.gov.cn/List/ListContent"
         while True:
+            referer = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number={}&guid={}&conditions=searchWord+1+AJLX++{}".format(
+                self.number, self.guid, parse.quote(self.param))
             headers = {
                 "Accept": "*/*",
                 "Accept-Encoding": "gzip, deflate",
-                "Accept-Language": "zh-CN,zh;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
                 "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                "Content-Length": 237,
                 "Host": "wenshu.court.gov.cn",
                 "Origin": "http://wenshu.court.gov.cn",
-                "Proxy-Connection": "keep-alive",
-                "Referer": "http://wenshu.court.gov.cn/list/list/?sorttype=1&number={0}&guid={1}&conditions=searchWord+QWJS+++{2}".format(
-                    self.number, self.guid, parse.quote(self.param)),
+                "Connection": "keep-alive",
+                "Referer": referer,
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36",
                 "X-Requested-With": "XMLHttpRequest"
             }
@@ -168,7 +183,7 @@ class JudgementSpider(scrapy.Spider):
                 "Order": self.order,
                 "Direction": self.direction,
                 "vl5x": self.vl5x,
-                "number": self.number,
+                "number": construct_number(referer),
                 "guid": self.guid
             }
             yield scrapy.FormRequest(url=url, method="POST", formdata=data,
@@ -215,7 +230,7 @@ class JudgementSpider(scrapy.Spider):
                     number = data[i]['案号'] if '案号' in data[i] else ''
                     type = data[i]['案件类型'] if '案件类型' in data[i] else ''
                     id = data[i]['文书ID'] if '文书ID' in data[i] else ''
-                    id = self.__decrypt_id(RunEval, id)
+                    id = self.decoder.decode_docid(RunEval, id)
                     date = data[i]['裁判日期'] if '裁判日期' in data[i] else ''
                     data_dict = dict(
                         id=id,
@@ -226,6 +241,42 @@ class JudgementSpider(scrapy.Spider):
                         court=court
                     )
                     yield data_dict
+                    doc_id = id
+                    # we continue to download doc
+                    # first we must get 'CreateContentJS.aspx'
+                    content_js_url = "https://wenshu.court.gov.cn/CreateContentJS/CreateContentJS.aspx?DocID={}".format(
+                        doc_id)
+                    content_js_headers = {
+                        "accept": "text/javascript, application/javascript, */*",
+                        "accept-encoding": "gzip, deflate, br",
+                        "accept-language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+                        "referer": "https://wenshu.court.gov.cn/content/content?DocID={}&KeyWord=".format(
+                            doc_id),
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36",
+                        "x-requested-with": "XMLHttpRequest"
+                    }
+                    yield scrapy.Request(url=content_js_url,
+                                         headers=content_js_headers,
+                                         method="GET",
+                                         callback=self.get_court_info
+                                         )
+
+    def get_court_info(self, res: scrapy.http.Response):
+        return_data = res.body.decode("utf-8").replace('\\', '')
+        read_count = re.findall(r'"浏览\：(\d*)次"', return_data)[0]
+        court_title = re.findall(r'\"Title\"\:\"(.*?)\"', return_data)[0]
+        court_date = re.findall(r'\"PubDate\"\:\"(.*?)\"', return_data)[0]
+        court_content = re.findall(r'\"Html\"\:\"(.*?)\"', return_data)[0]
+        #we need to store it
+        self.logger.info(
+            "Get court info;read_count={},court_title={},court_date={},court_content={}".format(
+                read_count,
+                court_title,
+                court_date,
+                court_content
+            ))
+        # todo proceed to download doc
+
 
     def parse_validate_code(self, response: scrapy.http.Response):
         orc_code = None
