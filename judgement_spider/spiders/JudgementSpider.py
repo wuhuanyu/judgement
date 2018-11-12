@@ -33,10 +33,11 @@ end_date = '2018-05-16'
 court_loc_list = ['全部']
 
 
+# todo setting.json
 class JudgementSpider(scrapy.Spider):
     name = "judgement"
 
-    param = "全文检索:*"
+    param = "案件类型:刑事案件"
     page = 20
     order = "法院层级"
     direction = "asc"
@@ -78,6 +79,10 @@ class JudgementSpider(scrapy.Spider):
         }
         url = "http://wenshu.court.gov.cn/ValiCode/GetCode"
         headers = {
+            'Accept':'*/*',
+            'Accept-Encoding':'gzip,deflate',
+            'Accept-Language':'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+            'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'http://wenshu.court.gov.cn',
             'Referer': 'http://wenshu.court.gov.cn/',
@@ -125,7 +130,7 @@ class JudgementSpider(scrapy.Spider):
         else:
             # we are not to refresh the number, so we need to proceed to get vjkl5
             # get vjkl5
-            url = "http://wenshu.court.gov.cn/list/list/?sorttype=1&number=" + self.number + "&guid=" + self.guid + "&conditions=searchWord+QWJS+++" + parse.quote(
+            url = "http://wenshu.court.gov.cn/list/list/?sorttype=1&number=" + self.number + "&guid=" + self.guid + "&conditions=searchWord+1+AJLX+++" + parse.quote(
                 self.param)
             headers = {
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
@@ -265,11 +270,23 @@ class JudgementSpider(scrapy.Spider):
     def get_court_info_download(self, res: scrapy.http.Response):
         doc_id = res.meta['doc_id']
         return_data = res.body.decode("utf-8").replace('\\', '')
-        read_count = re.findall(r'"浏览\：(\d*)次"', return_data)[0]
-        court_title = re.findall(r'\"Title\"\:\"(.*?)\"', return_data)[0]
-        court_date = re.findall(r'\"PubDate\"\:\"(.*?)\"', return_data)[0]
-        court_content = re.findall(r'\"Html\"\:\"(.*?)\"', return_data)[0]
-        # we need to store it
+
+        read_count = re.findall(r'"浏览\：(\d*)次"', return_data)
+        court_title = re.findall(r'\"Title\"\:\"(.*?)\"', return_data)
+        court_date = re.findall(r'\"PubDate\"\:\"(.*?)\"', return_data)
+        court_content = re.findall(r'\"Html\"\:\"(.*?)\"', return_data)
+
+        if len(read_count) == 0 or len(court_title) == 0 or len(court_date) == 0 or len(
+                court_content) == 0:
+            self.logger.error(
+                'Met parse error when crawl {} and we return from the method'.format(doc_id))
+            return
+
+        read_count = read_count[0]
+        court_title = court_title[0]
+        court_date = court_date[0]
+        court_content = court_content[0]
+
         self.logger.info('Crawled court info {}'.format(court_title))
 
         info = {
@@ -279,6 +296,8 @@ class JudgementSpider(scrapy.Spider):
             'court_content': court_content,
             'doc_id': doc_id,
         }
+
+        # todo store court info
         html_2_word_url = 'http://wenshu.court.gov.cn/Content/GetHtml2Word'
         html_2_word_referer = 'http://wenshu.court.gov.cn/content/content?DocID={}&KeyWord='.format(
             info['doc_id'])
@@ -331,8 +350,6 @@ class JudgementSpider(scrapy.Spider):
             file.flush()
             file.close()
         self.logger.info('Downloaded {}.doc'.format(word_name))
-
-        # todo proceed to download doc
 
     def parse_validate_code(self, response: scrapy.http.Response):
         orc_code = None
