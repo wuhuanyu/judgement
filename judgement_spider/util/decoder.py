@@ -6,13 +6,13 @@ import os
 class Decoder:
     def __init__(self, public_dir):
         eval_js = os.path.join(public_dir, 'eval_.js')
-        with open(eval_js) as file:
+        with open(eval_js,encoding="utf-8") as file:
             js = file.read()
             self.vl5x_ctx = execjs.compile(js)
             file.close()
 
         docid_js = os.path.join(public_dir, 'docid.js')
-        with open(docid_js) as fp:
+        with open(docid_js,encoding="utf-8") as fp:
             js = fp.read()
             self.docid_ctx = execjs.compile(js)
             fp.close()

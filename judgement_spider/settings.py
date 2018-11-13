@@ -91,7 +91,7 @@ DOWNLOAD_DELAY = 3
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 LOG_ENABLED = True
-LOG_FILE = "/tmp/judgement_log"
+# LOG_FILE = "/tmp/judgement_log"
 
 DOC_DIR = "/tmp/doc"
 PERSIST_FILE = "/Users/stack/code/py3/wenshu/judgement_spider/process.json"

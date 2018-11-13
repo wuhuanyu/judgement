@@ -2,8 +2,6 @@ window = {};
 (function (global) {
     'use strict';
     if (global.Base64_Zip) {
-        //alert("1");
-        //return;
 
     }
     var version = "2.1.1";
@@ -1671,8 +1669,8 @@ CryptoJS.lib.Cipher || function (u) {
 
 var com = {};
 com.str = {
-    _KEY: "12345678900000001234567890000000",//32λ
-    _IV: "abcd134556abcedf",//16λ
+    _KEY: "12345678900000001234567890000000",
+    _IV: "abcd134556abcedf",
     Encrypt: function (str) {
         var key = CryptoJS.enc.Utf8.parse(this._KEY);
         var iv = CryptoJS.enc.Utf8.parse(this._IV);
