@@ -61,9 +61,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-# if __name__ == "__main__":
-#     try:
-#         main()
-#     except Exception as err:
-#         print(err)
-#
+
