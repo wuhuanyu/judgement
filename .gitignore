@@ -2,3 +2,4 @@
 *.pyc
 crawls/
 .DS_Store
+process.json
