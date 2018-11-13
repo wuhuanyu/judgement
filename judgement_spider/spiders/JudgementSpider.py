@@ -76,19 +76,10 @@ class JudgementSpider(scrapy.Spider):
 
     def __init__(self, *a, **kwargs):
         super(JudgementSpider, self).__init__(*a, **kwargs)
-
-        self.decoder = Decoder(self.settings.get('PUBLIC_DIR'))
         self.guid = None
         self.number = None
         self.vl5x = None
         self.index = 1
-        # get process log from file
-        process_file = Path(self.settings.get('PERSIST_FILE'))
-        if process_file.is_file():
-            with open(self.settings.get('PERSIST_FILE')) as file:
-                process = json.load(file)
-                file.close()
-                self.index = int(process['last_index']) + 1
 
     def __construct_request_for_number(self, cbk, refresh=True):
 
@@ -105,6 +96,7 @@ class JudgementSpider(scrapy.Spider):
             'Origin': 'http://wenshu.court.gov.cn',
             'Referer': 'http://wenshu.court.gov.cn/',
             'X-Requested-With': 'XMLHttpRequest',
+            'User-Agent': self.settings.get('UA')
         }
         return scrapy.FormRequest(url=url,
                                   method="POST",
@@ -119,6 +111,14 @@ class JudgementSpider(scrapy.Spider):
 
     # first start request for number and parse it
     def start_requests(self):
+        self.decoder = Decoder(self.settings.get('PUBLIC_DIR'))
+        # get process log from file
+        process_file = Path(self.settings.get('PERSIST_FILE'))
+        if process_file.is_file():
+            with open(self.settings.get('PERSIST_FILE')) as file:
+                process = json.load(file)
+                file.close()
+                self.index = int(process['last_index']) + 1
         self.guid = self.__get_guid()
         self.logger.info('Generate guid={}'.format(self.guid))
         # this is not for refresh,it is our first time.
@@ -146,6 +146,7 @@ class JudgementSpider(scrapy.Spider):
                 "Host": "wenshu.court.gov.cn",
                 "Proxy-Connection": "keep-alive",
                 "Upgrade-Insecure-Requests": "1",
+                'User-Agent': self.settings.get('UA')
             }
 
             yield scrapy.Request(url=url, headers=headers, method="GET", callback=self.parse_vjkl5)
@@ -180,7 +181,8 @@ class JudgementSpider(scrapy.Spider):
                 "Origin": "http://wenshu.court.gov.cn",
                 "Connection": "keep-alive",
                 "Referer": referer,
-                "X-Requested-With": "XMLHttpRequest"
+                "X-Requested-With": "XMLHttpRequest",
+                'User-Agent': self.settings.get('UA')
             }
             data = {
                 "Param": self.param,
@@ -258,7 +260,7 @@ class JudgementSpider(scrapy.Spider):
                         "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
                         "Referer": "https://wenshu.court.gov.cn/content/content?DocID={}&KeyWord=".format(
                             doc_id),
-                        # "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36",
+                        'User-Agent': self.settings.get('UA'),
                         "X-Requested-With": "XMLHttpRequest"
                     }
                     yield scrapy.Request(url=content_js_url,
@@ -311,6 +313,8 @@ class JudgementSpider(scrapy.Spider):
             'Content-Type': 'application/x-www-form-urlencoded',
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'http://wenshu.court.gov.cn',
+            'User-Agent': self.settings.get('UA'),
+
             'Referer': html_2_word_referer,
         }
         # get html content
@@ -364,6 +368,7 @@ class JudgementSpider(scrapy.Spider):
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'http://wenshu.court.gov.cn',
             'Referer': 'http://wenshu.court.gov.cn/Html_Pages/VisitRemind.html',
+            'User-Agent': self.settings.get('UA'),
         }
 
         data = {
@@ -381,7 +386,7 @@ class JudgementSpider(scrapy.Spider):
         headers = {
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'http://wenshu.court.gov.cn',
-            # 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+            'User-Agent': self.settings.get('UA'),
         }
 
         if result == "2":

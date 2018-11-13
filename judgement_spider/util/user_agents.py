@@ -1,12 +1,3 @@
-import random
-from scrapy.utils.project import get_project_settings
-from scrapy.crawler import CrawlerProcess
-import os
-from judgement_spider.spiders.JudgementSpider import JudgementSpider
-from twisted.internet import reactor
-from scrapy.crawler import Crawler
-from scrapy.settings import Settings
-
 user_agents = [
     # Chrome
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
@@ -46,24 +37,3 @@ user_agents = [
     'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/13.2b11866 Mobile/16A366 Safari/605.1.15',
     'Mozilla/5.0 (iPhone9,4; U; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/14A403 Safari/602.1',
 ]
-
-
-def main():
-    settings_file_path = 'judgement_spider.settings'
-    os.environ.setdefault('SCRAPY_SETTINGS_MODULE', settings_file_path)
-    ua = user_agents[random.randint(0, len(user_agents) - 1)]
-    settings = get_project_settings()
-    settings.set('UA', ua)
-    process = CrawlerProcess(settings=settings)
-    process.crawl(JudgementSpider)
-    process.start()
-
-
-if __name__ == '__main__':
-    main()
-# if __name__ == "__main__":
-#     try:
-#         main()
-#     except Exception as err:
-#         print(err)
-#

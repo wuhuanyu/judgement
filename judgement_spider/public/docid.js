@@ -1,6 +1,3 @@
-/*
- *  解密DocID
- */
 window = {};
 (function (global) {
     'use strict';

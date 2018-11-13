@@ -10,11 +10,12 @@ class Decoder:
             js = file.read()
             self.vl5x_ctx = execjs.compile(js)
             file.close()
+
         docid_js = os.path.join(public_dir, 'docid.js')
-        with open(docid_js) as file:
-            js = file.read()
+        with open(docid_js) as fp:
+            js = fp.read()
             self.docid_ctx = execjs.compile(js)
-            file.close()
+            fp.close()
 
     def decode_vl5x(self, vjkl5):
         return self.vl5x_ctx.call('getKey', vjkl5)
@@ -25,7 +26,7 @@ class Decoder:
         js1 = js_objs[0] + ';'
         js2 = re.findall(r"_\[_\]\[_\]\((.*?)\)\(\);", js_objs[1])[0]
         key = self.docid_ctx.call("EvalKey", js1, js2)
-        key = re.findall(r"\"([0-9a-z]{32})\"", key)[0]
+        key = re.findall(r"\"([0-9a-z]{32})\"", str(key))[0]
         docid = self.docid_ctx.call("DecryptDocID", key, id)
         return docid
 
