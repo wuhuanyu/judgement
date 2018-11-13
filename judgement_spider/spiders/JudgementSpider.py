@@ -1,10 +1,13 @@
 import scrapy
-import execjs
-import json
+from scrapy import signals
 import random
+from scrapy.exceptions import CloseSpider
 from urllib import parse
-from http.cookies import SimpleCookie
+from pathlib import Path
+import json
 import re
+import os
+import datetime
 from ..util.ocr import ocr
 from ..util.decoder import Decoder
 
@@ -54,23 +57,38 @@ class JudgementSpider(scrapy.Spider):
             create_guid(), create_guid()
         )
 
+    @classmethod
+    def from_crawler(cls, crawler, *args, **kwargs):
+        spider = super(JudgementSpider, cls).from_crawler(crawler, *args, **kwargs)
+        crawler.signals.connect(spider.engine_shutdown_cbk, signal=signals.spider_closed)
+        return spider
+
+    def engine_shutdown_cbk(self):
+        self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
+            self.settings['PERSIST_FILE']))
+        with open(self.settings['PERSIST_FILE'], 'wb') as persist_file:
+            json.dump({'last_index': self.index,
+                       'last_time': str(datetime.datetime.now())
+                       }, persist_file)
+            persist_file.flush()
+            persist_file.close()
+        self.logger.info('Persist process file completed')
+
     def __init__(self, *a, **kwargs):
         super(JudgementSpider, self).__init__(*a, **kwargs)
-        # with open(
-        #         '/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public/vl5x.js') as fp:
-        #     js = fp.read()
-        #     self.vl5x_ctx = execjs.compile(js)
-        #     fp.close()
-        # with open(
-        #         '/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public/docid.js') as fp:
-        #     js = fp.read()
-        #     self.docid_ctx = execjs.compile(js)
-        #     fp.close()
-        self.decoder = Decoder()
 
+        self.decoder = Decoder(self.settings.get('PUBLIC_DIR'))
         self.guid = None
         self.number = None
         self.vl5x = None
+        self.index = 1
+        # get process log from file
+        process_file = Path(self.settings.get('PERSIST_FILE'))
+        if process_file.is_file():
+            with open(self.settings.get('PERSIST_FILE')) as file:
+                process = json.load(file)
+                file.close()
+                self.index = int(process['last_index']) + 1
 
     def __construct_request_for_number(self, cbk, refresh=True):
 
@@ -79,15 +97,14 @@ class JudgementSpider(scrapy.Spider):
         }
         url = "http://wenshu.court.gov.cn/ValiCode/GetCode"
         headers = {
-            'Accept':'*/*',
-            'Accept-Encoding':'gzip,deflate',
-            'Accept-Language':'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
-            'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
+            'Accept': '*/*',
+            'Accept-Encoding': 'gzip,deflate',
+            'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'http://wenshu.court.gov.cn',
             'Referer': 'http://wenshu.court.gov.cn/',
             'X-Requested-With': 'XMLHttpRequest',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36'
         }
         return scrapy.FormRequest(url=url,
                                   method="POST",
@@ -99,16 +116,6 @@ class JudgementSpider(scrapy.Spider):
 
     def __construct_request_for_check_code(self, callback):
         pass
-
-    # def __decrypt_id(self, RunEval, id):
-    #     js = self.docid_ctx.call("GetJs", RunEval)
-    #     js_objs = js.split(";;")
-    #     js1 = js_objs[0] + ';'
-    #     js2 = re.findall(r"_\[_\]\[_\]\((.*?)\)\(\);", js_objs[1])[0]
-    #     key = self.docid_ctx.call("EvalKey", js1, js2)
-    #     key = re.findall(r"\"([0-9a-z]{32})\"", key)[0]
-    #     docid = self.docid_ctx.call("DecryptDocID", key, id)
-    #     return docid
 
     # first start request for number and parse it
     def start_requests(self):
@@ -139,7 +146,6 @@ class JudgementSpider(scrapy.Spider):
                 "Host": "wenshu.court.gov.cn",
                 "Proxy-Connection": "keep-alive",
                 "Upgrade-Insecure-Requests": "1",
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36"
             }
 
             yield scrapy.Request(url=url, headers=headers, method="GET", callback=self.parse_vjkl5)
@@ -152,18 +158,15 @@ class JudgementSpider(scrapy.Spider):
         self.logger.info('Get decoded vl5x{}'.format(self.vl5x))
 
         def construct_number(urll):
-            # self.logger.info("Start construct number,the url={}".format(urll))
             if "&number" not in urll:
                 nyzm = -1
             else:
                 nyzm = urll.index("&number")
             subyzm = urll[(nyzm + 1):]
             yzm1 = subyzm[7:11]
-            # self.logger.info("Constructed number={}".format(yzm1))
             return yzm1
 
-        # init data request\
-        index = 1
+        # init data request
         url = "http://wenshu.court.gov.cn/List/ListContent"
         while True:
             referer = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number={}&guid={}&conditions=searchWord+1+AJLX++{}".format(
@@ -173,17 +176,15 @@ class JudgementSpider(scrapy.Spider):
                 "Accept-Encoding": "gzip, deflate",
                 "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
                 "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-                "Content-Length": 237,
                 "Host": "wenshu.court.gov.cn",
                 "Origin": "http://wenshu.court.gov.cn",
                 "Connection": "keep-alive",
                 "Referer": referer,
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36",
                 "X-Requested-With": "XMLHttpRequest"
             }
             data = {
                 "Param": self.param,
-                "Index": str(index),
+                "Index": str(self.index),
                 "Page": str(self.page),
                 "Order": self.order,
                 "Direction": self.direction,
@@ -191,20 +192,19 @@ class JudgementSpider(scrapy.Spider):
                 "number": construct_number(referer),
                 "guid": self.guid
             }
-            yield scrapy.FormRequest(url=url, method="POST", formdata=data,
+            yield scrapy.FormRequest(url=url, method="POST", formdata=data, headers=headers,
                                      callback=self.parse_data)
-            index = index + 1
-            if index == 10:
+            if self.index % 10 == 0:
+                self.logger.info('We crawled 10*{} data this time,need to rest'.format(self.page))
                 break
+            self.index = self.index + 1
 
     def parse_data(self, response: scrapy.http.Response):
-
         def construct_validate_code_request(cbk):
             check_code_url = 'http://wenshu.court.gov.cn/User/ValidateCode'
             headers = {
                 'Host': 'wenshu.court.gov.cn',
                 'Origin': 'http://wenshu.court.gov.cn',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
             }
             return scrapy.Request(url=check_code_url,
                                   headers=headers,
@@ -217,9 +217,10 @@ class JudgementSpider(scrapy.Spider):
 
         # validate code
         if return_data == '"remind"' or return_data == '"remind key"':
-            self.logger.info("We need validate code;initializing request...")
-            yield construct_validate_code_request(self.parse_validate_code)
-            yield self.__construct_request_for_number(self.parse_number, True)
+            self.logger.info('Unfortunately,we meet validation code,shutting down the spider...')
+            raise CloseSpider('Unfortunately,we meet validation code,shutting down the spider...')
+            # yield construct_validate_code_request(self.parse_validate_code)
+            # yield self.__construct_request_for_number(self.parse_number, True)
 
         else:
             # luckily we don't meet validate code and we parse the data
@@ -252,13 +253,13 @@ class JudgementSpider(scrapy.Spider):
                     content_js_url = "https://wenshu.court.gov.cn/CreateContentJS/CreateContentJS.aspx?DocID={}".format(
                         doc_id)
                     content_js_headers = {
-                        "accept": "text/javascript, application/javascript, */*",
-                        "accept-encoding": "gzip, deflate, br",
-                        "accept-language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
-                        "referer": "https://wenshu.court.gov.cn/content/content?DocID={}&KeyWord=".format(
+                        "Accept": "text/javascript, application/javascript, */*",
+                        "Accept-Encoding": "gzip, deflate, br",
+                        "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+                        "Referer": "https://wenshu.court.gov.cn/content/content?DocID={}&KeyWord=".format(
                             doc_id),
-                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36",
-                        "x-requested-with": "XMLHttpRequest"
+                        # "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36",
+                        "X-Requested-With": "XMLHttpRequest"
                     }
                     yield scrapy.Request(url=content_js_url,
                                          headers=content_js_headers,
@@ -311,11 +312,9 @@ class JudgementSpider(scrapy.Spider):
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'http://wenshu.court.gov.cn',
             'Referer': html_2_word_referer,
-            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36"
         }
         # get html content
-        with open(
-                '/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public/content.html') as file:
+        with open(os.path.join(self.settings.get('PUBLIC_DIR'), 'content.html')) as file:
             html_str = file.read()
             file.close()
         html_str = html_str \
@@ -343,9 +342,9 @@ class JudgementSpider(scrapy.Spider):
     def parse_word(self, res: scrapy.http.Response):
         html_name = res.meta['html_name']
         word_name = html_name
-        with open(
-                '/Users/stack/code/py3/wenshu/judgement_spider/crawls/{}.doc'.format(word_name),
-                'wb') as file:
+        file_dir = self.settings.get('DOC_DIR', '/tmp')
+        file_name = os.path.join(file_dir, '{}.doc'.format(word_name))
+        with open(file_name, 'wb') as file:
             file.write(res.body)
             file.flush()
             file.close()
@@ -353,19 +352,18 @@ class JudgementSpider(scrapy.Spider):
 
     def parse_validate_code(self, response: scrapy.http.Response):
         orc_code = None
-        with open('/tmp/check_code.jpeg', 'wb') as file:
+        with open(self.settings.get('VALIDATE_CODE'), 'wb') as file:
             print("Starting persist check_code")
             file.write(response.body)
             file.flush()
             file.close()
-        orc_code = ocr('/tmp/check_code.jpeg')
+        orc_code = ocr(self.settings.get('VALIDATE_CODE'))
 
         check_url = 'http://wenshu.court.gov.cn/Content/CheckVisitCode'
         headers = {
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'http://wenshu.court.gov.cn',
             'Referer': 'http://wenshu.court.gov.cn/Html_Pages/VisitRemind.html',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
         }
 
         data = {
@@ -383,7 +381,7 @@ class JudgementSpider(scrapy.Spider):
         headers = {
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'http://wenshu.court.gov.cn',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+            # 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
         }
 
         if result == "2":
