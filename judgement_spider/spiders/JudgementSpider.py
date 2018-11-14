@@ -80,6 +80,7 @@ class JudgementSpider(scrapy.Spider):
         self.number = None
         self.vl5x = None
         self.index = 1
+        self.decoder = None
 
     def __construct_request_for_number(self, cbk, refresh=True):
 
@@ -119,6 +120,7 @@ class JudgementSpider(scrapy.Spider):
                 process = json.load(file)
                 file.close()
                 self.index = int(process['last_index']) + 1
+
         self.guid = self.__get_guid()
         self.logger.info('Generate guid={}'.format(self.guid))
         # this is not for refresh,it is our first time.

@@ -3,11 +3,11 @@ from scrapy.utils.project import get_project_settings
 from scrapy.crawler import CrawlerProcess
 import os
 from judgement_spider.spiders.JudgementSpider import JudgementSpider
-from twisted.internet import reactor
-from scrapy.crawler import Crawler
-from scrapy.settings import Settings
+import platform
+from pathlib import Path
 
 user_agents = [
+
     # Chrome
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
     'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36',
@@ -54,6 +54,24 @@ def main():
     ua = user_agents[random.randint(0, len(user_agents) - 1)]
     settings = get_project_settings()
     settings.set('UA', ua)
+
+    if "Darwin" in platform.platform():
+        pass
+    elif "Linux" in platform.platform():
+        settings.set('PERSIST_FILE', "/home/stack/judgement/process.json")
+        settings.set('PUBLIC_DIR', '/home/stack/judgement/judgement_spider/public')
+    else:
+        raise Exception('Unsupported platform due to some bugs, please use Linux or macOS')
+
+    content_html = Path(os.path.join(settings.get('PUBLIC_DIR'), 'content.html'))
+    eval_js = Path(os.path.join(settings.get('PUBLIC_DIR'), 'eval_.js'))
+    docid_js = Path(os.path.join(settings.get('PUBLIC_DIR', 'docid.js')))
+    if not (content_html.is_file() and eval_js.is_file() and docid_js.is_file()):
+        raise Exception('Please check your public_dir in settings')
+
+    if not os.path.isdir(settings.get('DOC_DIR')):
+        os.mkdir(settings.get('DOC_DIR'))
+
     process = CrawlerProcess(settings=settings)
     process.crawl(JudgementSpider)
     process.start()
@@ -61,4 +79,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
