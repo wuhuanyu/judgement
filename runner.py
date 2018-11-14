@@ -90,4 +90,4 @@ if __name__ == '__main__':
     while True:
         main()
         # we need to sleep 30 minute
-        time.sleep(60 * 30)
+        time.sleep(60 * 15)

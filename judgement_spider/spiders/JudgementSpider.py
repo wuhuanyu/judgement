@@ -41,7 +41,7 @@ class JudgementSpider(scrapy.Spider):
     name = "judgement"
 
     param = "案件类型:刑事案件"
-    page = 20
+    page = 10
     order = "法院层级"
     direction = "asc"
 
@@ -66,7 +66,7 @@ class JudgementSpider(scrapy.Spider):
     def engine_shutdown_cbk(self):
         self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
             self.settings['PERSIST_FILE']))
-        with open(self.settings['PERSIST_FILE'], 'wb') as persist_file:
+        with open(self.settings['PERSIST_FILE'], 'w', encoding="utf-8") as persist_file:
             json.dump({'last_index': self.index,
                        'last_time': str(datetime.datetime.now())
                        }, persist_file)
@@ -199,8 +199,8 @@ class JudgementSpider(scrapy.Spider):
             }
             yield scrapy.FormRequest(url=url, method="POST", formdata=data, headers=headers,
                                      callback=self.parse_data, meta={'current_index': self.index})
-            if self.index % 10 == 0:
-                self.logger.info('We crawled 10*{} data this time,need to rest'.format(self.page))
+            if self.index % 5 == 0:
+                self.logger.info('We crawled 5*{} data this time,need to rest'.format(self.page))
                 break
             self.index = self.index + 1
 
