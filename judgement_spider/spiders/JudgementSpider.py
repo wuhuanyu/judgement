@@ -120,7 +120,7 @@ class JudgementSpider(scrapy.Spider):
                 process = json.load(file)
                 file.close()
                 self.index = int(process['last_index']) + 1
-
+        self.current_index = self.index
         self.guid = self.__get_guid()
         self.logger.info('Generate guid={}'.format(self.guid))
         # this is not for refresh,it is our first time.
@@ -197,7 +197,7 @@ class JudgementSpider(scrapy.Spider):
                 "guid": self.guid
             }
             yield scrapy.FormRequest(url=url, method="POST", formdata=data, headers=headers,
-                                     callback=self.parse_data)
+                                     callback=self.parse_data, meta={'current_index': self.index})
             if self.index % 10 == 0:
                 self.logger.info('We crawled 10*{} data this time,need to rest'.format(self.page))
                 break

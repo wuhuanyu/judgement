@@ -5,6 +5,8 @@ import os
 from judgement_spider.spiders.JudgementSpider import JudgementSpider
 import platform
 from pathlib import Path
+import schedule
+from judgement_spider.util.toolbox import current_time_milli, current_time
 
 user_agents = [
 
@@ -54,6 +56,7 @@ def main():
     ua = user_agents[random.randint(0, len(user_agents) - 1)]
     settings = get_project_settings()
     settings.set('UA', ua)
+    settings.set('LOG_FILE', os.path.join(settings.get('LOG_DIR'), '{}.log'.format(current_time())))
 
     if "Darwin" in platform.platform():
         pass
@@ -65,7 +68,7 @@ def main():
 
     content_html = Path(os.path.join(settings.get('PUBLIC_DIR'), 'content.html'))
     eval_js = Path(os.path.join(settings.get('PUBLIC_DIR'), 'eval_.js'))
-    docid_js = Path(os.path.join(settings.get('PUBLIC_DIR', 'docid.js')))
+    docid_js = Path(os.path.join(settings.get('PUBLIC_DIR'), 'docid.js'))
     if not (content_html.is_file() and eval_js.is_file() and docid_js.is_file()):
         raise Exception('Please check your public_dir in settings')
 
@@ -78,4 +81,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    import time
+
+    while True:
+        main()
+        # we need to sleep 30 minute
+        time.sleep(60 * 30)
