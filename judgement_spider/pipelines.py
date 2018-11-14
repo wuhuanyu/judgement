@@ -6,13 +6,15 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 from pymongo import MongoClient
 import base64
+from .util.toolbox import current_time, current_time_milli
 
 
 class JudgementSpiderPipeline(object):
 
     def __init__(self, *a, **kwargs):
         self.client = MongoClient('localhost', 27017)
-        self.collection = self.client['wenshu_data']
+        self.db = self.client['wenshu_data']
+        self.docs = self.db['docs']
 
     def process_item(self, item, spider):
         # data_dict = dict(
@@ -27,8 +29,10 @@ class JudgementSpiderPipeline(object):
         # we convert chinese character into base64
         # item['name'] = base64.b64encode(item['name'])
         # item['court'] = base64.b64encode(item['court'])
-        # self.__persist(item)
+        item['crawled_at'] = str(current_time_milli())
+        self.__persist(item)
+
         return item
 
     def __persist(self, item):
-        self.collection.insert_one(item)
+        self.docs.insert_one(item)
