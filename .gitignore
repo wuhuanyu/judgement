@@ -4,3 +4,4 @@ crawls/
 log/
 .DS_Store
 process.json
+docs/

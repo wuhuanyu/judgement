@@ -81,6 +81,7 @@ class JudgementSpider(scrapy.Spider):
         self.vl5x = None
         self.index = 1
         self.decoder = None
+        self.tasks = []
 
     def __construct_request_for_number(self, cbk, refresh=True):
 
@@ -250,7 +251,8 @@ class JudgementSpider(scrapy.Spider):
                         number=number,
                         court=court
                     )
-                    yield data_dict
+                    self.tasks.append(id)
+                    # yield data_dict
                     doc_id = id
                     # we continue to download doc
                     # first we must get 'CreateContentJS.aspx'
@@ -268,12 +270,13 @@ class JudgementSpider(scrapy.Spider):
                     yield scrapy.Request(url=content_js_url,
                                          headers=content_js_headers,
                                          method="GET",
-                                         meta={'doc_id': doc_id},
+                                         meta={'doc_id': doc_id, 'judgement_info': data_dict},
                                          callback=self.get_court_info_download
                                          )
 
     def get_court_info_download(self, res: scrapy.http.Response):
         doc_id = res.meta['doc_id']
+        judgement_info = res.meta['judgement_info']
         return_data = res.body.decode("utf-8").replace('\\', '')
 
         read_count = re.findall(r'"浏览\：(\d*)次"', return_data)
@@ -301,8 +304,9 @@ class JudgementSpider(scrapy.Spider):
             'court_content': court_content,
             'doc_id': doc_id,
         }
+        judgement_info['court_title'] = court_title
+        yield judgement_info
 
-        # todo store court info
         html_2_word_url = 'http://wenshu.court.gov.cn/Content/GetHtml2Word'
         html_2_word_referer = 'http://wenshu.court.gov.cn/content/content?DocID={}&KeyWord='.format(
             info['doc_id'])
@@ -320,7 +324,8 @@ class JudgementSpider(scrapy.Spider):
             'Referer': html_2_word_referer,
         }
         # get html content
-        with open(os.path.join(self.settings.get('PUBLIC_DIR'), 'content.html')) as file:
+        with open(os.path.join(self.settings.get('PUBLIC_DIR'), 'content.html', ),
+                  encoding="utf-8") as file:
             html_str = file.read()
             file.close()
         html_str = html_str \
@@ -336,7 +341,7 @@ class JudgementSpider(scrapy.Spider):
             'DocID': info['doc_id']
         }
         self.logger.info('Initializing form request for {}'.format(html_name))
-        return scrapy.http.FormRequest(
+        yield scrapy.http.FormRequest(
             url=html_2_word_url,
             headers=html_2_word_headers,
             method="POST",

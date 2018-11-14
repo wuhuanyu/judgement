@@ -94,7 +94,7 @@ LOG_ENABLED = True
 RETRY_TIMES = 5
 LOG_FILE = "/tmp/judgement_log"
 
-DOC_DIR = "/tmp/doc"
+DOCS_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/docs"
 LOG_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/log"
 PERSIST_FILE = "/Users/stack/code/py3/wenshu/judgement_spider/process.json"
 PUBLIC_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public"

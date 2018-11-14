@@ -51,12 +51,13 @@ user_agents = [
 
 
 def main():
+    time_str = current_time()
     settings_file_path = 'judgement_spider.settings'
     os.environ.setdefault('SCRAPY_SETTINGS_MODULE', settings_file_path)
     ua = user_agents[random.randint(0, len(user_agents) - 1)]
     settings = get_project_settings()
     settings.set('UA', ua)
-    settings.set('LOG_FILE', os.path.join(settings.get('LOG_DIR'), '{}.log'.format(current_time())))
+    settings.set('LOG_FILE', os.path.join(settings.get('LOG_DIR'), '{}.log'.format(time_str)))
 
     if "Darwin" in platform.platform():
         pass
@@ -72,8 +73,11 @@ def main():
     if not (content_html.is_file() and eval_js.is_file() and docid_js.is_file()):
         raise Exception('Please check your public_dir in settings')
 
-    if not os.path.isdir(settings.get('DOC_DIR')):
-        os.mkdir(settings.get('DOC_DIR'))
+    if not os.path.isdir(settings.get('DOCS_DIR')):
+        os.mkdir(settings.get('DOCS_DIR'))
+
+    os.mkdir(os.path.join(settings.get('DOCS_DIR'), time_str))
+    settings.set('DOC_DIR', os.path.join(settings.get('DOCS_DIR'), time_str))
 
     process = CrawlerProcess(settings=settings)
     process.crawl(JudgementSpider)
