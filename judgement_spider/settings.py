@@ -99,5 +99,9 @@ LOG_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/log"
 PERSIST_FILE = "/Users/stack/code/py3/wenshu/judgement_spider/process.json"
 PUBLIC_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public"
 
+# production settings
+#DOCS_DIR = "/home/stack/spider/docs"
+#LOG_DIR = "/home/stack/spider/logs"
+
 VALIDATE_CODE = "/tmp/validate_code.jpeg"
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'

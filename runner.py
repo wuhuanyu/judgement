@@ -7,6 +7,7 @@ import platform
 from pathlib import Path
 import schedule
 from judgement_spider.util.toolbox import current_time_milli, current_time
+import multiprocessing as mp
 
 user_agents = [
 
@@ -88,6 +89,7 @@ if __name__ == '__main__':
     import time
 
     while True:
-        main()
+        p = mp.Process(target=main)
+        p.start()
         # we need to sleep 30 minute
         time.sleep(60 * 15)
