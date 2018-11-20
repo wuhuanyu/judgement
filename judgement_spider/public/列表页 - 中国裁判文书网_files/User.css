@@ -1,0 +1,1073 @@
+﻿/*公用属性开始*/
+body{margin:0px 0px 0px 0px;}
+a{text-decoration:under-line;color:Blue;}
+.padding_top{padding-top:30px;}
+.padding_left{padding-left:10px;}
+.display_none{display:none;}
+.vertical_align{vertical-align:middle;}
+.font_style{font-size:13px;/*font-family:"微软雅黑";*/color:Black;}
+.con_tr{height:35px;width:100%;}
+.con_tr_info{height:16px;font-size:12px;text-align:left;color:#B91516;}
+.con_td_info{text-align:left;font-size:17px;font-weight:bold;color:#B91516;height:50px;}
+.input_text{background:#FFFFFF;border:2px solid #e1e1e1;font-weight:normal;height:100%;color:#A9A9A9;}
+.banner{width:70%;margin: 0 auto;height:40px;}
+.float_left{float:left;}
+.float_right{float:right;}
+ul li {list-style-type: none;text-transform: capitalize;}
+/*公用属性结束*/
+
+/*用户注册页开始*/
+ #user_main {
+	width:1140px;
+	height:700px;
+	margin:auto auto;
+	overflow:hidden; 
+	background-color:#FFFFFF;
+}
+.user_register_banner{width:100%;background:url(../../Assets/img/user/user_register_banner.jpg) no-repeat;margin-top:20px;}
+.user_register_con{margin:40px auto;}
+.user_register_con >div{margin:0px auto;margin-top:20px;border:1px solid #9F100C;height:350px;width:400px;}
+.user_register_con .con_td_info_reg{padding-left:20px;padding-top:10px;}
+    .user_register_con table 
+    {
+        margin:0px auto;
+        height:90%;
+        width:90%;
+        }
+        .user_register_con table .con_td_text
+    {
+        text-align:right;
+        width:20%;
+        }
+          .user_register_con table .con_td_input
+    {
+        width:80%;
+        }
+        .user_register_con table .con_td_input input
+    {
+        font-size:13px;
+        width:84%;
+        height:30px;
+        line-height:30px;
+        }
+         .user_register_con table .con_td_userdeal div
+    {
+        font-size:13px;
+        text-align:right;
+        width:86%;
+        }
+          .user_register_con table .con_td_userdeal div input
+    {
+        margin-bottom:3px;
+        }
+        .user_register_con table .con_tr_userdeal a
+    {
+        font-size:13px;
+        color:#9F100C;
+        vertical-align:middle;
+        }
+        .user_register_con .btn_register
+        {
+            background:#B91516;
+            height:35px;
+            color:#FFFFFF;
+            font-size:15px;
+            border:none;
+            width:78%;
+            margin:auto 35px;
+            cursor:pointer;
+            }
+             .user_register_con .btn_register:hover
+        {
+            background:#F3DFE0;
+            color:#B91516;
+        }
+        .register_success
+        {
+            height:400px;
+            text-align:center;
+}
+  .register_success .success_info1
+        {
+            font-size:25px;
+            color:#B91516;
+            font-family:"微软雅黑";
+            font-weight:bold;
+            margin-top:50px;
+}
+ .register_success .success_info2
+        {
+            color:#B91516;
+            padding-top:20px;
+}
+ .register_success .btnlogin_afterreg
+        {
+            width:100%;
+            text-align:center;
+            cursor:pointer;
+}
+.banner_info
+{
+    height:30px;
+    line-height:30px;
+    vertical-align:middle;
+    font-weight:bold;
+    margin:20px 0px 5px 0px;
+    font-size:15px;
+    font-family:"宋体";
+    color:#9F100C;
+    border-bottom:1px solid #red;
+    }
+.banner-icon
+{
+    margin-left:10px;
+    display:inline;
+    float:left;
+    }
+.banner-title
+{
+    display:inline;
+    float:left;
+    margin:3px 0px 0px 5px;
+    font-family:"微软雅黑";
+    font-size:16px;
+    }
+ .suggest-title
+ {
+     font-size:13px;
+     font-weight:bold;
+     }
+.btn_loginDire
+{
+            background:#B91516;
+            height:30px;
+            color:#FFFFFF;
+            font-size:15px;
+            border:none;
+            width:100px;
+            cursor:pointer;
+    }
+.btn_loginDire:hover
+{
+            background:#F3DFE0;
+            color:#B91516;
+    }
+.user_login .user_login_banner
+{
+    height:40px;
+    background:url(../../Assets/img/user/user_login_banner.jpg) no-repeat;
+    margin-top:20px;
+}
+.user_login_con
+{
+    margin:40px auto;
+    border:1px solid rgb(168,41,36);
+    height:auto;
+    width:400px;
+    }
+    .user_login_con table
+    {
+        margin:15px auto;
+        height:80%;
+        width:70%;
+        }
+        .user_login_con table tr
+    {
+        width:100%;
+        }
+        .user_login_con .login_role_common1
+        {
+            width:49%;
+            display:inline;            
+            text-align:center;
+            font-size:13px;
+            font-family:"微软雅黑";
+            padding-bottom:3px;
+            margin-bottom:20px;
+            cursor:pointer;
+            }
+             .user_login_con .login_role_common2
+        {
+            color:#B1B1B1;
+            border-bottom:2px solid #B1B1B1;
+            }
+            .user_login_con .login_role_common3
+        {
+            font-weight:bold;
+            color:#B91516;
+            border-bottom:2px solid #B91516;
+            }
+         .user_login_con .con_td_text
+    {
+        text-align:right;
+        width:12%;
+        }
+        .user_login_con .con_td_input
+{
+        width:80%;
+    }
+.user_login_con .con_td_input input
+{
+        width:98%;
+        height:30px;
+        line-height:30px;
+    }
+    .user_login_con .con_td_autologin
+{
+    font-size:12px;
+    text-align:left;
+    }
+    .user_login_con .con_td_autologin a
+{
+    float:right;
+    vertical-align:middle;
+    padding-top:7px;
+    }
+    .user_login_con .con_td_forgetpwd
+{
+    font-size:12px;
+    text-align:right;
+    }
+        .user_login_con .btn_login
+{
+    background:#B91516;
+            height:35px;
+            color:#FFFFFF;
+            font-size:15px;
+            border:none;
+            width:100%;
+            margin:0 auto;
+            cursor:pointer;
+            margin-bottom:20px;
+    }
+.btn_login:hover,.btn_validatecode:hover
+{
+            background:#F3DFE0;
+            color:#B91516;
+}
+.btn_validatecode
+    {
+            background:#B91516;
+            height:35px;
+            color:#FFFFFF;
+            font-size:15px;
+            border:none;
+            width:30%;
+            margin:0 auto;
+            cursor:pointer;
+            margin:20px 0px 20px 50px;
+        }
+        #trValidateCode .con_validate_input input
+    {
+        width:100%;
+        height:25px;
+        float:right;
+        vertical-align:middle;
+        }
+        #trValidateCode .con_validate_input .con_validate_info   
+{        
+    width:100%;
+        float:left;
+        border:0px;
+        padding-left:0px;
+        background:#FFFFFF;
+        color:Black;
+        }
+        #trValidateCode .con_validate_img .validate_input
+    {
+        float:left;
+        border:2px solid #e1e1e1;
+        height:25px;
+        }
+        #trValidateCode .con_validate_img input img
+    {
+        vertical-align:middle;
+    }
+    #trValidateCode .con_validate_img input 
+    {
+        width:70px;
+        height:30px;
+        float:right;
+        border:0px;
+        }
+/*用户注册页结束*/
+
+/*用户找回密码页开始*/
+    
+.user_resetpwd  .user_resetpwd_banner
+{
+    margin:20px 0px 0px 0px;
+    width:100%;
+    background:url(../../Assets/img/user/user_resetpwd_banner.jpg) no-repeat;
+    }
+    #Step1
+    {
+    margin-top:10px;
+    text-align:center;
+    }
+    .user_resetpwd  .resetpwd_step1_banner
+{
+    background:url(../../Assets/img/user/user_resetpwd_step1.jpg) no-repeat;
+    }
+    .resetpwd_step1_con table
+    {
+        padding-top:20px;
+        width:70%;
+        height:250px;
+        margin: 0 auto;
+        }
+        .resetpwd_step1_con table tr 
+    {
+        height:20px;
+        width:100%;
+        }
+        .resetpwd_step1_con table .step1_con_input 
+    {
+        height:25px;
+        line-height:25px;
+        width:100%;
+        }
+       .resetpwd_step1_con .step1_td_info
+       {
+           text-align:left;font-size:15px;height:20px;
+           }
+           .td_width
+           {
+               text-align:right;
+               width:13%;
+               }
+           #Email_Step1
+           {
+               width:28%;
+               padding-left:5px;
+               }
+           .user_login_con .step1_td_text
+       {
+           width:20%;
+           text-align:left;
+           }
+           .step1_validate_change
+           {
+                float:left;
+                background:#FFFFFF;
+                width:50px;
+                height:55%;
+                cursor:pointer;
+                border:0px;
+                padding-top:7px;
+               }
+        .td_input_validate
+        {
+        height:25px;
+        line-height:25px;
+        width:50%;
+        float:left;
+        margin:auto 0px;
+        }
+        .step1_td_change
+        {
+            width:50%;
+            }
+        .resetpwd_step2_banner
+        {
+            margin-top:10px;
+            background:url(../../Assets/img/user/user_resetpwd_step2.jpg) no-repeat;
+            }
+.btn_sendcode
+{
+            background:#B91516;
+            height:25px;
+            color:#FFFFFF;
+            font-size:13px;
+            border:none;
+            width:80px;
+            cursor:pointer;
+            margin-top:2px;
+            margin-left:5px;
+    }
+.btn_sendcode:hover
+{
+            background:#F3DFE0;
+            color:#B91516;
+}
+.step2_td_info
+{
+    text-align:right;
+    width:10%;
+    }
+                    .resetpwd_step3_banner
+                    {
+                        margin-top:10px;
+                    background:url(../../Assets/img/user/user_resetpwd_step3.jpg) no-repeat;
+                    }
+                    .step3_td_text 
+                    {
+                        text-align:right;
+                        width:13%;
+                        }
+                        .resetpwd_step3_con
+                        {
+                             padding-top:20px;
+                             width:70%;
+                             height:140px;
+                             margin: 0 auto;
+                        }
+                            .resetpwd_step3_con table
+                        {
+                        height:100%;
+                            }
+                        .step3_td_input
+                        {
+                            height:30px;
+                            width:25%;
+                            }
+                        .step3_td_input input 
+                    {
+                        height:80%;
+                        width:100%;
+                        }
+                        .step3_td_input img 
+                    {
+                        float:left;
+                        }
+                        .resetpwd_step3_con .con_tr .divNewPwd
+                        {
+                            width:50%;
+                            }
+                            .resetpwd_step3_con .con_tr .divConfirmNewPwd
+                        {
+                            width:50%;
+                            }
+/*用户找回密码页结束*/
+
+/*全文页开始*/
+.content_main {
+  margin:0 auto;overflow:hidden; width:1140px;
+  background:#FFFFFF;
+ }
+.cont_toolbar
+{
+    width:100%;
+    height:50px;
+    background-color:#EEEEEE;
+    }
+    .cont_toolbar table
+    {
+        width:100%;
+        height:100%;
+        }
+    .cont_toolbar table img
+    {
+        cursor:pointer;
+        }
+    #ul_toolbar_1 li
+    {
+        height:100%;
+        float:right;
+        padding: 5px 10px 20px 0px;
+        list-style-type:none;
+        vertical-align:middle;
+        font-size:12px;
+        cursor:pointer;
+        }
+        #ul_toolbar_2 li
+    {
+        height:100%;
+        float:left;
+        padding: 10px 0px 20px 30px;
+        list-style-type:none;
+        vertical-align:middle;
+        }
+        .div_content_container
+        {
+            width:100%;
+        min-height:1400px;
+        background:#FFFFFF;
+        
+        }
+        .div_container
+        {
+            width:100%;
+            margin:0 auto;
+            }
+        .div_doc_container
+        {
+            width:100%;/*修改概要和文书高度对齐*/
+            float:left;
+            text-align:center;
+            float:left;
+            position:relative;
+            min-height: 1200px;
+            border:1px solid #ddd;
+        }
+        .div_doc_cont
+        {
+            width:90%;
+            margin-top:30px;
+            }
+            #bg{ display: none; position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; background-color: #EEEEEE; z-index:1001; -moz-opacity: 0.3;opacity:0.3;filter: alpha(opacity=30);}
+            #show{display: none; position: absolute; top: 35%; left: 35%; width: 30%; height: 41%; border: 0px solid #E8E9F7; background-color: white; z-index:1002; overflow: auto;}
+  .remind_info
+        {
+            text-align: left;
+            font-size: 14px;
+            color: #B91516;
+            font-family: "微软雅黑";
+            height: 50px;
+            margin-top: 30px;
+        }
+        .prompt_msg
+        {
+            font-size: 14px;
+            color: #B91516;
+            font-family: "微软雅黑";
+            margin: 10px 0px 0px 30px;
+        }
+        #Content
+        {
+            width:90%;
+            min-height: 1200px;
+            margin:30px auto;
+        }
+ .content_login
+ {
+     margin:0px 0px 0px 0px ;
+     width:auto;
+     }
+ .con_title
+ {
+     TEXT-ALIGN: center; LINE-HEIGHT: 25pt; MARGIN: 0.5pt 0cm; FONT-FAMILY: 黑体; FONT-SIZE: 18pt;
+     }
+.con_title_bottom
+{
+    border-bottom:1px dashed #BBBBBB;
+    margin-bottom:30px;
+    height:70px;
+    }
+        .con_title_bottom>div
+{
+    height:20px;
+    padding-top:25px;
+    }
+    .con_title_bottom table
+{
+    height:20px;
+    width:100%;
+    }
+    #con_blank
+    {
+        width:65%;
+        }
+        #ul_download_print ul
+        {
+            width:100%;
+            }
+            
+    #con_fbrq
+    {
+        font-size:15px;
+        font-family:"微软雅黑";
+    }
+    #ul_download_print li
+    {
+        display:inline;
+        }
+/*全文页目录插件开始*/
+.content_tool_right {
+    float: left;
+    margin:25px 0px 0px 5px;
+    position:relative;
+    width:210px;
+}
+.content_tool_left {
+    float: left;
+    margin:30px 5px 0px 0px;
+    position:relative;
+    width:10%;
+}
+.relatefiles_container
+{
+     width:100%;/*修改概要和文书高度对齐*/
+     margin-bottom:10px;
+     border:1px solid #ddd;
+     display:none;
+    }
+    .relatefiles_banner
+{
+    background: url(/Assets/img/content/relatefiles_banner_bg.jpg) repeat-x 0px 0px;
+    height:33px;
+     line-height:33px;
+     border-bottom:1px solid #ddd;
+     font-size:16px;
+     font-family:"微软雅黑";
+     font-weight:bold;
+     color:#9c7b5e;
+}
+.content_relatefiles
+{
+     width:95%;
+     margin-left:1.5%;
+     font-size:13px;
+     font-family:"微软雅黑";
+     line-height:23px;
+     margin-bottom:10px;
+    }
+      .right 
+    {
+        float: left;
+        width:100%;
+    }
+    .contents
+    {
+        background-color:#FFFFFF;
+        }
+    .tool_dir_common
+    {
+            width: 32px;
+            font-size: 14px;
+            font-family: "微软雅黑";
+            display: block;
+            padding-top:35px;
+        }
+         .right .attribute .icon 
+         {
+            height:10px;
+            width:100%;
+        }
+          .right .attribute .outline {
+            background: url(/Assets/img/content/content_attribute_grey.png) no-repeat top;
+            color: #666;
+        }
+
+          .contents .contentsDireBg .liclick {
+            color: #d34a01;
+        }
+
+          .right .attribute .aclick {
+            background: url(/Assets/img/content/content_attribute.png) no-repeat top center;
+            color: #B91516;
+        }
+
+          .contents .aclick {
+            background: url(/Assets/img/content/content_directory.png) no-repeat top center;
+            color: #B91516;
+        }
+
+        .content_tool_right  .right .attribute .info {
+            display: none;
+            width: auto;
+            height:400px;
+            background: #fff;
+            font-size: 12px;
+            line-height: 20px;
+        }
+        .content_tool_right  .right .attribute .info .con{
+            margin-left:1px;
+            font-family:"宋体";
+            color:#555;
+        }
+        #share a
+        {
+            float:left;
+            font-size:12px;
+            padding-left:17px;
+            line-height:16px;
+            height:49px;
+            width:30px;
+            background-image:url(/Assets/img/content/content_share.jpg);
+            background-repeat:no-repeat;
+            cursor:pointer;
+            margin:0px 0px 0px 0;
+            clear:both;
+        }
+#share #btnalfx
+        {
+            background-image:url(/Assets/img/content/pushcase.png);
+        }
+.bdshare-temp:after
+{
+    content:".";
+    visibility:hidden;
+    display:block;
+    height:0;
+    clear:both;
+    }
+        .contentDirectory
+        {
+            display:none;
+            }
+          .contents .contentsDirectory {
+            font-size: 12px;
+            line-height: 20px;
+            height:170px;
+            text-align:right;
+        }
+          .contents .contentsDirectory ul{
+            padding-top:12px;
+          }
+
+          .contents .contentsDireBg {
+            background: url(/Assets/img/content/content_summary_line.png) repeat-y right center;
+        }
+
+          .contents .contentsDirectory ul li {
+            color: #555;
+            font-size: 13px;
+            cursor: pointer;
+            width: 100%;
+            list-style-type: none;
+            margin-top: 7.8px;
+            background: url(/Assets/img/content/content_summary_node.png) no-repeat right center;
+        }
+        .contents .contentsDirectory ul li div
+        {
+            padding-right:12px;
+            }
+         .contents .contentsDirectory ul li:hover {
+            background-color:#F5F5F5;
+            background: url(/Assets/img/content/content_directory_icon.png) no-repeat 105% 4px;
+            margin-right:30px;
+            font-weight:600;
+        }
+        .content_tool_common
+        {
+            background: url(/Assets/img/content/content_summary_node.png) no-repeat 0px 0px;
+            height:35px;
+            width:100%;   
+            }
+.content_info_common
+{
+    font-size:14px;
+    height:60%;
+    padding:8px 0px 0px 13px;
+    font-weight:bold;
+    }
+        .relateinfo
+        {
+            background: url(/Assets/img/content/content_summary_line.png) repeat-y 0px 0px;
+            }
+        .basic_info
+        {
+            padding-top:3px;
+            font-size:13px;
+            }
+            .basic_no_info
+            {
+                width:150px;
+                background: url(/Assets/img/content/content_summary_line.png) repeat-y 0px 0px;
+                
+            }
+            .con a
+        {
+            color:#B91516;
+            text-decoration:underline;
+            }
+             .relate_doc
+             {
+                 }
+            .relate_doc table
+            {
+                width:100%;
+                font-size:13px;
+                font-family: "微软雅黑";
+                }
+                .relate_doc table .relate_doc_td1
+                {
+                    width:10%;
+                    }
+                   .relate_doc table .relate_doc_td2
+                    {
+                font-size:13px;
+                font-family: "微软雅黑";
+                    width:10%;
+                        }
+                        .relate_doc table .relate_doc_td3
+                {
+                    width:10%;
+                    }
+                   .relate_doc table .relate_doc_td4
+                    {
+                    width:60%;
+                        }
+                        .relate_doc .fontstyle
+                        {
+    font-family: 宋体;
+    font-size: 14px;
+    color:#666666;
+    line-height: 25px;
+    text-align: left;
+                            }
+.div_tool_share
+{
+    position:fixed;
+    bottom:5px;
+    height:auto;
+    width:176px;
+ }
+.div_tool_dir
+{
+    position: fixed;
+    height: auto;
+    width: 100px;
+    margin: 40px 0px 0px 12px;
+}
+.divcontent_comment
+{
+    position:fixed;
+    width:550px;
+    top:20%;
+    left:22%;
+    border:2px solid #B91516;
+    }
+.content_comment_head
+{
+    background:#B91516;
+    font-size:13px;
+    font-family:"微软雅黑";
+    }
+    .content_comment_head table
+    {
+        height:100%;
+        width:100%;
+        }
+    .content_comment_head .info
+{
+    text-align:left;
+    padding-left:10px;
+    float:left;
+    color:#FFFFFF;
+    font-weight:bold;
+}
+   .content_comment_head .close
+{
+    width:50%;
+    text-align:right;
+    padding-right:5px;
+    float:right;
+    padding-top:6px;
+}
+.content_comment_body
+{
+    height:auto;
+    background:#FFFFFF;
+    }
+    .content_comment_body table
+    { 
+    padding-top:20px;
+    padding-left:10px;
+        }
+    .comment_font
+    {
+    font-size:14px;
+    font-family:"微软雅黑";
+        }
+
+.content_comment_body .comment_info textarea
+{
+    margin-top:20px;
+    height:150px;
+    width:350px;
+    background:#fff;
+    border:1px solid #e1e1e1;
+    }
+    .comment_btn img
+    {
+        padding-left:70px;
+        padding-top:15px;
+        }
+        
+        
+        .content_lawitems_body
+{
+    height:456px;
+    width:700px;
+    margin:auto auto;
+    background:#FFFFFF;
+    }
+    .content_lawitems_body table
+{
+    height:98%;
+    width:98%;
+    margin:auto auto;
+    background:#FFFFFF;
+    }
+    .lawitems_statement
+    {
+        width:98%;
+        height:100%;
+        margin:10px auto;
+        border:2px solid #E2E2E2;
+        }
+        .statement_head
+        {
+            text-align:center;
+            font-weight:bold;
+            font-family:"微软雅黑";
+            font-size:13px;
+            }
+            .statement_body
+        {
+            width:96%;
+            font-family:"微软雅黑";
+            font-size:13px;
+            margin:auto auto;
+            }
+ .content_notice
+ {
+            width:85%;
+            display:inline;
+            float:left;
+            margin-top:15px;
+     }
+ .content_notice_head
+ {
+     text-align:center;
+     font-size:17px;
+     font-weight:bold;
+     font-family:"微软雅黑";
+     }
+      .content_notice_body
+ {
+     width:83%;
+     margin-left:12%;
+     margin-bottom:40px;
+     font-size:13px;
+     font-family:"微软雅黑";
+     line-height:23px;
+     }
+     .two_dimension_code
+     {
+         width:45px;
+         height:45px;
+         border:1px solid #c3c2c2;
+         margin-left:10px;
+         }
+         .totop
+     {
+         width:44px;
+         height:44px;
+         }
+/*全文页目录插件结束*/       
+/*全文页结束*/
+
+/*用户中心页开始*/
+.user_center
+{
+    width:95%;
+    margin:20px auto;
+    height:650px;
+    border:1px solid #DFDFDF;
+    }
+
+.user_left_menu
+{
+    display: inline; 
+    float: left; 
+    height: 100%; 
+    width: 200px;
+    background:url(../img/user/user_center_menu_bg.png);
+}
+.user_left_menu .left_menu_main
+{
+    height:30px;
+    line-height:30px;
+    vertical-align:middle;
+    font-size:14px;
+    font-weight:bold;
+    background:url(../img/user/user_center_menu.jpg) no-repeat;
+    }
+.user_left_menu .left_menu_main span
+{
+    margin-top:3px;
+    }
+
+.user_left_menu .left_menu_child div
+{
+    padding-left:33px;
+    text-align:left;
+    height:30px;
+    line-height:30px;
+    font-size:13px;
+    vertical-align:middle;
+    background-color:#FFFFFF;
+    border-bottom:1px solid #FFFFFF;
+    }
+    .left_menu_child
+    {
+    background:url(../img/user/user_menu_child.jpg) no-repeat;
+        }
+    .user_left_menu .left_menu_child div:hover
+{
+    background-color:#F9F9F9;
+    }
+
+.right_frm
+{
+    display: inline; 
+    float: left;
+    width:870px;
+    }
+.user_center_con
+{
+    height:500px;
+    width:450px;
+    }
+    .user_center_con .input_text
+    {
+        background:#fff;
+        border:2px solid #e1e1e1;
+        font-weight:normal;
+        height:100%;
+        color:#000000;
+        }
+    .center_con_margin
+    {
+        margin:10px auto;
+        width:80%;
+        }
+        .center_con_personal
+    {
+        height:400px;
+        }
+        .center_con_account
+    {
+        height:450px;
+        }
+        .user_center_con table tr
+    {
+        width:100%;
+        }
+        .user_center_con .login_role_common1
+        {
+            width:49%;
+            display:inline;            
+            text-align:center;
+            font-size:13px;
+            font-family:"微软雅黑";
+            padding-bottom:3px;
+            margin-bottom:20px;
+            cursor:pointer;
+            }
+             .user_center_con .login_role_common2
+        {
+            color:#E2E2E2;
+            border-bottom:2px solid #E2E2E2;
+            }
+            .user_center_con .login_role_common3
+        {
+            font-weight:bold;
+            color:#B91516;
+            border-bottom:2px solid #B91516;
+            }
+            .user_center_con .personal_td_info
+            {
+                font-size:14px;
+                font-family:"黑体";
+                width:90px;
+                text-align:left;
+}
+/*用户中心页结束*/
+
+.table_info{width:100%;height:100%;}
+.table_info th{width:95px; text-align:left; vertical-align:top;}
+.table_info td{text-align:left;vertical-align:top;}
