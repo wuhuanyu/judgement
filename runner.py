@@ -1,6 +1,6 @@
 import random
 from scrapy.utils.project import get_project_settings
-from scrapy.crawler import CrawlerProcess
+from scrapy.crawler import CrawlerProcess, CrawlerRunner
 import os
 from judgement_spider.spiders.JudgementSpider import JudgementSpider
 import platform
@@ -8,6 +8,7 @@ from pathlib import Path
 import schedule
 from judgement_spider.util.toolbox import current_time_milli, current_time
 import multiprocessing as mp
+from twisted.internet import reactor
 
 user_agents = [
 
@@ -83,6 +84,11 @@ def main():
     process = CrawlerProcess(settings=settings)
     process.crawl(JudgementSpider)
     process.start()
+    # run = CrawlerRunner(settings)
+    # d = run.crawl(JudgementSpider)
+    # d.addBoth(lambda _: reactor.stop())
+    # print('Starting reactor...')
+    # reactor.run()
 
 
 if __name__ == '__main__':
@@ -91,5 +97,9 @@ if __name__ == '__main__':
     while True:
         p = mp.Process(target=main)
         p.start()
-        # we need to sleep 30 minute
-        time.sleep(60 * 15)
+        p.join()
+
+        # we need to sleep 10 minute
+        print('Last process exists,current time: {},now sleeping'.format(current_time()))
+        time.sleep(60 * 10)
+        print('Sleeping over,starting another spider,current time:{}'.format(current_time()))

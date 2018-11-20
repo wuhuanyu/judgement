@@ -168,9 +168,11 @@ class JudgementSpider(scrapy.Spider):
                 nyzm = urll.index("&number")
             subyzm = urll[(nyzm + 1):]
             yzm1 = subyzm[7:11]
+            # return 'wens'
             return yzm1
 
-        # init data request
+            # init data request
+
         url = "http://wenshu.court.gov.cn/List/ListContent"
         while True:
             referer = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number={}&guid={}&conditions=searchWord+1+AJLX++{}".format(
@@ -271,7 +273,8 @@ class JudgementSpider(scrapy.Spider):
                                          headers=content_js_headers,
                                          method="GET",
                                          meta={'doc_id': doc_id, 'judgement_info': data_dict},
-                                         callback=self.get_court_info_download
+                                         callback=self.get_court_info_download,
+                                         priority=400
                                          )
 
     def get_court_info_download(self, res: scrapy.http.Response):
@@ -347,7 +350,8 @@ class JudgementSpider(scrapy.Spider):
             method="POST",
             formdata=html_2_word_data,
             meta={'html_name': html_name},
-            callback=self.parse_word
+            callback=self.parse_word,
+            priority=500
         )
 
     def parse_word(self, res: scrapy.http.Response):
