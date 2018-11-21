@@ -9,6 +9,7 @@ import schedule
 from judgement_spider.util.toolbox import current_time_milli, current_time
 import multiprocessing as mp
 from twisted.internet import reactor
+import time
 
 user_agents = [
 
@@ -84,15 +85,9 @@ def main():
     process = CrawlerProcess(settings=settings)
     process.crawl(JudgementSpider)
     process.start()
-    # run = CrawlerRunner(settings)
-    # d = run.crawl(JudgementSpider)
-    # d.addBoth(lambda _: reactor.stop())
-    # print('Starting reactor...')
-    # reactor.run()
 
 
 if __name__ == '__main__':
-    import time
 
     while True:
         p = mp.Process(target=main)
@@ -101,5 +96,5 @@ if __name__ == '__main__':
 
         # we need to sleep 10 minute
         print('Last process exists,current time: {},now sleeping'.format(current_time()))
-        time.sleep(60 * 10)
+        time.sleep(60 * 5)
         print('Sleeping over,starting another spider,current time:{}'.format(current_time()))

@@ -10,6 +10,8 @@ import os
 import datetime
 from ..util.ocr import ocr
 from ..util.decoder import Decoder
+from datetime import datetime, timedelta
+from ..util.toolbox import str_to_datetime, datetime_to_str
 
 # 检索关键词
 keyword = '*'
@@ -39,11 +41,12 @@ court_loc_list = ['全部']
 # todo setting.json
 class JudgementSpider(scrapy.Spider):
     name = "judgement"
-
     param = "案件类型:刑事案件"
     page = 10
     order = "法院层级"
     direction = "asc"
+    start_date = datetime(year=2018, month=10, day=30)
+    time_delta = timedelta(days=1)
 
     def __get_guid(self):
         def create_guid():
@@ -68,7 +71,8 @@ class JudgementSpider(scrapy.Spider):
             self.settings['PERSIST_FILE']))
         with open(self.settings['PERSIST_FILE'], 'w', encoding="utf-8") as persist_file:
             json.dump({'last_index': self.index,
-                       'last_time': str(datetime.datetime.now())
+                       'last_date': datetime_to_str(self.date_to_crawl),
+                       'last_finish_timestamp': str(datetime.now())
                        }, persist_file)
             persist_file.flush()
             persist_file.close()
@@ -80,6 +84,7 @@ class JudgementSpider(scrapy.Spider):
         self.number = None
         self.vl5x = None
         self.index = 1
+        self.date_to_crawl = self.start_date
         self.decoder = None
         self.tasks = []
 
@@ -120,8 +125,21 @@ class JudgementSpider(scrapy.Spider):
             with open(self.settings.get('PERSIST_FILE')) as file:
                 process = json.load(file)
                 file.close()
-                self.index = int(process['last_index']) + 1
-        self.current_index = self.index
+                # 2018-3-20
+                last_date = str_to_datetime(process['last_date'])
+                last_index = int(process['last_index'])
+                if last_index == 20:
+                    # to crawl last_date-1
+                    self.index = 1
+                    self.date_to_crawl = last_date - self.time_delta
+                else:
+                    self.index = last_index + 1
+                    self.date_to_crawl = last_date
+        self.param = "案件类型:刑事案件,裁判日期:{} TO {}".format(
+            datetime_to_str(self.date_to_crawl),
+            datetime_to_str(self.date_to_crawl)
+        )
+
         self.guid = self.__get_guid()
         self.logger.info('Generate guid={}'.format(self.guid))
         # this is not for refresh,it is our first time.
@@ -136,6 +154,7 @@ class JudgementSpider(scrapy.Spider):
         self.number = number
         # we are to refresh the number and we just update it.Done, return
         if refresh:
+            self.logger.info("Refreshed the number:{}".format(self.number))
             return
         else:
             # we are not to refresh the number, so we need to proceed to get vjkl5
@@ -148,7 +167,6 @@ class JudgementSpider(scrapy.Spider):
                 "Accept-Language": "zh-CN,zh;q=0.8",
                 "Host": "wenshu.court.gov.cn",
                 "Proxy-Connection": "keep-alive",
-                "Upgrade-Insecure-Requests": "1",
                 'User-Agent': self.settings.get('UA')
             }
 
@@ -174,37 +192,38 @@ class JudgementSpider(scrapy.Spider):
             # init data request
 
         url = "http://wenshu.court.gov.cn/List/ListContent"
-        while True:
-            referer = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number={}&guid={}&conditions=searchWord+1+AJLX++{}".format(
-                self.number, self.guid, parse.quote(self.param))
-            headers = {
-                "Accept": "*/*",
-                "Accept-Encoding": "gzip, deflate",
-                "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
-                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-                "Host": "wenshu.court.gov.cn",
-                "Origin": "http://wenshu.court.gov.cn",
-                "Connection": "keep-alive",
-                "Referer": referer,
-                "X-Requested-With": "XMLHttpRequest",
-                'User-Agent': self.settings.get('UA')
-            }
-            data = {
-                "Param": self.param,
-                "Index": str(self.index),
-                "Page": str(self.page),
-                "Order": self.order,
-                "Direction": self.direction,
-                "vl5x": self.vl5x,
-                "number": construct_number(referer),
-                "guid": self.guid
-            }
-            yield scrapy.FormRequest(url=url, method="POST", formdata=data, headers=headers,
-                                     callback=self.parse_data, meta={'current_index': self.index})
-            if self.index % 5 == 0:
-                self.logger.info('We crawled 5*{} data this time,need to rest'.format(self.page))
-                break
-            self.index = self.index + 1
+
+        referer = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number={}&guid={}&conditions=searchWord+1+AJLX++{}".format(
+            self.number, self.guid, parse.quote(self.param))
+        headers = {
+            "Accept": "*/*",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Host": "wenshu.court.gov.cn",
+            "Origin": "http://wenshu.court.gov.cn",
+            "Connection": "keep-alive",
+            "Referer": referer,
+            "X-Requested-With": "XMLHttpRequest",
+            'User-Agent': self.settings.get('UA')
+        }
+        data = {
+            "Param": self.param,
+            "Index": str(self.index),
+            "Page": str(self.page),
+            "Order": self.order,
+            "Direction": self.direction,
+            "vl5x": self.vl5x,
+            "number": self.number,
+            "guid": self.guid
+        }
+        yield scrapy.FormRequest(url=url, method="POST", formdata=data, headers=headers,
+                                 callback=self.parse_data, meta={'current_index': self.index})
+
+        # update guid and number
+
+        # self.old_number = self.number
+        # yield self.__construct_request_for_number(self.parse_number, refresh=True)
 
     def parse_data(self, response: scrapy.http.Response):
         def construct_validate_code_request(cbk):

@@ -45,7 +45,10 @@
             var $list_operate = $("#operate");
             $list_operate.html("");
             //head头部
-            var orderlist = [{ key: '法院层级', value: '法院层级' }, { key: '裁判日期', value: '裁判日期' }, { key: '审判程序', value: '审判程序'}];
+            var orderlist = [{key: '法院层级', value: '法院层级'}, {
+                key: '裁判日期',
+                value: '裁判日期'
+            }, {key: '审判程序', value: '审判程序'}];
             for (var i = 0; i < orderlist.length; i++) {
                 var key = orderlist[i].key;
                 var value = orderlist[i].value;
@@ -91,7 +94,7 @@
                     var valiguid = $("#txthidGuid").val();
                     $.ajax({
                         url: "/ValiCode/GetCode", type: "POST", async: true,
-                        data: { "guid": valiguid },
+                        data: {"guid": valiguid},
                         success: function (data) {
                             s.BuildList(s, 1, 5, 1, data, valiguid);
                         }
@@ -155,7 +158,8 @@
             var guid1 = subguid.substr(5, 35);
             if (yzm != undefined && yzm != "undefined") {
                 yzm1 = yzm;
-            } if (guid != undefined && guid != "undefined") {
+            }
+            if (guid != undefined && guid != "undefined") {
                 guid1 = guid;
             }
             var s = this;
@@ -175,7 +179,9 @@
             var order = $("#hidOrder").attr("order");
 
             //审判程序排序时，根据审判程序代码字段排序
-            if (order == "审判程序") { order = "审判程序代码"; }
+            if (order == "审判程序") {
+                order = "审判程序代码";
+            }
 
             var direction = $("#hidOrder").attr("direction");
             var dataCount = 0;
@@ -204,7 +210,16 @@
                 url: "/List/ListContent",
                 type: "POST",
                 async: true,
-                data: { "Param": listparam, "Index": index, "Page": page, "Order": order, "Direction": direction, "vl5x": getKey(), "number": yzm1, "guid": guid1 },
+                data: {
+                    "Param": listparam,
+                    "Index": index,
+                    "Page": page,
+                    "Order": order,
+                    "Direction": direction,
+                    "vl5x": getKey(),
+                    "number": yzm1,
+                    "guid": guid1
+                },
                 success: function (data) {
                     //datalist = $.parseJSON(data);
 
@@ -260,7 +275,9 @@
                                 var caseNameTitle = datalist[i].案件名称 != undefined ? datalist[i].案件名称.replace(",", "，") : "";
                                 currentDocId += key + ",";
                                 title = caseNameTitle;
-                                if (title == "") { continue; }
+                                if (title == "") {
+                                    continue;
+                                }
                                 titleOri = caseNameTitle;
                                 var caseTypeInt = datalist[i].案件类型 != undefined ? datalist[i].案件类型 : "";
 
@@ -270,12 +287,23 @@
 
                                 //做判断，取两个字显示
                                 var style = "";
-                                if (trialRound == "再审审查与审判监督") { trialRound = "审监" }
-                                if (trialRound == "非诉执行审查") { trialRound = "非诉" }
-                                if (trialRound == "刑罚变更") { caseType = ""; style = "width:48px;"; }
+                                if (trialRound == "再审审查与审判监督") {
+                                    trialRound = "审监"
+                                }
+                                if (trialRound == "非诉执行审查") {
+                                    trialRound = "非诉"
+                                }
+                                if (trialRound == "刑罚变更") {
+                                    caseType = "";
+                                    style = "width:48px;";
+                                }
 
-                                if (trialRound == "其他") { trialRound = ""; }
-                                if (trialRound == "执行" && caseType == "执行") { trialRound = ""; }
+                                if (trialRound == "其他") {
+                                    trialRound = "";
+                                }
+                                if (trialRound == "执行" && caseType == "执行") {
+                                    trialRound = "";
+                                }
 
                                 var caseCourt = datalist[i].法院名称 != undefined ? datalist[i].法院名称 : "";
                                 var caseNumber = datalist[i].案号 != undefined ? datalist[i].案号 : "";
@@ -341,64 +369,67 @@
                                     }
                                 }
                                 var listitemid = "dataItem" + i;
-                                if (caseContent == "" || caseContent == "...") { titleInfo = ""; caseContent = ""; }
+                                if (caseContent == "" || caseContent == "...") {
+                                    titleInfo = "";
+                                    caseContent = "";
+                                }
                                 var li = $("<div class=\"dataItem\" id=\"" + listitemid + "\" key=\"" + key + "\" title=\"" + titleOri + "\" caseCourt=\"" + caseCourt + "\" caseNumber=\"" + caseNumber + "\" judgeDate=\"" + judgeDate + "\">"
-                                        + "<div class=\"label\">"
-                                            + (caseType != "" ? ("<div class=\"ajlx_lable\">" + caseType + "</div>") : "")
-                                            + (trialRound != "" ? ("<div class=\"ajlx_lable\" style=\"" + style + "\">" + trialRound + "</div>") : "")
-                                        + "</div>"
-                                        + "<table>"
-                                            + "<tr>"
-                                                + "<td colspan='2'>"
-                                                    + "<div class=\"wstitle\">"
-                                                    + "<input type=\"hidden\" class=\"DocIds\" value=\"" + key + "|" + titleOri + "|" + judgeDate + "\" >"
-                                                    + "<input class='listck' type='checkbox' name='ckList' downloadValue=\"" + key + "|" + titleOri + "|" + judgeDate + "\"  value=\"" + key + "^" + title + "^" + caseCourt + "^" + caseNumber + "^" + judgeDate + "\"/>&nbsp;"
-                                //+  "<a href='/content/contents?DocID=" + key+"'  target='_blank' style='color:Black; text-decoration:none;display:none'>" + title + "</a>"
-                                                    + "<a href='javascript:void(0)' onclick='javascript:Navi(\"" + key + "\",\"" + keyWords + "\")' target='_self' style='color:Black; text-decoration:none'>" + title + "</a>"
-                                                    + "</div>"
-                                                + "</td>"
-                                            + "</tr>"
-                                             + "<tr>"
-                                               + "<td colspan='2'>"
-                                               + "<div class=\"fymc\">"
-                                               + caseCourt
-                                               + (caseNumber == "无" ? "" : ("&nbsp;&nbsp;&nbsp;&nbsp;" + caseNumber))
-                                               + "&nbsp;&nbsp;&nbsp;&nbsp;"
-                                               + judgeDate
-                                               + "</div>"
-                                               + "</td>"
-                                            + "</tr>"
-                                            + "<tr>"
-                                               + "<td colspan='2'>"
-                                               + "<div class=\"mzjg\">"
-                                               + titleInfo
-                                               + "</div>"
-                                               + "</td>"
-                                            + "</tr>"
-                                            + "<tr>"
-                                                + "<td class=\"wszy\" colspan='2'>"
-                                                + caseContent
-                                                + "</td>"
-                                            + "</tr>"
-                                            + "<tr>"
-                                                + "<td class=\"\" colspan='2'>"
-                                                + "<div id='ListItem" + (i - 1) + "'></div>"
-                                                + "</td>"
-                                            + "</tr>"
+                                    + "<div class=\"label\">"
+                                    + (caseType != "" ? ("<div class=\"ajlx_lable\">" + caseType + "</div>") : "")
+                                    + (trialRound != "" ? ("<div class=\"ajlx_lable\" style=\"" + style + "\">" + trialRound + "</div>") : "")
+                                    + "</div>"
+                                    + "<table>"
+                                    + "<tr>"
+                                    + "<td colspan='2'>"
+                                    + "<div class=\"wstitle\">"
+                                    + "<input type=\"hidden\" class=\"DocIds\" value=\"" + key + "|" + titleOri + "|" + judgeDate + "\" >"
+                                    + "<input class='listck' type='checkbox' name='ckList' downloadValue=\"" + key + "|" + titleOri + "|" + judgeDate + "\"  value=\"" + key + "^" + title + "^" + caseCourt + "^" + caseNumber + "^" + judgeDate + "\"/>&nbsp;"
+                                    //+  "<a href='/content/contents?DocID=" + key+"'  target='_blank' style='color:Black; text-decoration:none;display:none'>" + title + "</a>"
+                                    + "<a href='javascript:void(0)' onclick='javascript:Navi(\"" + key + "\",\"" + keyWords + "\")' target='_self' style='color:Black; text-decoration:none'>" + title + "</a>"
+                                    + "</div>"
+                                    + "</td>"
+                                    + "</tr>"
+                                    + "<tr>"
+                                    + "<td colspan='2'>"
+                                    + "<div class=\"fymc\">"
+                                    + caseCourt
+                                    + (caseNumber == "无" ? "" : ("&nbsp;&nbsp;&nbsp;&nbsp;" + caseNumber))
+                                    + "&nbsp;&nbsp;&nbsp;&nbsp;"
+                                    + judgeDate
+                                    + "</div>"
+                                    + "</td>"
+                                    + "</tr>"
+                                    + "<tr>"
+                                    + "<td colspan='2'>"
+                                    + "<div class=\"mzjg\">"
+                                    + titleInfo
+                                    + "</div>"
+                                    + "</td>"
+                                    + "</tr>"
+                                    + "<tr>"
+                                    + "<td class=\"wszy\" colspan='2'>"
+                                    + caseContent
+                                    + "</td>"
+                                    + "</tr>"
+                                    + "<tr>"
+                                    + "<td class=\"\" colspan='2'>"
+                                    + "<div id='ListItem" + (i - 1) + "'></div>"
+                                    + "</td>"
+                                    + "</tr>"
 
-                                        + "</table>"
-                                            + "<div class=\"scxz\">"
-                                                + "<div class=\"download\">"
-                                                + "<img style=\"cursor:pointer; margin-bottom:5px;\" title='通过中国司法案例网身份认证的会员（主要包括法官、律师、法律学者、法律院校学生）才能推荐裁判文书到中国司法案例网，经全体会员众筹投票，符合条件可收入最高人民法院司法案例库' onclick=\"Casefx('" + key + "');\" src=\"/Assets/img/list/wytal-hove.png\" alt=\"通过中国司法案例网身份认证的会员（主要包括法官、律师、法律学者、法律院校学生）才能推荐裁判文书到中国司法案例网，经全体会员众筹投票，符合条件可收入最高人民法院司法案例库\"/>"
-                                                + "</div>"
-                                                + "<div class=\"download\">"
-                                                + "<img style=\"cursor:pointer;\" title='下载' onclick=\"DownLoadCaseNew('" + listitemid + "');\" src=\"/Assets/img/list/list_download.png\" alt=\"下载\"/>"
-                                                + "</div>"
-                                                + "<div class=\"collect\">"
-                                                + "<img style=\"cursor:pointer;\" title='收藏'  onclick=\"CollectCaseNew('" + listitemid + "');\" src=\"/Assets/img/list/list_collect.png\"  alt=\"收藏\"/>"
-                                                + "</div>"
-                                            + "</div>"
-                                + "</div>");
+                                    + "</table>"
+                                    + "<div class=\"scxz\">"
+                                    + "<div class=\"download\">"
+                                    + "<img style=\"cursor:pointer; margin-bottom:5px;\" title='通过中国司法案例网身份认证的会员（主要包括法官、律师、法律学者、法律院校学生）才能推荐裁判文书到中国司法案例网，经全体会员众筹投票，符合条件可收入最高人民法院司法案例库' onclick=\"Casefx('" + key + "');\" src=\"/Assets/img/list/wytal-hove.png\" alt=\"通过中国司法案例网身份认证的会员（主要包括法官、律师、法律学者、法律院校学生）才能推荐裁判文书到中国司法案例网，经全体会员众筹投票，符合条件可收入最高人民法院司法案例库\"/>"
+                                    + "</div>"
+                                    + "<div class=\"download\">"
+                                    + "<img style=\"cursor:pointer;\" title='下载' onclick=\"DownLoadCaseNew('" + listitemid + "');\" src=\"/Assets/img/list/list_download.png\" alt=\"下载\"/>"
+                                    + "</div>"
+                                    + "<div class=\"collect\">"
+                                    + "<img style=\"cursor:pointer;\" title='收藏'  onclick=\"CollectCaseNew('" + listitemid + "');\" src=\"/Assets/img/list/list_collect.png\"  alt=\"收藏\"/>"
+                                    + "</div>"
+                                    + "</div>"
+                                    + "</div>");
                                 list_center.append(li);
                             }
                         } else {
@@ -411,8 +442,8 @@
                         try {
                             var getGs = $("#hidConditions").val();
                             toGridsum.SearchList(getGs); //国双
-                        } catch (e)
-                        { }
+                        } catch (e) {
+                        }
                         if (currentDocId != "") {
                             currentDocId = currentDocId.substring(0, currentDocId.lastIndexOf(','));
                         }
@@ -444,14 +475,14 @@
             var _this = this;
             $pager.bind("pageChange", function (e, index) {
                 var pageSize = $(this).attr('pageSize');
-                _this.PageObj = { pageSize: pageSize, obj: obj, index: index };
+                _this.PageObj = {pageSize: pageSize, obj: obj, index: index};
 
                 guidCreate(3, index, pageSize);
                 //$("#dialog").show();
                 var valiguid = $("#txthidGuid").val();
                 $.ajax({
                     url: "/ValiCode/GetCode", type: "POST", async: true,
-                    data: { "guid": valiguid },
+                    data: {"guid": valiguid},
                     success: function (data) {
                         var type = $("#txthidtype").val();
                         $("#txtValidateCode").val(data);
@@ -501,13 +532,13 @@
                 //                $("html,body").animate({ scrollTop: 0 }, 'fast');
             });
             $pager.bind("sizeChange", function (e, num) {
-                _this.PageObj = { pageSize: num, obj: obj, index: 1 };
+                _this.PageObj = {pageSize: num, obj: obj, index: 1};
                 guidCreate(3, 1, num);
                 //$("#dialog").show();
                 var valiguid = $("#txthidGuid").val();
                 $.ajax({
                     url: "/ValiCode/GetCode", type: "POST", async: true,
-                    data: { "guid": valiguid },
+                    data: {"guid": valiguid},
                     success: function (data) {
                         obj.BuildList(obj, 1, num, 0, data, valiguid);
                     }
@@ -523,7 +554,7 @@
                 $("#txtValidateCode").val("");
                 this.PageObj = null;
 
-                $("html,body").animate({ scrollTop: 0 }, 'fast');
+                $("html,body").animate({scrollTop: 0}, 'fast');
             }
         },
         GetRelateFiles: function (obj, caseInfoAll, currentDocId) {
@@ -534,7 +565,7 @@
                 url: "/List/GetAllRelateFiles",
                 type: "POST",
                 async: true,
-                data: { "caseInfoAll": caseInfoAll },
+                data: {"caseInfoAll": caseInfoAll},
                 success: function (data) {
                     try {
                         dataList = $.parseJSON(data);
@@ -562,7 +593,9 @@
                     var relateFile = dataList.RelateFiles[i].RelateFile;
                     if ($.isArray(relateFile)) {
                         if (relateFile.length > 0) {
-                            var fileType = "0"; var img = ""; var relateId = "";
+                            var fileType = "0";
+                            var img = "";
+                            var relateId = "";
                             for (var ii = 0; ii < relateFile.length; ii++) {
 
                                 var fileTypeii = relateFile[ii].Type;
@@ -702,7 +735,7 @@
                 url: "/List/GetDicValue",
                 type: "POST",
                 async: false,
-                data: { "dicId": dicId, "dicKey": dicKey },
+                data: {"dicId": dicId, "dicKey": dicKey},
                 success: function (data) {
                     dicValue = data;
                 }
@@ -728,35 +761,36 @@
         return List;
     }
 })(jQuery)
+
 function collectDocList() {
     var getListDocIds = $("input[name='ckList']:checked");
     if (getListDocIds.length > 0) {
         var DocIds = new Array();
-        var realid = "";		
-        getListDocIds.each(function () {          
-			var $dataitem = $(this).parents(".dataItem");
-			var id = $dataitem.attr("key");
-            var unzipid = unzip(id);			
+        var realid = "";
+        getListDocIds.each(function () {
+            var $dataitem = $(this).parents(".dataItem");
+            var id = $dataitem.attr("key");
+            var unzipid = unzip(id);
             try {
                 realid = com.str.Decrypt(unzipid);
                 if (realid == "") {
-                    setTimeout("collectDocList()", 1000); 
+                    setTimeout("collectDocList()", 1000);
 
-					return;
+                    return;
                 } else {
-                    DocIds.push(realid+"^"+$dataitem.attr("title")+"^"+$dataitem.attr("caseCourt")+"^"+$dataitem.attr("caseNumber")+"^"+$dataitem.attr("judgeDate"));
+                    DocIds.push(realid + "^" + $dataitem.attr("title") + "^" + $dataitem.attr("caseCourt") + "^" + $dataitem.attr("caseNumber") + "^" + $dataitem.attr("judgeDate"));
                 }
             } catch (ex) {
                 setTimeout("collectDocList()", 1000);
                 return;
             }
         });
-    }else{
-		Lawyee.Tools.ShowMessage('请选择需要收藏的文书!');
-	}
-	if(DocIds.length==0){
-		return;
-	}
+    } else {
+        Lawyee.Tools.ShowMessage('请选择需要收藏的文书!');
+    }
+    if (DocIds.length == 0) {
+        return;
+    }
     $.ajax({
         url: "/Content/CheckLogin",
         type: "POST",
@@ -770,10 +804,10 @@ function collectDocList() {
                 var ckChecked = $("input[name='ckList']:checked");
                 var caseInfo = "";
                 if (DocIds.length > 0) {
-                   // $.each(DocIds,function () {
-                   //     caseInfo = caseInfo + $(this) + "&";
-                   // });
-					caseInfo= DocIds.join("&");
+                    // $.each(DocIds,function () {
+                    //     caseInfo = caseInfo + $(this) + "&";
+                    // });
+                    caseInfo = DocIds.join("&");
                     $("#hidCaseInfo").val(caseInfo);
                     top.Dialog.confirm("是否收藏到新的案例包中？|提示|是否", function () {
                         var $conditions = $(".removeCondtion");
@@ -806,33 +840,35 @@ function collectDocList() {
         }
     });
 }
+
 function downDocList() {
     var getListDocIds = $("input[name='ckList']:checked");
     if (getListDocIds.length > 0) {
         var DownloadDocIds = new Array();
         var realid = "";
         getListDocIds.each(function () {
-           	var $dataitem = $(this).parents(".dataItem");
-			var id = $dataitem.attr("key");
+            var $dataitem = $(this).parents(".dataItem");
+            var id = $dataitem.attr("key");
             var unzipid = unzip(id);
             try {
                 realid = com.str.Decrypt(unzipid);
                 if (realid == "") {
-                    setTimeout("downDocList()", 1000); return;
+                    setTimeout("downDocList()", 1000);
+                    return;
                 } else {
-                    DownloadDocIds.push(realid+"|"+$dataitem.attr("title")+"|"+$dataitem.attr("judgeDate"));
+                    DownloadDocIds.push(realid + "|" + $dataitem.attr("title") + "|" + $dataitem.attr("judgeDate"));
                 }
             } catch (ex) {
                 setTimeout("downDocList()", 1000);
                 return;
             }
         });
-    }else{
-		Lawyee.Tools.ShowMessage('请选择需要下载的文书!');
-	}
-	if(DownloadDocIds.length==0){
-		return;
-	}
+    } else {
+        Lawyee.Tools.ShowMessage('请选择需要下载的文书!');
+    }
+    if (DownloadDocIds.length == 0) {
+        return;
+    }
     if (getListDocIds.length > 0) {
         var thebody = document.body;
         var formid = 'DownloadForm';
@@ -877,6 +913,7 @@ function downDocList() {
         theform.submit();
     }
 }
+
 //增加7道爬虫防御 段智峰 20180807
 function Navi(id, keyword) {
     var unzipid = unzip(id);
@@ -885,13 +922,14 @@ function Navi(id, keyword) {
         if (realid == "") {
             setTimeout("Navi('" + id + "','" + keyword + "')", 1000);
         } else {
-            var url = "/content/content?DocID=" + realid + "&KeyWord=" + encodeURI(keyword); 
+            var url = "/content/content?DocID=" + realid + "&KeyWord=" + encodeURI(keyword);
             openWin(url);
         }
     } catch (ex) {
         setTimeout("Navi('" + id + "','" + keyword + "')", 1000);
     }
 }
+
 function openWin(url) {
     $('body').append($('<a href="' + url + '" target="_blank" id="openWin"></a>'))
     document.getElementById("openWin").click(); //点击事件
