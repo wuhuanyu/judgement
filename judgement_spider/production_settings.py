@@ -101,6 +101,8 @@ PUBLIC_DIR = "/home/stack/judgement/judgement_spider/public"
 
 MONGO_HOST = "localhost"
 MONGO_PORT = "27017"
+MONGO_DB = "wenshu_data"
+MONGO_COLLECTION = "docs"
 
 # production settings
 # DOCS_DIR = "/home/stack/spider/docs"
