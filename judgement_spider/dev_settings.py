@@ -52,7 +52,8 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 # DOWNLOADER_MIDDLEWARES = {
-#    'judgement_spider.middlewares.JudgementSpiderDownloaderMiddleware': 543,
+#     'judgement_spider.middlewares.RandomProxyMiddleware': 100,
+#     'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
 # }
 
 # Enable or disable extensions
@@ -95,7 +96,7 @@ RETRY_TIMES = 5
 LOG_FILE = "/tmp/judgement_log"
 
 DOCS_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/docs"
-LOG_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/log"
+LOGS_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/logs"
 PERSIST_FILE = "/Users/stack/code/py3/wenshu/judgement_spider/process.json"
 PUBLIC_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public"
 

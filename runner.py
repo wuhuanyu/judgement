@@ -68,8 +68,6 @@ def main():
     settings = get_project_settings()
     settings.set('UA', ua)
 
-    settings.set('LOG_FILE', os.path.join(settings.get('LOG_DIR'), '{}.log'.format(time_str)))
-
     content_html = Path(os.path.join(settings.get('PUBLIC_DIR'), 'content.html'))
     eval_js = Path(os.path.join(settings.get('PUBLIC_DIR'), 'eval_.js'))
     docid_js = Path(os.path.join(settings.get('PUBLIC_DIR'), 'docid.js'))
@@ -78,9 +76,17 @@ def main():
 
     if not os.path.isdir(settings.get('DOCS_DIR')):
         os.mkdir(settings.get('DOCS_DIR'))
+    doc_dir = os.path.join(settings.get('DOCS_DIR'), current_date_str)
+    if not os.path.isdir(doc_dir):
+        os.mkdir(doc_dir)
+    settings.set('DOC_DIR', doc_dir)
 
-    os.mkdir(os.path.join(settings.get('DOCS_DIR'), current_date_str))
-    settings.set('DOC_DIR', os.path.join(settings.get('DOCS_DIR'), current_date_str))
+    if not os.path.isdir(settings.get('LOGS_DIR')):
+        os.mkdir(settings.get('LOGS_DIR'))
+    log_dir = os.path.join(settings.get('LOGS_DIR'), current_date_str)
+    if not os.path.isdir(log_dir):
+        os.mkdir(log_dir)
+    settings.set('LOG_FILE', os.path.join(log_dir, '{}.log'.format(time_str)))
 
     process = CrawlerProcess(settings=settings)
     process.crawl(JudgementSpider)

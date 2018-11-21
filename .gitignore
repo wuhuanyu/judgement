@@ -1,7 +1,7 @@
 .idea/
 *.pyc
 crawls/
-log/
+logs/
 .DS_Store
 process.json
 docs/
