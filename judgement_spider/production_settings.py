@@ -94,10 +94,13 @@ LOG_ENABLED = True
 RETRY_TIMES = 5
 LOG_FILE = "/tmp/judgement_log"
 
-DOCS_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/docs"
-LOG_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/log"
-PERSIST_FILE = "/Users/stack/code/py3/wenshu/judgement_spider/process.json"
-PUBLIC_DIR = "/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/public"
+DOCS_DIR = "/home/stack/judgement_docs"
+LOG_DIR = "/home/stack/judgement_logs"
+PERSIST_FILE = "/home/stack/judgement/process.json"
+PUBLIC_DIR = "/home/stack/judgement/judgement_spider/public"
+
+MONGO_HOST = "localhost"
+MONGO_PORT = "27017"
 
 # production settings
 # DOCS_DIR = "/home/stack/spider/docs"

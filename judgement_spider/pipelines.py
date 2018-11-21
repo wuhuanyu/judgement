@@ -11,10 +11,25 @@ from .util.toolbox import current_time, current_time_milli
 
 class JudgementSpiderPipeline(object):
 
-    def __init__(self, *a, **kwargs):
-        self.client = MongoClient('localhost', 27017)
-        self.db = self.client['wenshu_data']
-        self.docs = self.db['docs']
+    def __init__(self, host="localhost", port=27017, db="wenshu_data", collection="docs"):
+        # self.client = MongoClient('localhost', 27017)
+        # self.db = self.client['wenshu_data']
+        # self.docs = self.db['docs']
+        self.client = MongoClient(host, int(port))
+        self.db = self.client[db]
+        self.collection = self.db[collection]
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(
+            host=crawler.settings.get('MONGO_HOST'),
+            port=crawler.settings.get('MONGO_PORT'),
+            db=crawler.settings.get('MONGO_DB'),
+            collection=crawler.settings.get('MONGO_COLLECTION')
+        )
+
+    def close_spider(self, spider):
+        self.client.close()
 
     def process_item(self, item, spider):
         # data_dict = dict(
@@ -31,8 +46,7 @@ class JudgementSpiderPipeline(object):
         # item['court'] = base64.b64encode(item['court'])
         item['crawled_at'] = str(current_time_milli())
         self.__persist(item)
-
         return item
 
     def __persist(self, item):
-        self.docs.insert_one(item)
+        self.collection.insert_one(item)

@@ -56,21 +56,19 @@ user_agents = [
 def main():
     time_str = current_time()
     current_date_str = current_date()
+    if "Darwin" in platform.platform():
+        settings_file_path = 'judgement_spider.dev_settings'
+    elif "Linux" in platform.platform():
+        settings_file_path = 'judgement_spider.production_settings'
+    else:
+        raise Exception('Unsupported platform due to some bugs, please use Linux or macOS')
 
-    settings_file_path = 'judgement_spider.settings'
     os.environ.setdefault('SCRAPY_SETTINGS_MODULE', settings_file_path)
     ua = user_agents[random.randint(0, len(user_agents) - 1)]
     settings = get_project_settings()
     settings.set('UA', ua)
-    settings.set('LOG_FILE', os.path.join(settings.get('LOG_DIR'), '{}.log'.format(time_str)))
 
-    if "Darwin" in platform.platform():
-        pass
-    elif "Linux" in platform.platform():
-        settings.set('PERSIST_FILE', "/home/stack/judgement/process.json")
-        settings.set('PUBLIC_DIR', '/home/stack/judgement/judgement_spider/public')
-    else:
-        raise Exception('Unsupported platform due to some bugs, please use Linux or macOS')
+    settings.set('LOG_FILE', os.path.join(settings.get('LOG_DIR'), '{}.log'.format(time_str)))
 
     content_html = Path(os.path.join(settings.get('PUBLIC_DIR'), 'content.html'))
     eval_js = Path(os.path.join(settings.get('PUBLIC_DIR'), 'eval_.js'))
@@ -89,6 +87,7 @@ def main():
     process.start()
 
 
+# todo run it
 if __name__ == '__main__':
 
     while True:
