@@ -6,7 +6,7 @@ from judgement_spider.spiders.JudgementSpider import JudgementSpider
 import platform
 from pathlib import Path
 import schedule
-from judgement_spider.util.toolbox import current_time_milli, current_time
+from judgement_spider.util.toolbox import current_time_milli, current_time, current_date
 import multiprocessing as mp
 from twisted.internet import reactor
 import time
@@ -55,6 +55,8 @@ user_agents = [
 
 def main():
     time_str = current_time()
+    current_date_str = current_date()
+
     settings_file_path = 'judgement_spider.settings'
     os.environ.setdefault('SCRAPY_SETTINGS_MODULE', settings_file_path)
     ua = user_agents[random.randint(0, len(user_agents) - 1)]
@@ -79,8 +81,8 @@ def main():
     if not os.path.isdir(settings.get('DOCS_DIR')):
         os.mkdir(settings.get('DOCS_DIR'))
 
-    os.mkdir(os.path.join(settings.get('DOCS_DIR'), time_str))
-    settings.set('DOC_DIR', os.path.join(settings.get('DOCS_DIR'), time_str))
+    os.mkdir(os.path.join(settings.get('DOCS_DIR'), current_date_str))
+    settings.set('DOC_DIR', os.path.join(settings.get('DOCS_DIR'), current_date_str))
 
     process = CrawlerProcess(settings=settings)
     process.crawl(JudgementSpider)

@@ -5,6 +5,14 @@ current_time_milli = lambda: int(round(time.time() * 1000))
 
 current_time = lambda: '-'.join(str(datetime.datetime.now()).split(' '))
 
+'''
+date to create docs folder
+'''
+current_date = lambda: ''.join([str(datetime.datetime.now().year),
+                                str(datetime.datetime.now().month),
+                                str(datetime.datetime.now().day)
+                                ])
+
 
 def str_to_datetime(time_str: str):
     '''
