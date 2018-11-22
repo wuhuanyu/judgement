@@ -87,4 +87,4 @@ def distinguish(filename):
 
 
 if __name__ == "__main__":
-    print(ocr("/tmp/check_code.jpeg"))
+    print(ocr("/tmp/check_code2.jpg"))
