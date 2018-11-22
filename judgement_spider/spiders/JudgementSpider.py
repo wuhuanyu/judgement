@@ -66,17 +66,18 @@ class JudgementSpider(scrapy.Spider):
         crawler.signals.connect(spider.engine_shutdown_cbk, signal=signals.spider_closed)
         return spider
 
-    def engine_shutdown_cbk(self):
-        self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
-            self.settings['PERSIST_FILE']))
-        with open(self.settings['PERSIST_FILE'], 'w', encoding="utf-8") as persist_file:
-            json.dump({'last_index': self.index,
-                       'last_date': datetime_to_str(self.date_to_crawl),
-                       'last_finish_timestamp': str(datetime.now())
-                       }, persist_file)
-            persist_file.flush()
-            persist_file.close()
-        self.logger.info('Persist process file completed')
+    def engine_shutdown_cbk(self, reason):
+        if reason == 'finished':
+            self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
+                self.settings['PERSIST_FILE']))
+            with open(self.settings['PERSIST_FILE'], 'w', encoding="utf-8") as persist_file:
+                json.dump({'last_index': self.index,
+                           'last_date': datetime_to_str(self.date_to_crawl),
+                           'last_finish_timestamp': str(datetime.now())
+                           }, persist_file)
+                persist_file.flush()
+                persist_file.close()
+            self.logger.info('Persist process file completed')
 
     def __init__(self, *a, **kwargs):
         super(JudgementSpider, self).__init__(*a, **kwargs)
@@ -128,7 +129,7 @@ class JudgementSpider(scrapy.Spider):
                 # 2018-3-20
                 last_date = str_to_datetime(process['last_date'])
                 last_index = int(process['last_index'])
-                if last_index == 20:
+                if last_index == int(self.settings.get('INDEXES_PER_DATE', 10)):
                     # to crawl last_date-1
                     self.index = 1
                     self.date_to_crawl = last_date - self.time_delta
@@ -173,11 +174,13 @@ class JudgementSpider(scrapy.Spider):
             yield scrapy.Request(url=url, headers=headers, method="GET", callback=self.parse_vjkl5)
 
     def parse_vjkl5(self, response: scrapy.http.Response):
+        if len(response.headers.getlist('Set-Cookie')) == 0:
+            return
         c = response.headers.getlist('Set-Cookie')[0].decode('utf-8')
         vjkl5 = c.split(";")[0].split("=")[1]
-        self.logger.info('Get encoded vjkl5{}'.format(vjkl5))
+        self.logger.info('Get encoded vjkl5={}'.format(vjkl5))
         self.vl5x = self.decoder.decode_vl5x(vjkl5)
-        self.logger.info('Get decoded vl5x{}'.format(self.vl5x))
+        self.logger.info('Get decoded vl5x={}'.format(self.vl5x))
 
         def construct_number(urll):
             if "&number" not in urll:
