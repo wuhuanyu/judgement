@@ -67,17 +67,17 @@ class JudgementSpider(scrapy.Spider):
         return spider
 
     def engine_shutdown_cbk(self, reason):
-        if reason == 'finished':
-            self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
-                self.settings['PERSIST_FILE']))
-            with open(self.settings['PERSIST_FILE'], 'w', encoding="utf-8") as persist_file:
-                json.dump({'last_index': self.index,
-                           'last_date': datetime_to_str(self.date_to_crawl),
-                           'last_finish_timestamp': str(datetime.now())
-                           }, persist_file)
-                persist_file.flush()
-                persist_file.close()
-            self.logger.info('Persist process file completed')
+        # if reason == 'finished':
+        self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
+            self.settings['PERSIST_FILE']))
+        with open(self.settings['PERSIST_FILE'], 'w', encoding="utf-8") as persist_file:
+            json.dump({'last_index': self.index,
+                       'last_date': datetime_to_str(self.date_to_crawl),
+                       'last_finish_timestamp': str(datetime.now())
+                       }, persist_file)
+            persist_file.flush()
+            persist_file.close()
+        self.logger.info('Persist process file completed')
 
     def __init__(self, *a, **kwargs):
         super(JudgementSpider, self).__init__(*a, **kwargs)

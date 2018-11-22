@@ -103,5 +103,5 @@ if __name__ == '__main__':
 
         # we need to sleep 10 minute
         print('Last process exists,current time: {},now sleeping'.format(current_time()))
-        time.sleep(60 * 5)
+        time.sleep(60 * 10)
         print('Sleeping over,starting another spider,current time:{}'.format(current_time()))
