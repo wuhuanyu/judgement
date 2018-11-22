@@ -2,6 +2,9 @@
 
 #### TODO
 <ul>Add IP Proxies</ul>
+<ul>Validation Code</ul>
+<ul>Control flow refactor</ul>
+
 
 #### Requirements
 `pip install -r requirements.txt`
@@ -20,6 +23,9 @@ Please change some settings in `judgement_spider/settings.py` before you run the
 Deployment via `Docker` is recommended. Please specify 3 folders and mount them to `/home/stack/judgement_logs`,`/home/stack/judgement_docs` and `/home/stack/judgement_mongo_db` respectively. 
 
 Besides, map host port 27017 to container port 27017.
+
+#### Problems
+<ul>502,503 response</ul>
 
 #### Note
 <b>Please be friendly to the website!!!</b>
