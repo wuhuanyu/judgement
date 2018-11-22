@@ -73,7 +73,8 @@ class JudgementSpider(scrapy.Spider):
         with open(self.settings['PERSIST_FILE'], 'w', encoding="utf-8") as persist_file:
             json.dump({'last_index': self.index,
                        'last_date': datetime_to_str(self.date_to_crawl),
-                       'last_finish_timestamp': str(datetime.now())
+                       'last_finish_timestamp': str(datetime.now()),
+                       'finish_reason': reason
                        }, persist_file)
             persist_file.flush()
             persist_file.close()
@@ -117,7 +118,7 @@ class JudgementSpider(scrapy.Spider):
     def __construct_request_for_check_code(self, callback):
         pass
 
-    # first start request for number and parse it
+    # first start request ford number and parse it
     def start_requests(self):
         self.decoder = Decoder(self.settings.get('PUBLIC_DIR'))
         # get process log from file
@@ -247,7 +248,7 @@ class JudgementSpider(scrapy.Spider):
         # validate code
         if return_data == '"remind"' or return_data == '"remind key"':
             self.logger.info('Unfortunately,we meet validation code,shutting down the spider...')
-            raise CloseSpider('Unfortunately,we meet validation code,shutting down the spider...')
+            raise CloseSpider('validation')
             # yield construct_validate_code_request(self.parse_validate_code)
             # yield self.__construct_request_for_number(self.parse_number, True)
 

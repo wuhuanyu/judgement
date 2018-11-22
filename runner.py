@@ -1,15 +1,25 @@
-import random
-from scrapy.utils.project import get_project_settings
-from scrapy.crawler import CrawlerProcess, CrawlerRunner
-import os
-from judgement_spider.spiders.JudgementSpider import JudgementSpider
-import platform
-from pathlib import Path
-import schedule
-from judgement_spider.util.toolbox import current_time_milli, current_time, current_date
+import json
 import multiprocessing as mp
-from twisted.internet import reactor
+import os
+import platform
+import random
 import time
+from pathlib import Path
+
+from scrapy.crawler import CrawlerProcess
+from scrapy.utils.project import get_project_settings
+
+from judgement_spider.spiders.JudgementSpider import JudgementSpider
+from judgement_spider.util.toolbox import current_time, current_date
+
+if "Darwin" in platform.platform():
+    settings_file_path = 'judgement_spider.dev_settings'
+elif "Linux" in platform.platform():
+    settings_file_path = 'judgement_spider.production_settings'
+else:
+    raise Exception('Unsupported platform due to some bugs, please use Linux or macOS')
+
+os.environ.setdefault('SCRAPY_SETTINGS_MODULE', settings_file_path)
 
 user_agents = [
 
@@ -38,32 +48,13 @@ user_agents = [
     'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)',
     'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
     'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)',
-
-    # Android
-    'Mozilla/5.0 (Linux; Android 7.0; SM-G892A Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Mobile Safari/537.36',
-    'Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36',
-    'Mozilla/5.0 (Linux; Android 6.0.1; SM-G935S Build/MMB29K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/55.0.2883.91 Mobile Safari/537.36',
-    'Mozilla/5.0 (Linux; Android 7.1.1; G8231 Build/41.2.A.0.219; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/59.0.3071.125 Mobile Safari/537.36',
-
-    # iPhone
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1',
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/69.0.3497.105 Mobile/15E148 Safari/605.1',
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/13.2b11866 Mobile/16A366 Safari/605.1.15',
-    'Mozilla/5.0 (iPhone9,4; U; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/14A403 Safari/602.1',
 ]
 
 
 def main():
     time_str = current_time()
     current_date_str = current_date()
-    if "Darwin" in platform.platform():
-        settings_file_path = 'judgement_spider.dev_settings'
-    elif "Linux" in platform.platform():
-        settings_file_path = 'judgement_spider.production_settings'
-    else:
-        raise Exception('Unsupported platform due to some bugs, please use Linux or macOS')
 
-    os.environ.setdefault('SCRAPY_SETTINGS_MODULE', settings_file_path)
     ua = user_agents[random.randint(0, len(user_agents) - 1)]
     settings = get_project_settings()
     settings.set('UA', ua)
@@ -93,15 +84,35 @@ def main():
     process.start()
 
 
-# todo run it
+def last_finish_reason():
+    reason = "finished"
+    settings = get_project_settings()
+    process_file = Path(settings.get('PERSIST_FILE'))
+    if process_file.is_file():
+        with open(settings.get('PERSIST_FILE'), 'r', encoding='utf-8') as file:
+            if __name__ == '__main__':
+                process = json.load(file)
+                file.close()
+                reason = process['finish_reason']
+
+    return reason
+
+
 if __name__ == '__main__':
+    settings = get_project_settings()
 
     while True:
+        last_finish_reason = last_finish_reason()
+        break_time = 60 * 15
+        if last_finish_reason == "finished":
+            break_time = settings.getint('SHORT_BREAK', 60 * 15)
+        elif last_finish_reason == "validation":
+            break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.2)
         p = mp.Process(target=main)
         p.start()
         p.join()
 
         # we need to sleep 10 minute
         print('Last process exists,current time: {},now sleeping'.format(current_time()))
-        time.sleep(60 * 10)
+        time.sleep(break_time)
         print('Sleeping over,starting another spider,current time:{}'.format(current_time()))
