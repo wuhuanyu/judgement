@@ -67,13 +67,35 @@ class JudgementSpider(scrapy.Spider):
         return spider
 
     def engine_shutdown_cbk(self, reason):
-        # if reason == 'finished':
+        last_index = None
+        last_date = None
+        done = 0
+        # 表示这一页数据一共请求了多少次，如果上一页数据完成了，该值为0
+        last_page_tried_times = 0
+
+        if reason == 'finished':
+            last_index = self.index
+            last_date = datetime_to_str(self.date_to_crawl)
+            done = 1
+        elif reason == "redirect":
+            last_index = self.last_index
+            last_date = datetime_to_str(self.last_date)
+            done = 0
+            last_page_tried_times = self.last_page_tried_times + 1
+        elif reason == "validation":
+            last_index = self.last_index
+            last_date = datetime_to_str(self.last_date)
+            done = 0
+            last_page_tried_times = self.last_page_tried_times + 1
+
         self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
             self.settings['PERSIST_FILE']))
         with open(self.settings['PERSIST_FILE'], 'w', encoding="utf-8") as persist_file:
-            json.dump({'last_index': self.index,
-                       'last_date': datetime_to_str(self.date_to_crawl),
+            json.dump({'last_index': last_index,
+                       'last_date': last_date,
                        'last_finish_timestamp': str(datetime.now()),
+                       'done': done,
+                       'last_page_tried_times': last_page_tried_times,
                        'finish_reason': reason
                        }, persist_file)
             persist_file.flush()
@@ -87,7 +109,10 @@ class JudgementSpider(scrapy.Spider):
         self.vl5x = None
         self.index = 1
         self.date_to_crawl = self.start_date
+        self.last_index = None
+        self.last_date = None
         self.decoder = None
+        self.last_page_tried_times = None
         self.tasks = []
 
     def __construct_request_for_number(self, cbk, refresh=True):
@@ -129,7 +154,13 @@ class JudgementSpider(scrapy.Spider):
                 file.close()
                 # 2018-3-20
                 last_date = str_to_datetime(process['last_date'])
+                self.last_date = last_date
+
                 last_index = int(process['last_index'])
+                self.last_index = last_index
+
+                self.last_page_tried_times = int(process['last_page_tried_times'])
+
                 if last_index == int(self.settings.get('INDEXES_PER_DATE', 10)):
                     # to crawl last_date-1
                     self.index = 1
@@ -175,6 +206,12 @@ class JudgementSpider(scrapy.Spider):
             yield scrapy.Request(url=url, headers=headers, method="GET", callback=self.parse_vjkl5)
 
     def parse_vjkl5(self, response: scrapy.http.Response):
+        # todo move the redirect check to some middleware or ...
+        status_code = response.status
+        if status_code == 302 or status_code == 301:
+            self.logger.error('Unfortunately, we meet redirect,shutting down the spider')
+            raise CloseSpider('redirect')
+
         if len(response.headers.getlist('Set-Cookie')) == 0:
             return
         c = response.headers.getlist('Set-Cookie')[0].decode('utf-8')

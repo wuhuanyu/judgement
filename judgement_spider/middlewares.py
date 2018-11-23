@@ -217,3 +217,8 @@ class RandomProxyMiddleware(object):
         self.proxies = list(filter(lambda p: 'no proxy' not in p, self.proxies))
         # self.proxy = RandomProxyMiddleware.get_proxy()
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class RedirectMiddleWare(object):
+    def process_response(self, request, response, spider):
+        pass

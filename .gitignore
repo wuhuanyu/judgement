@@ -5,3 +5,5 @@ logs/
 .DS_Store
 process.json
 docs/
+runner.log
+judgement_spider/util/split.jpg

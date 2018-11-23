@@ -2,11 +2,12 @@ from judgement_spider.util.toolbox import current_time
 
 
 class Logger:
-    def __init__(self, log_file_path=None):
+    def __init__(self, name, log_file_path=None):
         self.log_file_path = log_file_path
+        self.name = name
 
     def info(self, msg):
-        msg = '[INFO] {} {}\n'.format(current_time(), msg)
+        msg = '[INFO] {} : {} {}\n'.format(self.name, current_time(), msg)
         if self.log_file_path is None:
             print(msg)
         else:
@@ -17,7 +18,7 @@ class Logger:
 
 
 if __name__ == '__main__':
-    l1=Logger()
+    l1 = Logger(__name__)
     l1.info('hello')
-    l2=Logger('/tmp/log.log')
+    l2 = Logger(__name__, '/tmp/log.log')
     l2.info('hello')
