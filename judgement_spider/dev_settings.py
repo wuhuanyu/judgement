@@ -117,7 +117,7 @@ VALIDATE_CODE = "/tmp/validate_code.jpeg"
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
 
 # if last crawl finished,we take a short break
-SHORT_BREAK = 60 * 15
+SHORT_BREAK = 60 * 20
 # or we met validation code in the last crawl,we take a long break
 LONG_BREAK = 60 * 60 * 1.5
 # if we  met validation code the second time,the long break time will be 60*60*1.5*1.1 and so on until the the long break

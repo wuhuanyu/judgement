@@ -92,14 +92,14 @@ if __name__ == '__main__':
         break_time = 60 * 15
         last_long_break_time = None
         if reason_ == "finished":
-            break_time = settings.getint('SHORT_BREAK', 60 * 15)
+            break_time = settings.getint('SHORT_BREAK', 60 * 20)
             # last_long_break_time = initial_long_break_time
 
         elif reason_ == "validation":
-            break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.2)
+            break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.5)
             is_long_break = True
         elif reason_ == "redirect":
-            break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.2)
+            break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.5)
             is_long_break = True
         p = mp.Process(target=main)
         p.start()

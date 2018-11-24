@@ -80,7 +80,8 @@ AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
 # AUTOTHROTTLE_DEBUG = False
 # 每次请求1000毫秒延迟 随机
-DOWNLOAD_DELAY = 1
+DOWNLOAD_DELAY = 7
+INDEXES_PER_DATE = 12
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
@@ -94,10 +95,14 @@ LOG_ENABLED = True
 RETRY_TIMES = 5
 LOG_FILE = "/tmp/judgement_log"
 
+RUNNER_LOG = "/home/stack/runner.log"
+
+REDIRECTED_ENABLED = False
+
 DOCS_DIR = "/home/stack/judgement_docs"
 LOG_DIR = "/home/stack/judgement_logs"
-PERSIST_FILE = "/home/stack/judgement/process.json"
-PUBLIC_DIR = "/home/stack/judgement/judgement_spider/public"
+PERSIST_FILE = "/home/stack/judgement_code/process.json"
+PUBLIC_DIR = "/home/stack/judgement_code/judgement_spider/public"
 
 MONGO_HOST = "localhost"
 MONGO_PORT = "27017"
@@ -110,3 +115,11 @@ MONGO_COLLECTION = "docs"
 
 VALIDATE_CODE = "/tmp/validate_code.jpeg"
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
+
+# if last crawl finished,we take a short break
+SHORT_BREAK = 60 * 20
+# or we met validation code in the last crawl,we take a long break
+LONG_BREAK = 60 * 60 * 1.5
+# if we  met validation code the second time,the long break time will be 60*60*1.5*1.1 and so on until the the long break
+LONG_BREAK_TIMES = 1.1
+LONG_BREAK_UP_BOUND = 60 * 60 * 2.5
