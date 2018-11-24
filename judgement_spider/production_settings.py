@@ -81,7 +81,7 @@ AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # AUTOTHROTTLE_DEBUG = False
 # 每次请求1000毫秒延迟 随机
 DOWNLOAD_DELAY = 7
-INDEXES_PER_DATE = 12
+INDEXES_PER_DATE = 20
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings

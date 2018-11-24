@@ -166,7 +166,8 @@ class JudgementSpider(scrapy.Spider):
 
                 self.last_page_tried_times = int(process['last_page_tried_times'])
 
-                if last_index == self.all_indexes:
+                if last_index == self.all_indexes or last_index == int(
+                        self.settings.get('INDEXES_PER_DATE')):
                     # to crawl last_date-1
                     self.index = 1
                     self.date_to_crawl = last_date - self.time_delta
@@ -441,7 +442,7 @@ class JudgementSpider(scrapy.Spider):
         word_name = html_name
         file_dir = self.settings.get('DOC_DIR', '/tmp')
         file_name = os.path.join(file_dir, '{}.doc'.format(word_name))
-        with open(file_name, 'wb') as file:
+        with open(file_name, 'w+b') as file:
             file.write(res.body)
             file.flush()
             file.close()
