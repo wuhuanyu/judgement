@@ -440,11 +440,11 @@ class JudgementSpider(scrapy.Spider):
 
     def parse_word(self, res: scrapy.http.Response):
         html_name: str = res.meta['html_name']
-        word_name = html_name
+        word_name = html_name.encode("utf-8")
 
-        word_name = base64.b64encode(word_name)
+        # word_name = base64.b64encode(word_name)
         file_dir = self.settings.get('DOC_DIR', '/tmp')
-        file_name = os.path.join(file_dir, u'{}.doc'.format(word_name))
+        file_name = os.path.join(file_dir, '{}.doc'.format(word_name))
         with open(file_name, 'w+b') as file:
             file.write(res.body)
             file.flush()
