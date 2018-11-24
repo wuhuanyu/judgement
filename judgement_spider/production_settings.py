@@ -100,7 +100,7 @@ RUNNER_LOG = "/home/stack/runner.log"
 REDIRECTED_ENABLED = False
 
 DOCS_DIR = "/home/stack/judgement_docs"
-LOG_DIR = "/home/stack/judgement_logs"
+LOGS_DIR = "/home/stack/judgement_logs"
 PERSIST_FILE = "/home/stack/judgement_code/process.json"
 PUBLIC_DIR = "/home/stack/judgement_code/judgement_spider/public"
 
