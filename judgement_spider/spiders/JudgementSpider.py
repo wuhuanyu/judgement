@@ -290,7 +290,7 @@ class JudgementSpider(scrapy.Spider):
         return_data = response.body.decode('utf-8').replace('\\', '').replace('"[', '[').replace(
             ']"', ']') \
             .replace('＆ｌｄｑｕｏ;', '“').replace('＆ｒｄｑｕｏ;', '”')
-        print(return_data)
+        # print(return_data)
 
         # validate code
         if return_data == '"remind"' or return_data == '"remind key"':
@@ -450,7 +450,7 @@ class JudgementSpider(scrapy.Spider):
     def parse_validate_code(self, response: scrapy.http.Response):
         orc_code = None
         with open(self.settings.get('VALIDATE_CODE'), 'wb') as file:
-            print("Starting persist check_code")
+            # print("Starting persist check_code")
             file.write(response.body)
             file.flush()
             file.close()
@@ -483,8 +483,8 @@ class JudgementSpider(scrapy.Spider):
         }
 
         if result == "2":
-            print("validate code is wrong!")
+            # print("validate code is wrong!")
             exit(-1)
         else:
-            print("validate code is right")
+            # print("validate code is right")
             self.guid = self.__get_guid()

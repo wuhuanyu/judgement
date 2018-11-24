@@ -29,6 +29,7 @@ logger = Logger('runner.py', runner_log_path)
 
 
 def main():
+    # try:
     logger.info('A child progress started,pid={} '.format(os.getpid()))
     time_str = current_time()
     current_date_str = current_date()
@@ -61,6 +62,10 @@ def main():
     process.start()
 
 
+# except IndexError:
+#     logger.err('Unexpected index error happened')
+
+
 def last_finish_reason():
     reason = "finished"
     process_file = Path(settings.get('PERSIST_FILE'))
@@ -73,6 +78,8 @@ def last_finish_reason():
     return reason
 
 
+# todo 捕捉异常，发送邮件
+# todo 统计功能,发送邮件
 if __name__ == '__main__':
 
     is_long_break = False

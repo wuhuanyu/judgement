@@ -11,7 +11,7 @@ from judgement_spider.util.toolbox import current_time_milli, current_date
 
 class JudgementSpiderPipeline(object):
 
-    def __init__(self, host="localhost", port=27017, db="wenshu_data", collection="docs"):
+    def __init__(self, host="localhost", port=27017, db="wenshu_data"):
         # self.client = MongoClient('localhost', 27017)
         # self.db = self.client['wenshu_data']
         # self.docs = self.db['docs']
@@ -25,7 +25,6 @@ class JudgementSpiderPipeline(object):
             host=crawler.settings.get('MONGO_HOST'),
             port=crawler.settings.get('MONGO_PORT'),
             db=crawler.settings.get('MONGO_DB'),
-            collection=crawler.settings.get('MONGO_COLLECTION')
         )
 
     def close_spider(self, spider):

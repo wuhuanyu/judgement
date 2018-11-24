@@ -6,8 +6,8 @@ class Logger:
         self.log_file_path = log_file_path
         self.name = name
 
-    def info(self, msg):
-        msg = '[INFO] {} : {} {}\n'.format(self.name, current_time(), msg)
+    def __log(self, tag, msg):
+        msg = '[{}] {} : {} {}\n'.format(tag, self.name, current_time(), msg)
         if self.log_file_path is None:
             print(msg)
         else:
@@ -15,6 +15,12 @@ class Logger:
                 file.write(msg)
                 file.flush()
                 file.close()
+
+    def info(self, message):
+        self.__log('INFO', msg=message)
+
+    def err(self, message):
+        self.__log('ERROR', msg=message)
 
 
 if __name__ == '__main__':
