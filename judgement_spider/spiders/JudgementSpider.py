@@ -13,7 +13,6 @@ from ..util.ocr import ocr
 from ..util.decoder import Decoder
 from datetime import datetime, timedelta
 from ..util.toolbox import str_to_datetime, datetime_to_str
-
 # 检索关键词
 keyword = '*'
 # 检索类型
@@ -438,8 +437,8 @@ class JudgementSpider(scrapy.Spider):
         )
 
     def parse_word(self, res: scrapy.http.Response):
-        html_name = res.meta['html_name']
-        word_name = html_name
+        html_name:str = res.meta['html_name']
+        word_name = html_name.encode('utf-8').decode('utf-8')
         file_dir = self.settings.get('DOC_DIR', '/tmp')
         file_name = os.path.join(file_dir, '{}.doc'.format(word_name))
         with open(file_name, 'w+b') as file:
