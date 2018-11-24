@@ -442,14 +442,14 @@ class JudgementSpider(scrapy.Spider):
         html_name: str = res.meta['html_name']
         word_name = html_name.encode("utf-8")
 
-        # word_name = base64.b64encode(word_name)
+        word_name = base64.b64encode(word_name)
         file_dir = self.settings.get('DOC_DIR', '/tmp')
-        file_name = os.path.join(file_dir, '{}.doc'.format(word_name))
-        with open(file_name, 'w+b') as file:
+        file_name = os.path.join(file_dir, '{}.doc'.format(word_name.decode('utf-8')))
+        with open(file_name, 'wb') as file:
             file.write(res.body)
             file.flush()
             file.close()
-        self.logger.info('Downloaded {}.doc'.format(word_name))
+        self.logger.info('Downloaded {}.doc'.format(base64.b64decode(word_name).decode('utf-8')))
 
     def parse_validate_code(self, response: scrapy.http.Response):
         orc_code = None
