@@ -8,6 +8,7 @@ import json
 import re
 import os
 import datetime
+import math
 from ..util.ocr import ocr
 from ..util.decoder import Decoder
 from datetime import datetime, timedelta
@@ -38,7 +39,6 @@ end_date = '2018-05-16'
 court_loc_list = ['全部']
 
 
-# todo setting.json
 class JudgementSpider(scrapy.Spider):
     name = "judgement"
     param = "案件类型:刑事案件"
@@ -67,6 +67,7 @@ class JudgementSpider(scrapy.Spider):
         return spider
 
     def engine_shutdown_cbk(self, reason):
+        # todo last_tried_time不准确
         last_index = None
         last_date = None
         done = 0
@@ -81,18 +82,19 @@ class JudgementSpider(scrapy.Spider):
             last_index = self.last_index
             last_date = datetime_to_str(self.last_date)
             done = 0
-            last_page_tried_times = self.last_page_tried_times + 1
+            last_page_tried_times = last_page_tried_times + 1
         elif reason == "validation":
             last_index = self.last_index
             last_date = datetime_to_str(self.last_date)
             done = 0
-            last_page_tried_times = self.last_page_tried_times + 1
+            last_page_tried_times = last_page_tried_times + 1
 
         self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
             self.settings['PERSIST_FILE']))
         with open(self.settings['PERSIST_FILE'], 'w', encoding="utf-8") as persist_file:
             json.dump({'last_index': last_index,
                        'last_date': last_date,
+                       'all_indexes': self.all_indexes,
                        'last_finish_timestamp': str(datetime.now()),
                        'done': done,
                        'last_page_tried_times': last_page_tried_times,
@@ -110,6 +112,7 @@ class JudgementSpider(scrapy.Spider):
         self.index = 1
         self.date_to_crawl = self.start_date
         self.last_index = None
+        self.all_indexes = -1
         self.last_date = None
         self.decoder = None
         self.last_page_tried_times = None
@@ -159,15 +162,21 @@ class JudgementSpider(scrapy.Spider):
                 last_index = int(process['last_index'])
                 self.last_index = last_index
 
+                self.all_indexes = int(process['all_indexes'])
+
                 self.last_page_tried_times = int(process['last_page_tried_times'])
 
-                if last_index == int(self.settings.get('INDEXES_PER_DATE', 10)):
+                if last_index == self.all_indexes:
                     # to crawl last_date-1
                     self.index = 1
                     self.date_to_crawl = last_date - self.time_delta
                 else:
                     self.index = last_index + 1
                     self.date_to_crawl = last_date
+        self.logger.info('Date to crawl {},index to crawl {}'.format(
+            datetime_to_str(self.date_to_crawl),
+            self.index
+        ))
         self.param = "案件类型:刑事案件,裁判日期:{} TO {}".format(
             datetime_to_str(self.date_to_crawl),
             datetime_to_str(self.date_to_crawl)
@@ -281,6 +290,7 @@ class JudgementSpider(scrapy.Spider):
         return_data = response.body.decode('utf-8').replace('\\', '').replace('"[', '[').replace(
             ']"', ']') \
             .replace('＆ｌｄｑｕｏ;', '“').replace('＆ｒｄｑｕｏ;', '”')
+        print(return_data)
 
         # validate code
         if return_data == '"remind"' or return_data == '"remind key"':
@@ -294,9 +304,21 @@ class JudgementSpider(scrapy.Spider):
             # and we get json
             data = json.loads(return_data)
             if len(data) == 0:
-                print('Done')
+                return
+                # self.logger.info('date {} index {} done,please change date.'.format(
+                #     datetime_to_str(self.date_to_crawl), self.index))
+            elif len(data) == 1:
+                self.logger.info('date {} index {} done,please change date.'.format(
+                    datetime_to_str(self.date_to_crawl), self.index))
             else:
                 RunEval = data[0]['RunEval']
+                count = int(data[0]['Count'])
+                self.logger.info('Date {} has {} items'.format(
+                    datetime_to_str(self.date_to_crawl),
+                    count
+                ))
+                self.all_indexes = math.ceil(count / 10)
+                # 从第2项开始
                 for i in range(1, len(data)):
                     name = data[i]['案件名称'] if '案件名称' in data[i] else ''
                     court = data[i]['法院名称'] if '法院名称' in data[i] else ''
