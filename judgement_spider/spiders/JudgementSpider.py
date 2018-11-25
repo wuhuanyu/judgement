@@ -89,6 +89,11 @@ class JudgementSpider(scrapy.Spider):
             last_date = datetime_to_str(self.last_date)
             done = 0
             last_page_tried_times = last_page_tried_times + 1
+        else:
+            last_index = self.last_index
+            last_date = datetime_to_str(self.last_date)
+            done = 0
+            last_page_tried_times = last_page_tried_times + 1
 
         self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
             self.settings['PERSIST_FILE']))
@@ -443,8 +448,10 @@ class JudgementSpider(scrapy.Spider):
         word_name = html_name.encode("utf-8")
 
         word_name = base64.b64encode(word_name)
+
+        tmp_name = '_'.join(word_name.decode('utf-8').split('/'))
         file_dir = self.settings.get('DOC_DIR', '/tmp')
-        file_name = os.path.join(file_dir, '{}.doc'.format(word_name.decode('utf-8')))
+        file_name = os.path.join(file_dir, '{}.doc'.format(tmp_name))
         with open(file_name, 'wb') as file:
             file.write(res.body)
             file.flush()
