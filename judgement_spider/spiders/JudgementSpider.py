@@ -243,15 +243,16 @@ class JudgementSpider(scrapy.Spider):
                 nyzm = urll.index("&number")
             subyzm = urll[(nyzm + 1):]
             yzm1 = subyzm[7:11]
-            # return 'wens'
             return yzm1
-
-            # init data request
 
         url = "http://wenshu.court.gov.cn/List/ListContent"
 
-        referer = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number={}&guid={}&conditions=searchWord+1+AJLX++{}".format(
-            self.number, self.guid, parse.quote(self.param))
+        # http://wenshu.court.gov.cn/list/list/?sorttype=1&number=&guid=eac5719d-c2ac-940c7327-237ced013bdd&conditions=searchWord+1+AJLX++%E6%A1%88%E4%BB%B6%E7%B1%BB%E5%9E%8B:%E5%88%91%E4%BA%8B%E6%A1%88%E4%BB%B6&conditions=searchWord++CPRQ++%E8%A3%81%E5%88%A4%E6%97%A5%E6%9C%9F:2018-10-30%20TO%202018-10-30
+
+        referer = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number={}&guid={}&conditions=searchWord+1+AJLX++{}&conditions=searchWord++CPRQ++{}".format(
+            self.number, self.guid, parse.quote('案件类型:刑事案件'), parse.quote(
+                '裁判日期:{} TO {}'.format(datetime_to_str(self.date_to_crawl),
+                                       datetime_to_str(self.date_to_crawl))))
         headers = {
             "Accept": "*/*",
             "Accept-Encoding": "gzip, deflate",
@@ -271,7 +272,7 @@ class JudgementSpider(scrapy.Spider):
             "Order": self.order,
             "Direction": self.direction,
             "vl5x": self.vl5x,
-            "number": self.number,
+            "number": construct_number(referer),
             "guid": self.guid
         }
         yield scrapy.FormRequest(url=url, method="POST", formdata=data, headers=headers,
