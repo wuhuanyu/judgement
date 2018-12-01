@@ -93,7 +93,7 @@ INDEXES_PER_DATE = 20
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 LOG_ENABLED = True
-RETRY_TIMES = 5
+RETRY_TIMES = 7
 LOG_FILE = "/tmp/judgement_log"
 
 RUNNER_LOG = "/Users/stack/code/py3/wenshu/judgement_spider/runner.log"
