@@ -290,7 +290,7 @@ class JudgementSpider(scrapy.Spider):
                 self.logger.info(
                     'date {} index {} done,please change date.'.format(
                         datetime_to_str(self.date_to_crawl), self.index_to_crawl))
-                raise CloseSpider(NEED_RETRY)
+                raise CloseSpider(DATE_FINISHED)
             else:
                 RunEval = data[0]['RunEval']
                 count = int(data[0]['Count'])

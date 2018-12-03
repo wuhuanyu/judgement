@@ -94,7 +94,7 @@ if __name__ == '__main__':
 
         if reason_ in [REDIRECT, VALIDATION]:
             break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.5)
-        if reason_ == NEED_RETRY:
+        if reason_ in [NEED_RETRY, UNKNOWN]:
             break_time = 30
 
         logger.info(
