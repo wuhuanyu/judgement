@@ -19,6 +19,7 @@ from judgement_spider.constant import FINISHED, REDIRECT, VALIDATION, UNKNOWN, S
     DATE_FINISHED, NEED_RETRY
 from judgement_spider.constant import TIME_DELTA, START_DATE, START_INDEX
 from judgement_spider.constant import TIME_DELTA
+from judgement_spider.util.toolbox import get_guid
 
 
 class JudgementSpider(scrapy.Spider):

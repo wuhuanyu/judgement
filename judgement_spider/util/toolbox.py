@@ -2,6 +2,7 @@ import time
 import datetime
 import json
 from pathlib import Path
+import random
 from judgement_spider.util.params import search_type_list, case_list, court_type_list, \
     case_type_list, case_process_list, wenshu_type_list
 
@@ -106,6 +107,17 @@ def dump_json(filepath, data: dict):
         fp.flush()
         fp.close()
 
+def get_guid():
+        def create_guid():
+            return str(hex((int(((1 + random.random()) * 0x10000)) | 0)))[3:]
+
+        return '{}{}-{}-{}{}-{}{}{}' \
+            .format(
+            create_guid(), create_guid(),
+            create_guid(), create_guid(),
+            create_guid(), create_guid(),
+            create_guid(), create_guid()
+        )
 
 if __name__ == '__main__':
     # param_dict = {
