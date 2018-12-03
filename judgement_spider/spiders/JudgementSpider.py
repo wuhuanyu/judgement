@@ -12,42 +12,20 @@ import math
 from ..util.ocr import ocr
 from ..util.decoder import Decoder
 from datetime import datetime, timedelta
-from ..util.toolbox import str_to_datetime, datetime_to_str
+from judgement_spider.util.toolbox import str_to_datetime, datetime_to_str, load_json, dump_json, \
+    construct_param
 import base64
-
-# 检索关键词
-keyword = '*'
-# 检索类型
-search_type_list = ['全文检索', '首部', '事实', '理由', '判决结果', '尾部']
-# 案由
-case_list = ['全部', '刑事案由', '民事案由', '行政案由', '赔偿案由']
-# 法院层级
-court_type_list = ['全部', '最高法院', '高级法院', '中级法院', '基层法院']
-# 案件类型
-case_type_list = ['全部', '刑事案件', '民事案件', '行政案件', '赔偿案件',
-                  '执行案件']
-# 审判程序
-case_process_list = ['全部', '一审', '二审', '再审', '复核', '刑罚变重', '再审审查与审判监督',
-                     '其他']
-# 文书类型
-wenshu_type_list = ['全部', '裁判书', '调解书', '决定书', '通知书', '批复', '答复',
-                    '函', '令', '其他']
-# 裁判日期
-start_date = '2018-05-15'
-end_date = '2018-05-16'
-
-# 法院地域，需要二次获取，判断那些省份的法院有数据
-court_loc_list = ['全部']
+from judgement_spider.constant import FINISHED, REDIRECT, VALIDATION, UNKNOWN, SHUT_DOWN, CANCELLED, \
+    DATE_FINISHED, NEED_RETRY
+from judgement_spider.constant import TIME_DELTA, START_DATE, START_INDEX
+from judgement_spider.constant import TIME_DELTA
 
 
 class JudgementSpider(scrapy.Spider):
     name = "judgement"
-    param = "案件类型:刑事案件"
     page = 10
     order = "法院层级"
     direction = "asc"
-    start_date = datetime(year=2018, month=10, day=30)
-    time_delta = timedelta(days=1)
 
     def __get_guid(self):
         def create_guid():
@@ -63,51 +41,25 @@ class JudgementSpider(scrapy.Spider):
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        spider = super(JudgementSpider, cls).from_crawler(crawler, *args, **kwargs)
-        crawler.signals.connect(spider.engine_shutdown_cbk, signal=signals.spider_closed)
+        spider = super(JudgementSpider, cls).from_crawler(
+            crawler, *args, **kwargs)
+        crawler.signals.connect(
+            spider.engine_shutdown_cbk, signal=signals.spider_closed)
         return spider
 
     def engine_shutdown_cbk(self, reason):
-        # todo last_tried_time不准确
-        last_index = None
-        last_date = None
-        done = 0
-        # 表示这一页数据一共请求了多少次，如果上一页数据完成了，该值为0
-        last_page_tried_times = 0
-
-        if reason == 'finished':
-            last_index = self.index
-            last_date = datetime_to_str(self.date_to_crawl)
-            done = 1
-        elif reason == "redirect":
-            last_index = self.last_index
-            last_date = datetime_to_str(self.last_date)
-            done = 0
-            last_page_tried_times = last_page_tried_times + 1
-        elif reason == "validation":
-            last_index = self.last_index
-            last_date = datetime_to_str(self.last_date)
-            done = 0
-            last_page_tried_times = last_page_tried_times + 1
-        else:
-            last_index = self.last_index
-            last_date = datetime_to_str(self.last_date)
-            done = 0
-            last_page_tried_times = last_page_tried_times + 1
+        current_process = {
+            'last_index': self.index_to_crawl,
+            'last_date': datetime_to_str(self.date_to_crawl),
+            'all_indexes': self.all_indexes,
+            'last_finish_timestamp': str(datetime.now()),
+            'done': 1 if reason == FINISHED else 0,
+            'finish_reason': reason
+        }
 
         self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
-            self.settings['PERSIST_FILE']))
-        with open(self.settings['PERSIST_FILE'], 'w', encoding="utf-8") as persist_file:
-            json.dump({'last_index': last_index,
-                       'last_date': last_date,
-                       'all_indexes': self.all_indexes,
-                       'last_finish_timestamp': str(datetime.now()),
-                       'done': done,
-                       'last_page_tried_times': last_page_tried_times,
-                       'finish_reason': reason
-                       }, persist_file)
-            persist_file.flush()
-            persist_file.close()
+            self.settings.get('PERSIST_FILE')))
+        dump_json(self.settings.get('PERSIST_FILE'), current_process)
         self.logger.info('Persist process file completed')
 
     def __init__(self, *a, **kwargs):
@@ -115,14 +67,13 @@ class JudgementSpider(scrapy.Spider):
         self.guid = None
         self.number = None
         self.vl5x = None
-        self.index = 1
-        self.date_to_crawl = self.start_date
+        self.date_to_crawl = None
+        self.index_to_crawl = None
         self.last_index = None
-        self.all_indexes = -1
+        self.all_indexes = None
         self.last_date = None
         self.decoder = None
-        self.last_page_tried_times = None
-        self.tasks = []
+        self.param = None
 
     def __construct_request_for_number(self, cbk, refresh=True):
 
@@ -152,42 +103,61 @@ class JudgementSpider(scrapy.Spider):
     def __construct_request_for_check_code(self, callback):
         pass
 
-    # first start request ford number and parse it
-    def start_requests(self):
+    def __pre_request(self):
+        '''
+        do some dirty work,etc. set params
+        :return:
+        '''
         self.decoder = Decoder(self.settings.get('PUBLIC_DIR'))
-        # get process log from file
         process_file = Path(self.settings.get('PERSIST_FILE'))
+        settings = self.settings
+        # we have process_file
         if process_file.is_file():
-            with open(self.settings.get('PERSIST_FILE')) as file:
-                process = json.load(file)
-                file.close()
-                # 2018-3-20
-                last_date = str_to_datetime(process['last_date'])
-                self.last_date = last_date
-
-                last_index = int(process['last_index'])
-                self.last_index = last_index
-
-                self.all_indexes = int(process['all_indexes'])
-
-                self.last_page_tried_times = int(process['last_page_tried_times'])
-
-                if last_index == self.all_indexes or last_index == int(
-                        self.settings.get('INDEXES_PER_DATE')):
-                    # to crawl last_date-1
-                    self.index = 1
-                    self.date_to_crawl = last_date - self.time_delta
+            last_process: dict = load_json(self.settings.get('PERSIST_FILE'))
+            last_index = last_process['last_index']
+            last_date = str_to_datetime(last_process['last_date'])
+            finish_reason = last_process['finish_reason']
+            # we finished
+            if finish_reason == FINISHED:
+                self.all_indexes = int(last_process['all_indexes'])
+                if last_index == self.all_indexes or last_index == settings.getint(
+                        'INDEXES_PER_DATE',
+                        20):
+                    self.date_to_crawl = last_date - TIME_DELTA
+                    self.index_to_crawl = START_INDEX
                 else:
-                    self.index = last_index + 1
                     self.date_to_crawl = last_date
+                    self.index_to_crawl = last_index + 1
+            # we have not finish yet
+            elif finish_reason in [REDIRECT, VALIDATION, SHUT_DOWN, CANCELLED, NEED_RETRY]:
+                self.date_to_crawl = last_date
+                self.index_to_crawl = last_index
+            # unknown shutdown reason
+            elif finish_reason in [UNKNOWN, DATE_FINISHED]:
+                self.date_to_crawl = last_date - TIME_DELTA
+                self.index_to_crawl = START_INDEX
+        # we have nothing,start from scratch
+        else:
+            self.date_to_crawl = str_to_datetime(START_DATE)
+            self.index_to_crawl = START_INDEX
+
         self.logger.info('Date to crawl {},index to crawl {}'.format(
             datetime_to_str(self.date_to_crawl),
-            self.index
+            self.index_to_crawl
         ))
-        self.param = "案件类型:刑事案件,裁判日期:{} TO {}".format(
-            datetime_to_str(self.date_to_crawl),
-            datetime_to_str(self.date_to_crawl)
-        )
+
+    # first start request ford number and parse it
+    def start_requests(self):
+        self.__pre_request()
+
+        param_dict = {
+            "案件类型": "刑事案件",
+            "裁判日期": "{} TO {}".format(
+                datetime_to_str(self.date_to_crawl),
+                datetime_to_str(self.date_to_crawl)
+            )
+        }
+        self.param = construct_param(param_dict)
 
         self.guid = self.__get_guid()
         self.logger.info('Generate guid={}'.format(self.guid))
@@ -208,14 +178,13 @@ class JudgementSpider(scrapy.Spider):
         else:
             # we are not to refresh the number, so we need to proceed to get vjkl5
             # get vjkl5
-            url = "http://wenshu.court.gov.cn/list/list/?sorttype=1&number=" + self.number + "&guid=" + self.guid + "&conditions=searchWord+1+AJLX+++" + parse.quote(
+            url = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number=" + self.number + "&guid=" + self.guid + "&conditions=searchWord+1+AJLX++" + parse.quote(
                 self.param)
             headers = {
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
                 "Accept-Encoding": "gzip, deflate",
                 "Accept-Language": "zh-CN,zh;q=0.8",
                 "Host": "wenshu.court.gov.cn",
-                "Proxy-Connection": "keep-alive",
                 'User-Agent': self.settings.get('UA')
             }
 
@@ -225,11 +194,12 @@ class JudgementSpider(scrapy.Spider):
         # todo move the redirect check to some middleware or ...
         status_code = response.status
         if status_code == 302 or status_code == 301:
-            self.logger.error('Unfortunately, we meet redirect,shutting down the spider')
-            raise CloseSpider('redirect')
+            self.logger.error(
+                'Unfortunately, we meet redirect,shutting down the spider')
+            raise CloseSpider(REDIRECT)
 
         if len(response.headers.getlist('Set-Cookie')) == 0:
-            return
+            raise CloseSpider(CANCELLED)
         c = response.headers.getlist('Set-Cookie')[0].decode('utf-8')
         vjkl5 = c.split(";")[0].split("=")[1]
         self.logger.info('Get encoded vjkl5={}'.format(vjkl5))
@@ -248,11 +218,16 @@ class JudgementSpider(scrapy.Spider):
         url = "http://wenshu.court.gov.cn/List/ListContent"
 
         # http://wenshu.court.gov.cn/list/list/?sorttype=1&number=&guid=eac5719d-c2ac-940c7327-237ced013bdd&conditions=searchWord+1+AJLX++%E6%A1%88%E4%BB%B6%E7%B1%BB%E5%9E%8B:%E5%88%91%E4%BA%8B%E6%A1%88%E4%BB%B6&conditions=searchWord++CPRQ++%E8%A3%81%E5%88%A4%E6%97%A5%E6%9C%9F:2018-10-30%20TO%202018-10-30
-
-        referer = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number={}&guid={}&conditions=searchWord+1+AJLX++{}&conditions=searchWord++CPRQ++{}".format(
+        # http://wenshu.court.gov.cn/list/list/?sorttype=1&number=&guid=d03bb3b6-31ec-d030d65b-e3e7451652d1&conditions=searchWord+1+AJLX++%E6%A1%88%E4%BB%B6%E7%B1%BB%E5%9E%8B:%E5%88%91%E4%BA%8B%E6%A1%88%E4%BB%B6&conditions=searchWord++CPRQ++%E8%A3%81%E5%88%A4%E6%97%A5%E6%9C%9F:2018-10-30%20TO%202018-10-30
+        referer = "http://wenshu.court.gov.cn/list/list/?sorttype=1&number={}&guid={}&conditions=searchWord+1+AJLX++{}&conditions=searchWord++CPRQ++{}".format(
             self.number, self.guid, parse.quote('案件类型:刑事案件'), parse.quote(
                 '裁判日期:{} TO {}'.format(datetime_to_str(self.date_to_crawl),
-                                       datetime_to_str(self.date_to_crawl))))
+                                       datetime_to_str(self.date_to_crawl))
+            )
+        )
+        # referer = "http://wenshu.court.gov.cn/list/list/?sorttype=1&number={}&guid={}&conditions=searchWord+1+AJLX++{}".format(
+        #     self.number, self.guid, parse.quote('案件类型:刑事案件'))
+
         headers = {
             "Accept": "*/*",
             "Accept-Encoding": "gzip, deflate",
@@ -267,7 +242,7 @@ class JudgementSpider(scrapy.Spider):
         }
         data = {
             "Param": self.param,
-            "Index": str(self.index),
+            "Index": str(self.index_to_crawl),
             "Page": str(self.page),
             "Order": self.order,
             "Direction": self.direction,
@@ -275,15 +250,12 @@ class JudgementSpider(scrapy.Spider):
             "number": construct_number(referer),
             "guid": self.guid
         }
+        self.logger.debug("Post form data={}".format(data))
         yield scrapy.FormRequest(url=url, method="POST", formdata=data, headers=headers,
-                                 callback=self.parse_data, meta={'current_index': self.index})
-
-        # update guid and number
-
-        # self.old_number = self.number
-        # yield self.__construct_request_for_number(self.parse_number, refresh=True)
+                                 callback=self.parse_data)
 
     def parse_data(self, response: scrapy.http.Response):
+
         def construct_validate_code_request(cbk):
             check_code_url = 'http://wenshu.court.gov.cn/User/ValidateCode'
             headers = {
@@ -298,26 +270,27 @@ class JudgementSpider(scrapy.Spider):
         return_data = response.body.decode('utf-8').replace('\\', '').replace('"[', '[').replace(
             ']"', ']') \
             .replace('＆ｌｄｑｕｏ;', '“').replace('＆ｒｄｑｕｏ;', '”')
-        # print(return_data)
+
+        self.logger.debug('returned data = {}'.format(response.body.decode('utf-8')))
 
         # validate code
         if return_data == '"remind"' or return_data == '"remind key"':
-            self.logger.info('Unfortunately,we meet validation code,shutting down the spider...')
+            self.logger.info(
+                'Unfortunately,we meet validation code,shutting down the spider...')
             raise CloseSpider('validation')
-            # yield construct_validate_code_request(self.parse_validate_code)
-            # yield self.__construct_request_for_number(self.parse_number, True)
 
         else:
             # luckily we don't meet validate code and we parse the data
             # and we get json
             data = json.loads(return_data)
             if len(data) == 0:
-                return
-                # self.logger.info('date {} index {} done,please change date.'.format(
-                #     datetime_to_str(self.date_to_crawl), self.index))
+                # self.logger.info('Dut to unknown error,close,response data={}'.format(data))
+                raise CloseSpider(UNKNOWN)
             elif len(data) == 1:
-                self.logger.info('date {} index {} done,please change date.'.format(
-                    datetime_to_str(self.date_to_crawl), self.index))
+                self.logger.info(
+                    'date {} index {} done,please change date.'.format(
+                        datetime_to_str(self.date_to_crawl), self.index_to_crawl))
+                raise CloseSpider(NEED_RETRY)
             else:
                 RunEval = data[0]['RunEval']
                 count = int(data[0]['Count'])
@@ -343,8 +316,6 @@ class JudgementSpider(scrapy.Spider):
                         number=number,
                         court=court
                     )
-                    self.tasks.append(id)
-                    # yield data_dict
                     doc_id = id
                     # we continue to download doc
                     # first we must get 'CreateContentJS.aspx'
@@ -362,7 +333,8 @@ class JudgementSpider(scrapy.Spider):
                     yield scrapy.Request(url=content_js_url,
                                          headers=content_js_headers,
                                          method="GET",
-                                         meta={'doc_id': doc_id, 'judgement_info': data_dict},
+                                         meta={'doc_id': doc_id,
+                                               'judgement_info': data_dict},
                                          callback=self.get_court_info_download,
                                          priority=400
                                          )
@@ -382,6 +354,7 @@ class JudgementSpider(scrapy.Spider):
             self.logger.error(
                 'Met parse error when crawl {} and we return from the method'.format(doc_id))
             return
+            # raise CloseSpider(CANCELLED)
 
         read_count = read_count[0]
         court_title = court_title[0]
@@ -457,7 +430,8 @@ class JudgementSpider(scrapy.Spider):
             file.write(res.body)
             file.flush()
             file.close()
-        self.logger.info('Downloaded {}.doc'.format(base64.b64decode(word_name).decode('utf-8')))
+        self.logger.info('Downloaded {}.doc'.format(
+            base64.b64decode(word_name).decode('utf-8')))
 
     def parse_validate_code(self, response: scrapy.http.Response):
         orc_code = None

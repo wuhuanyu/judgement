@@ -10,16 +10,19 @@ from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
 from judgement_spider.spiders.JudgementSpider import JudgementSpider
-from judgement_spider.util.toolbox import current_time, current_date
+from judgement_spider.util.toolbox import current_time, current_date, load_json
 from judgement_spider.util.logger import Logger
 from judgement_spider.util.user_agents import user_agents
+from judgement_spider.constant import FINISHED, REDIRECT, VALIDATION, UNKNOWN, SHUT_DOWN, CANCELLED, \
+    DATE_FINISHED, NEED_RETRY
 
 if "Darwin" in platform.platform():
     settings_file_path = 'judgement_spider.dev_settings'
 elif "Linux" in platform.platform():
     settings_file_path = 'judgement_spider.production_settings'
 else:
-    raise Exception('Unsupported platform due to some bugs, please use Linux or macOS')
+    raise Exception(
+        'Unsupported platform due to some bugs, please use Linux or macOS')
 
 os.environ.setdefault('SCRAPY_SETTINGS_MODULE', settings_file_path)
 
@@ -37,7 +40,8 @@ def main():
     ua = random.choice(user_agents)
     settings.set('UA', ua)
 
-    content_html = Path(os.path.join(settings.get('PUBLIC_DIR'), 'content.html'))
+    content_html = Path(os.path.join(
+        settings.get('PUBLIC_DIR'), 'content.html'))
     eval_js = Path(os.path.join(settings.get('PUBLIC_DIR'), 'eval_.js'))
     docid_js = Path(os.path.join(settings.get('PUBLIC_DIR'), 'docid.js'))
     if not (content_html.is_file() and eval_js.is_file() and docid_js.is_file()):
@@ -62,19 +66,12 @@ def main():
     process.start()
 
 
-# except IndexError:
-#     logger.err('Unexpected index error happened')
-
-
 def last_finish_reason():
-    reason = "finished"
+    reason = FINISHED
     process_file = Path(settings.get('PERSIST_FILE'))
     if process_file.is_file():
-        with open(settings.get('PERSIST_FILE'), 'r', encoding='utf-8') as file:
-            process = json.load(file)
-            file.close()
-            reason = process['finish_reason']
-
+        process = load_json(settings.get('PERSIST_FILE'))
+        reason = process['finish_reason']
     return reason
 
 
@@ -88,26 +85,20 @@ if __name__ == '__main__':
     # initial_long_break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.2)
 
     while True:
-        reason_ = last_finish_reason()
-        break_time = 60 * 15
-        last_long_break_time = None
-        if reason_ == "finished":
-            break_time = settings.getint('SHORT_BREAK', 60 * 20)
-            # last_long_break_time = initial_long_break_time
-
-        elif reason_ == "validation":
-            break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.5)
-            is_long_break = True
-        elif reason_ == "redirect":
-            break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.5)
-            is_long_break = True
         p = mp.Process(target=main)
         p.start()
         p.join()
+        reason_ = last_finish_reason()
+        break_time = settings.getint('SHORT_BREAK', 60 * 17)
+        last_long_break_time = None
 
-        # we need to sleep 10 minute
+        if reason_ in [REDIRECT, VALIDATION]:
+            break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.5)
+        if reason_ == NEED_RETRY:
+            break_time = 30
+
         logger.info(
-            'Last child process exists,now sleeping {}'.format(
-                'long break' if is_long_break else ''))
+            'Last child process exists,now sleeping for {}'.format(
+                break_time))
         time.sleep(break_time)
         logger.info('Sleeping over,now start another child process')

@@ -81,7 +81,7 @@ AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
 # AUTOTHROTTLE_DEBUG = False
 # 每次请求5000毫秒延迟 随机
-DOWNLOAD_DELAY = 7
+DOWNLOAD_DELAY = 2
 INDEXES_PER_DATE = 20
 
 # Enable and configure HTTP caching (disabled by default)
