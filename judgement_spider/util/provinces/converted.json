@@ -1,0 +1,3060 @@
+{
+  "\u5317\u4eac": [
+    {
+      "court": "\u5317\u4eac\u5e02\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5317\u4eac",
+      "region": "",
+      "leval": "2",
+      "key": "001001000"
+    },
+    {
+      "court": "\u5317\u4eac\u5e02\u7b2c\u4e00\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5317\u4eac",
+      "region": "\u5317\u4eac\u5e02\u7b2c\u4e00\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001001001000"
+    },
+    {
+      "court": "\u5317\u4eac\u5e02\u7b2c\u4e8c\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5317\u4eac",
+      "region": "\u5317\u4eac\u5e02\u7b2c\u4e8c\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001001002000"
+    },
+    {
+      "court": "\u5317\u4eac\u5e02\u7b2c\u4e09\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5317\u4eac",
+      "region": "\u5317\u4eac\u5e02\u7b2c\u4e09\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001001004000"
+    },
+    {
+      "court": "\u5317\u4eac\u5e02\u7b2c\u56db\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5317\u4eac",
+      "region": "\u5317\u4eac\u5e02\u7b2c\u56db\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001001006000"
+    },
+    {
+      "court": "\u5317\u4eac\u77e5\u8bc6\u4ea7\u6743\u6cd5\u9662",
+      "province": "\u5317\u4eac",
+      "region": "\u5317\u4eac\u77e5\u8bc6\u4ea7\u6743\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001001005000"
+    }
+  ],
+  "\u5929\u6d25": [
+    {
+      "court": "\u5929\u6d25\u5e02\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5929\u6d25",
+      "region": "",
+      "leval": "2",
+      "key": "001002000"
+    },
+    {
+      "court": "\u5929\u6d25\u5e02\u7b2c\u4e00\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5929\u6d25",
+      "region": "\u5929\u6d25\u5e02\u7b2c\u4e00\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001002001000"
+    },
+    {
+      "court": "\u5929\u6d25\u5e02\u7b2c\u4e8c\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5929\u6d25",
+      "region": "\u5929\u6d25\u5e02\u7b2c\u4e8c\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001002002000"
+    },
+    {
+      "court": "\u5929\u6d25\u6d77\u4e8b\u6cd5\u9662",
+      "province": "\u5929\u6d25",
+      "region": "\u5929\u6d25\u6d77\u4e8b\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001002003000"
+    },
+    {
+      "court": "\u5929\u6d25\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "province": "\u5929\u6d25",
+      "region": "\u5929\u6d25\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "leval": "3",
+      "key": "001002004000"
+    }
+  ],
+  "\u6cb3\u5317": [
+    {
+      "court": "\u6cb3\u5317\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "",
+      "leval": "2",
+      "key": "001003000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u77f3\u5bb6\u5e84\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u77f3\u5bb6\u5e84\u5e02",
+      "leval": "3",
+      "key": "001003001000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u5510\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u5510\u5c71\u5e02",
+      "leval": "3",
+      "key": "001003002000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u79e6\u7687\u5c9b\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u79e6\u7687\u5c9b\u5e02",
+      "leval": "3",
+      "key": "001003003000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u90af\u90f8\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u90af\u90f8\u5e02",
+      "leval": "3",
+      "key": "001003004000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u90a2\u53f0\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u90a2\u53f0\u5e02",
+      "leval": "3",
+      "key": "001003005000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u4fdd\u5b9a\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u4fdd\u5b9a\u5e02",
+      "leval": "3",
+      "key": "001003006000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u5f20\u5bb6\u53e3\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u5f20\u5bb6\u53e3\u5e02",
+      "leval": "3",
+      "key": "001003007000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u627f\u5fb7\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u627f\u5fb7\u5e02",
+      "leval": "3",
+      "key": "001003008000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u6ca7\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u6ca7\u5dde\u5e02",
+      "leval": "3",
+      "key": "001003009000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u5eca\u574a\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u5eca\u574a\u5e02",
+      "leval": "3",
+      "key": "001003010000"
+    },
+    {
+      "court": "\u6cb3\u5317\u7701\u8861\u6c34\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5317",
+      "region": "\u8861\u6c34\u5e02",
+      "leval": "3",
+      "key": "001003018000"
+    }
+  ],
+  "\u5c71\u897f": [
+    {
+      "court": "\u5c71\u897f\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "",
+      "leval": "2",
+      "key": "001004000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u592a\u539f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u592a\u539f\u5e02",
+      "leval": "3",
+      "key": "001004001000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u5927\u540c\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u5927\u540c\u5e02",
+      "leval": "3",
+      "key": "001004002000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u9633\u6cc9\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u9633\u6cc9\u5e02",
+      "leval": "3",
+      "key": "001004003000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u957f\u6cbb\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u957f\u6cbb\u5e02",
+      "leval": "3",
+      "key": "001004004000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u664b\u57ce\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u664b\u57ce\u5e02",
+      "leval": "3",
+      "key": "001004005000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u6714\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u6714\u5dde\u5e02",
+      "leval": "3",
+      "key": "001004006000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u5ffb\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u5ffb\u5dde\u5e02",
+      "leval": "3",
+      "key": "001004008000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u5415\u6881\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u5415\u6881\u5e02",
+      "leval": "3",
+      "key": "001004009000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u664b\u4e2d\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u664b\u4e2d\u5e02",
+      "leval": "3",
+      "key": "001004010000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u4e34\u6c7e\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u4e34\u6c7e\u5e02",
+      "leval": "3",
+      "key": "001004011000"
+    },
+    {
+      "court": "\u5c71\u897f\u7701\u8fd0\u57ce\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u8fd0\u57ce\u5e02",
+      "leval": "3",
+      "key": "001004012000"
+    },
+    {
+      "court": "\u592a\u539f\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u5c71\u897f",
+      "region": "\u592a\u539f\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001004013000"
+    }
+  ],
+  "\u5185\u8499\u53e4": [
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "",
+      "leval": "2",
+      "key": "001005000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u547c\u548c\u6d69\u7279\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u547c\u548c\u6d69\u7279\u5e02",
+      "leval": "3",
+      "key": "001005001000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u5305\u5934\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u5305\u5934\u5e02",
+      "leval": "3",
+      "key": "001005002000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u4e4c\u6d77\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u4e4c\u6d77\u5e02",
+      "leval": "3",
+      "key": "001005003000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u8d64\u5cf0\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u8d64\u5cf0\u5e02",
+      "leval": "3",
+      "key": "001005004000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u547c\u4f26\u8d1d\u5c14\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u547c\u4f26\u8d1d\u5c14\u5e02",
+      "leval": "3",
+      "key": "001005005000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u5174\u5b89\u76df\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u4e4c\u5170\u6d69\u7279\u5e02",
+      "leval": "3",
+      "key": "001005006000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u901a\u8fbd\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u901a\u8fbd\u5e02",
+      "leval": "3",
+      "key": "001005007000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u9521\u6797\u90ed\u52d2\u76df\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u9521\u6797\u6d69\u7279\u5e02",
+      "leval": "3",
+      "key": "001005008000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u4e4c\u5170\u5bdf\u5e03\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u4e4c\u5170\u5bdf\u5e03\u5e02",
+      "leval": "3",
+      "key": "001005009000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u9102\u5c14\u591a\u65af\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u9102\u5c14\u591a\u65af\u5e02",
+      "leval": "3",
+      "key": "001005010000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u5df4\u5f66\u6dd6\u5c14\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u5df4\u5f66\u6dd6\u5c14\u5e02",
+      "leval": "3",
+      "key": "001005011000"
+    },
+    {
+      "court": "\u5185\u8499\u53e4\u81ea\u6cbb\u533a\u963f\u62c9\u5584\u76df\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u963f\u62c9\u5584\u76df",
+      "leval": "3",
+      "key": "001005012000"
+    },
+    {
+      "court": "\u547c\u548c\u6d69\u7279\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u5185\u8499\u53e4",
+      "region": "\u547c\u548c\u6d69\u7279\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001005013000"
+    }
+  ],
+  "\u8fbd\u5b81": [
+    {
+      "court": "\u8fbd\u5b81\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "",
+      "leval": "2",
+      "key": "001006000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u6c88\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u6c88\u9633\u5e02",
+      "leval": "3",
+      "key": "001006001000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u5927\u8fde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u5927\u8fde\u5e02",
+      "leval": "3",
+      "key": "001006002000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u978d\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u978d\u5c71\u5e02",
+      "leval": "3",
+      "key": "001006003000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u629a\u987a\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u629a\u987a\u5e02",
+      "leval": "3",
+      "key": "001006004000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u672c\u6eaa\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u672c\u6eaa\u5e02",
+      "leval": "3",
+      "key": "001006005000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u4e39\u4e1c\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u4e39\u4e1c\u5e02",
+      "leval": "3",
+      "key": "001006006000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u9526\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u9526\u5dde\u5e02",
+      "leval": "3",
+      "key": "001006007000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u8425\u53e3\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u8425\u53e3\u5e02",
+      "leval": "3",
+      "key": "001006008000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u961c\u65b0\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u961c\u65b0\u5e02",
+      "leval": "3",
+      "key": "001006009000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u8fbd\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u8fbd\u9633\u5e02",
+      "leval": "3",
+      "key": "001006010000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u76d8\u9526\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u76d8\u9526\u5e02",
+      "leval": "3",
+      "key": "001006011000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u94c1\u5cad\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u94c1\u5cad\u5e02",
+      "leval": "3",
+      "key": "001006012000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u671d\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u671d\u9633\u5e02",
+      "leval": "3",
+      "key": "001006013000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u846b\u82a6\u5c9b\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u846b\u82a6\u5c9b\u5e02",
+      "leval": "3",
+      "key": "001006014000"
+    },
+    {
+      "court": "\u6c88\u9633\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u6c88\u9633\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001006015000"
+    },
+    {
+      "court": "\u8fbd\u5b81\u7701\u8fbd\u6cb3\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u76d8\u9526\u5e02",
+      "leval": "3",
+      "key": "001006016000"
+    },
+    {
+      "court": "\u5927\u8fde\u6d77\u4e8b\u6cd5\u9662",
+      "province": "\u8fbd\u5b81",
+      "region": "\u5927\u8fde\u6d77\u4e8b\u6cd5\u9662",
+      "leval": "3",
+      "key": "001006017000"
+    }
+  ],
+  "\u5409\u6797": [
+    {
+      "court": "\u5409\u6797\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "",
+      "leval": "2",
+      "key": "001007000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u957f\u6625\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u957f\u6625\u5e02",
+      "leval": "3",
+      "key": "001007001000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u5409\u6797\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u5409\u6797\u5e02",
+      "leval": "3",
+      "key": "001007002000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u56db\u5e73\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u56db\u5e73\u5e02",
+      "leval": "3",
+      "key": "001007003000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u8fbd\u6e90\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u8fbd\u6e90\u5e02",
+      "leval": "3",
+      "key": "001007004000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u901a\u5316\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u901a\u5316\u5e02",
+      "leval": "3",
+      "key": "001007005000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u767d\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u767d\u5c71\u5e02",
+      "leval": "3",
+      "key": "001007006000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u767d\u57ce\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u767d\u57ce\u5e02",
+      "leval": "3",
+      "key": "001007007000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u5ef6\u8fb9\u671d\u9c9c\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u5ef6\u8fb9\u671d\u9c9c\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001007008000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u5ef6\u8fb9\u6797\u533a\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u5ef6\u8fb9\u671d\u9c9c\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001007009000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u677e\u539f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u677e\u539f\u5e02",
+      "leval": "3",
+      "key": "001007010000"
+    },
+    {
+      "court": "\u5409\u6797\u7701\u957f\u6625\u6797\u533a\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u957f\u6625\u5e02",
+      "leval": "3",
+      "key": "001007012000"
+    },
+    {
+      "court": "\u957f\u6625\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u5409\u6797",
+      "region": "\u957f\u6625\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001007018000"
+    }
+  ],
+  "\u9ed1\u9f99\u6c5f": [
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "",
+      "leval": "2",
+      "key": "001008000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u54c8\u5c14\u6ee8\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u54c8\u5c14\u6ee8\u5e02",
+      "leval": "3",
+      "key": "001008001000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u9f50\u9f50\u54c8\u5c14\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u9f50\u9f50\u54c8\u5c14\u5e02",
+      "leval": "3",
+      "key": "001008002000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u9e21\u897f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u9e21\u897f\u5e02",
+      "leval": "3",
+      "key": "001008003000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u9e64\u5c97\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u9e64\u5c97\u5e02",
+      "leval": "3",
+      "key": "001008004000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u53cc\u9e2d\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u53cc\u9e2d\u5c71\u5e02",
+      "leval": "3",
+      "key": "001008005000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u5927\u5e86\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u5927\u5e86\u5e02",
+      "leval": "3",
+      "key": "001008006000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u4f0a\u6625\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u4f0a\u6625\u5e02",
+      "leval": "3",
+      "key": "001008007000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u4f73\u6728\u65af\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u4f73\u6728\u65af\u5e02",
+      "leval": "3",
+      "key": "001008008000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u4e03\u53f0\u6cb3\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u4e03\u53f0\u6cb3\u5e02",
+      "leval": "3",
+      "key": "001008009000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u7261\u4e39\u6c5f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u7261\u4e39\u6c5f\u5e02",
+      "leval": "3",
+      "key": "001008010000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u7ee5\u5316\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u7ee5\u5316\u5e02",
+      "leval": "3",
+      "key": "001008012000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u9ed1\u6cb3\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u9ed1\u6cb3\u5e02",
+      "leval": "3",
+      "key": "001008013000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u5927\u5174\u5b89\u5cad\u5730\u533a\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u5927\u5174\u5b89\u5cad\u5730\u533a",
+      "leval": "3",
+      "key": "001008014000"
+    },
+    {
+      "court": "\u54c8\u5c14\u6ee8\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u54c8\u5c14\u6ee8\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001008015000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u6797\u533a\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u54c8\u5c14\u6ee8\u5e02",
+      "leval": "3",
+      "key": "001008016000"
+    },
+    {
+      "court": "\u9ed1\u9f99\u6c5f\u7701\u519c\u57a6\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u9ed1\u9f99\u6c5f",
+      "region": "\u54c8\u5c14\u6ee8\u5e02",
+      "leval": "3",
+      "key": "001008019000"
+    }
+  ],
+  "\u4e0a\u6d77": [
+    {
+      "court": "\u4e0a\u6d77\u5e02\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e0a\u6d77",
+      "region": "",
+      "leval": "2",
+      "key": "001009000"
+    },
+    {
+      "court": "\u4e0a\u6d77\u5e02\u7b2c\u4e00\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e0a\u6d77",
+      "region": "\u4e0a\u6d77\u5e02\u7b2c\u4e00\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001009001000"
+    },
+    {
+      "court": "\u4e0a\u6d77\u5e02\u7b2c\u4e8c\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e0a\u6d77",
+      "region": "\u4e0a\u6d77\u5e02\u7b2c\u4e8c\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001009002000"
+    },
+    {
+      "court": "\u4e0a\u6d77\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u4e0a\u6d77",
+      "region": "\u4e0a\u6d77\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001009003000"
+    },
+    {
+      "court": "\u4e0a\u6d77\u6d77\u4e8b\u6cd5\u9662",
+      "province": "\u4e0a\u6d77",
+      "region": "\u4e0a\u6d77\u6d77\u4e8b\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001009004000"
+    },
+    {
+      "court": "\u4e0a\u6d77\u5e02\u7b2c\u4e09\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e0a\u6d77",
+      "region": "\u4e0a\u6d77\u5e02\u7b2c\u4e09\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001009005000"
+    },
+    {
+      "court": "\u4e0a\u6d77\u77e5\u8bc6\u4ea7\u6743\u6cd5\u9662",
+      "province": "\u4e0a\u6d77",
+      "region": "\u4e0a\u6d77\u77e5\u8bc6\u4ea7\u6743\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001009006000"
+    },
+    {
+      "court": "\u4e0a\u6d77\u91d1\u878d\u6cd5\u9662",
+      "province": "\u4e0a\u6d77",
+      "region": "\u4e0a\u6d77\u91d1\u878d\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001009007000"
+    }
+  ],
+  "\u6c5f\u82cf": [
+    {
+      "court": "\u6c5f\u82cf\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "",
+      "leval": "2",
+      "key": "001010000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u5357\u4eac\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u5357\u4eac\u5e02",
+      "leval": "3",
+      "key": "001010001000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u65e0\u9521\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u65e0\u9521\u5e02",
+      "leval": "3",
+      "key": "001010002000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u5f90\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u5f90\u5dde\u5e02",
+      "leval": "3",
+      "key": "001010003000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u5e38\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u5e38\u5dde\u5e02",
+      "leval": "3",
+      "key": "001010004000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u82cf\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u82cf\u5dde\u5e02",
+      "leval": "3",
+      "key": "001010005000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u5357\u901a\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u5357\u901a\u5e02",
+      "leval": "3",
+      "key": "001010006000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u8fde\u4e91\u6e2f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u8fde\u4e91\u6e2f\u5e02",
+      "leval": "3",
+      "key": "001010007000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u6dee\u5b89\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u6dee\u5b89\u5e02",
+      "leval": "3",
+      "key": "001010008000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u76d0\u57ce\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u76d0\u57ce\u5e02",
+      "leval": "3",
+      "key": "001010009000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u626c\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u626c\u5dde\u5e02",
+      "leval": "3",
+      "key": "001010010000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u9547\u6c5f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u9547\u6c5f\u5e02",
+      "leval": "3",
+      "key": "001010011000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u6cf0\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u6cf0\u5dde\u5e02",
+      "leval": "3",
+      "key": "001010012000"
+    },
+    {
+      "court": "\u6c5f\u82cf\u7701\u5bbf\u8fc1\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u5bbf\u8fc1\u5e02",
+      "leval": "3",
+      "key": "001010013000"
+    },
+    {
+      "court": "\u5357\u4eac\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u5357\u4eac\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "leval": "3",
+      "key": "001010014000"
+    },
+    {
+      "court": "\u5f90\u5dde\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "province": "\u6c5f\u82cf",
+      "region": "\u5f90\u5dde\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "leval": "3",
+      "key": "001010015000"
+    }
+  ],
+  "\u6d59\u6c5f": [
+    {
+      "court": "\u6d59\u6c5f\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "",
+      "leval": "2",
+      "key": "001011000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u676d\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u676d\u5dde\u5e02",
+      "leval": "3",
+      "key": "001011001000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u5b81\u6ce2\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u5b81\u6ce2\u5e02",
+      "leval": "3",
+      "key": "001011002000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u6e29\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u6e29\u5dde\u5e02",
+      "leval": "3",
+      "key": "001011003000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u5609\u5174\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u5609\u5174\u5e02",
+      "leval": "3",
+      "key": "001011004000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u6e56\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u6e56\u5dde\u5e02",
+      "leval": "3",
+      "key": "001011006000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u7ecd\u5174\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u7ecd\u5174\u5e02",
+      "leval": "3",
+      "key": "001011007000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u91d1\u534e\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u91d1\u534e\u5e02",
+      "leval": "3",
+      "key": "001011008000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u8862\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u8862\u5dde\u5e02",
+      "leval": "3",
+      "key": "001011009000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u821f\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u821f\u5c71\u5e02",
+      "leval": "3",
+      "key": "001011010000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u4e3d\u6c34\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u4e3d\u6c34\u5e02",
+      "leval": "3",
+      "key": "001011011000"
+    },
+    {
+      "court": "\u6d59\u6c5f\u7701\u53f0\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u53f0\u5dde\u5e02",
+      "leval": "3",
+      "key": "001011012000"
+    },
+    {
+      "court": "\u5b81\u6ce2\u6d77\u4e8b\u6cd5\u9662",
+      "province": "\u6d59\u6c5f",
+      "region": "\u5b81\u6ce2\u6d77\u4e8b\u6cd5\u9662",
+      "leval": "3",
+      "key": "001011013000"
+    }
+  ],
+  "\u5b89\u5fbd": [
+    {
+      "court": "\u5b89\u5fbd\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "",
+      "leval": "2",
+      "key": "001012000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u5408\u80a5\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u5408\u80a5\u5e02",
+      "leval": "3",
+      "key": "001012001000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u829c\u6e56\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u829c\u6e56\u5e02",
+      "leval": "3",
+      "key": "001012002000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u868c\u57e0\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u868c\u57e0\u5e02",
+      "leval": "3",
+      "key": "001012003000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u6dee\u5357\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u6dee\u5357\u5e02",
+      "leval": "3",
+      "key": "001012004000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u9a6c\u978d\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u9a6c\u978d\u5c71\u5e02",
+      "leval": "3",
+      "key": "001012005000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u6dee\u5317\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u6dee\u5317\u5e02",
+      "leval": "3",
+      "key": "001012006000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u94dc\u9675\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u94dc\u9675\u5e02",
+      "leval": "3",
+      "key": "001012007000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u5b89\u5e86\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u5b89\u5e86\u5e02",
+      "leval": "3",
+      "key": "001012008000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u9ec4\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u9ec4\u5c71\u5e02",
+      "leval": "3",
+      "key": "001012009000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u961c\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u961c\u9633\u5e02",
+      "leval": "3",
+      "key": "001012010000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u5bbf\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u5bbf\u5dde\u5e02",
+      "leval": "3",
+      "key": "001012011000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u6ec1\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u6ec1\u5dde\u5e02",
+      "leval": "3",
+      "key": "001012012000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u516d\u5b89\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u516d\u5b89\u5e02",
+      "leval": "3",
+      "key": "001012013000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u5ba3\u57ce\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u5ba3\u57ce\u5e02",
+      "leval": "3",
+      "key": "001012014000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u6c60\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u6c60\u5dde\u5e02",
+      "leval": "3",
+      "key": "001012016000"
+    },
+    {
+      "court": "\u5b89\u5fbd\u7701\u4eb3\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b89\u5fbd",
+      "region": "\u4eb3\u5dde\u5e02",
+      "leval": "3",
+      "key": "001012017000"
+    }
+  ],
+  "\u798f\u5efa": [
+    {
+      "court": "\u798f\u5efa\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "",
+      "leval": "2",
+      "key": "001013000"
+    },
+    {
+      "court": "\u798f\u5efa\u7701\u798f\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u798f\u5dde\u5e02",
+      "leval": "3",
+      "key": "001013001000"
+    },
+    {
+      "court": "\u798f\u5efa\u7701\u53a6\u95e8\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u53a6\u95e8\u5e02",
+      "leval": "3",
+      "key": "001013002000"
+    },
+    {
+      "court": "\u798f\u5efa\u7701\u8386\u7530\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u8386\u7530\u5e02",
+      "leval": "3",
+      "key": "001013003000"
+    },
+    {
+      "court": "\u798f\u5efa\u7701\u4e09\u660e\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u4e09\u660e\u5e02",
+      "leval": "3",
+      "key": "001013004000"
+    },
+    {
+      "court": "\u798f\u5efa\u7701\u6cc9\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u6cc9\u5dde\u5e02",
+      "leval": "3",
+      "key": "001013005000"
+    },
+    {
+      "court": "\u798f\u5efa\u7701\u6f33\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u6f33\u5dde\u5e02",
+      "leval": "3",
+      "key": "001013006000"
+    },
+    {
+      "court": "\u798f\u5efa\u7701\u5357\u5e73\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u5357\u5e73\u5e02",
+      "leval": "3",
+      "key": "001013007000"
+    },
+    {
+      "court": "\u798f\u5efa\u7701\u5b81\u5fb7\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u5b81\u5fb7\u5e02",
+      "leval": "3",
+      "key": "001013008000"
+    },
+    {
+      "court": "\u798f\u5efa\u7701\u9f99\u5ca9\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u9f99\u5ca9\u5e02",
+      "leval": "3",
+      "key": "001013009000"
+    },
+    {
+      "court": "\u53a6\u95e8\u6d77\u4e8b\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u53a6\u95e8\u6d77\u4e8b\u6cd5\u9662",
+      "leval": "3",
+      "key": "001013010000"
+    },
+    {
+      "court": "\u798f\u5dde\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "province": "\u798f\u5efa",
+      "region": "\u798f\u5dde\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "leval": "3",
+      "key": "001013011000"
+    }
+  ],
+  "\u6c5f\u897f": [
+    {
+      "court": "\u6c5f\u897f\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "",
+      "leval": "2",
+      "key": "001014000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u5357\u660c\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u5357\u660c\u5e02",
+      "leval": "3",
+      "key": "001014001000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u666f\u5fb7\u9547\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u666f\u5fb7\u9547\u5e02",
+      "leval": "3",
+      "key": "001014002000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u840d\u4e61\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u840d\u4e61\u5e02",
+      "leval": "3",
+      "key": "001014003000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u4e5d\u6c5f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u4e5d\u6c5f\u5e02",
+      "leval": "3",
+      "key": "001014004000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u65b0\u4f59\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u65b0\u4f59\u5e02",
+      "leval": "3",
+      "key": "001014005000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u9e70\u6f6d\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u9e70\u6f6d\u5e02",
+      "leval": "3",
+      "key": "001014006000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u8d63\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u8d63\u5dde\u5e02",
+      "leval": "3",
+      "key": "001014007000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u5b9c\u6625\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u5b9c\u6625\u5e02",
+      "leval": "3",
+      "key": "001014008000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u4e0a\u9976\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u4e0a\u9976\u5e02",
+      "leval": "3",
+      "key": "001014009000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u5409\u5b89\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u5409\u5b89\u5e02",
+      "leval": "3",
+      "key": "001014010000"
+    },
+    {
+      "court": "\u6c5f\u897f\u7701\u629a\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u629a\u5dde\u5e02",
+      "leval": "3",
+      "key": "001014011000"
+    },
+    {
+      "court": "\u5357\u660c\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u6c5f\u897f",
+      "region": "\u5357\u660c\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001014012000"
+    }
+  ],
+  "\u5c71\u4e1c": [
+    {
+      "court": "\u5c71\u4e1c\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "",
+      "leval": "2",
+      "key": "001015000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u6d4e\u5357\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u6d4e\u5357\u5e02",
+      "leval": "3",
+      "key": "001015001000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u9752\u5c9b\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u9752\u5c9b\u5e02",
+      "leval": "3",
+      "key": "001015002000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u6dc4\u535a\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u6dc4\u535a\u5e02",
+      "leval": "3",
+      "key": "001015003000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u67a3\u5e84\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u67a3\u5e84\u5e02",
+      "leval": "3",
+      "key": "001015004000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u4e1c\u8425\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u4e1c\u8425\u5e02",
+      "leval": "3",
+      "key": "001015005000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u70df\u53f0\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u70df\u53f0\u5e02",
+      "leval": "3",
+      "key": "001015006000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u6f4d\u574a\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u6f4d\u574a\u5e02",
+      "leval": "3",
+      "key": "001015007000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u6d4e\u5b81\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u6d4e\u5b81\u5e02",
+      "leval": "3",
+      "key": "001015008000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u6cf0\u5b89\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u6cf0\u5b89\u5e02",
+      "leval": "3",
+      "key": "001015009000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u5a01\u6d77\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u5a01\u6d77\u5e02",
+      "leval": "3",
+      "key": "001015010000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u65e5\u7167\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u65e5\u7167\u5e02",
+      "leval": "3",
+      "key": "001015011000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u6ee8\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u6ee8\u5dde\u5e02",
+      "leval": "3",
+      "key": "001015012000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u5fb7\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u5fb7\u5dde\u5e02",
+      "leval": "3",
+      "key": "001015013000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u804a\u57ce\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u804a\u57ce\u5e02",
+      "leval": "3",
+      "key": "001015014000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u4e34\u6c82\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u4e34\u6c82\u5e02",
+      "leval": "3",
+      "key": "001015015000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u83cf\u6cfd\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u83cf\u6cfd\u5e02",
+      "leval": "3",
+      "key": "001015016000"
+    },
+    {
+      "court": "\u6d4e\u5357\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u6d4e\u5357\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001015017000"
+    },
+    {
+      "court": "\u9752\u5c9b\u6d77\u4e8b\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u9752\u5c9b\u6d77\u4e8b\u6cd5\u9662",
+      "leval": "3",
+      "key": "001015018000"
+    },
+    {
+      "court": "\u5c71\u4e1c\u7701\u83b1\u829c\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5c71\u4e1c",
+      "region": "\u83b1\u829c\u5e02",
+      "leval": "3",
+      "key": "001015019000"
+    }
+  ],
+  "\u6cb3\u5357": [
+    {
+      "court": "\u6cb3\u5357\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "",
+      "leval": "2",
+      "key": "001016000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u90d1\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u90d1\u5dde\u5e02",
+      "leval": "3",
+      "key": "001016001000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u5f00\u5c01\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u5f00\u5c01\u5e02",
+      "leval": "3",
+      "key": "001016002000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u6d1b\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u6d1b\u9633\u5e02",
+      "leval": "3",
+      "key": "001016003000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u5e73\u9876\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u5e73\u9876\u5c71\u5e02",
+      "leval": "3",
+      "key": "001016004000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u5b89\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u5b89\u9633\u5e02",
+      "leval": "3",
+      "key": "001016005000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u9e64\u58c1\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u9e64\u58c1\u5e02",
+      "leval": "3",
+      "key": "001016006000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u65b0\u4e61\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u65b0\u4e61\u5e02",
+      "leval": "3",
+      "key": "001016007000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u7126\u4f5c\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u7126\u4f5c\u5e02",
+      "leval": "3",
+      "key": "001016008000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u6fee\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u6fee\u9633\u5e02",
+      "leval": "3",
+      "key": "001016009000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u8bb8\u660c\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u8bb8\u660c\u5e02",
+      "leval": "3",
+      "key": "001016010000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u6f2f\u6cb3\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u6f2f\u6cb3\u5e02",
+      "leval": "3",
+      "key": "001016011000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u4e09\u95e8\u5ce1\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u4e09\u95e8\u5ce1\u5e02",
+      "leval": "3",
+      "key": "001016012000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u5546\u4e18\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u5546\u4e18\u5e02",
+      "leval": "3",
+      "key": "001016013000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u5468\u53e3\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u5468\u53e3\u5e02",
+      "leval": "3",
+      "key": "001016014000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u9a7b\u9a6c\u5e97\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u9a7b\u9a6c\u5e97\u5e02",
+      "leval": "3",
+      "key": "001016015000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u5357\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u5357\u9633\u5e02",
+      "leval": "3",
+      "key": "001016016000"
+    },
+    {
+      "court": "\u6cb3\u5357\u7701\u4fe1\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u4fe1\u9633\u5e02",
+      "leval": "3",
+      "key": "001016017000"
+    },
+    {
+      "court": "\u6d4e\u6e90\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6cb3\u5357",
+      "region": "\u6d4e\u6e90\u5e02",
+      "leval": "3",
+      "key": "001016019000"
+    }
+  ],
+  "\u6e56\u5317": [
+    {
+      "court": "\u6e56\u5317\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "",
+      "leval": "2",
+      "key": "001017000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u6b66\u6c49\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u6b66\u6c49\u5e02",
+      "leval": "3",
+      "key": "001017001000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u9ec4\u77f3\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u9ec4\u77f3\u5e02",
+      "leval": "3",
+      "key": "001017002000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u5341\u5830\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u5341\u5830\u5e02",
+      "leval": "3",
+      "key": "001017003000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u8346\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u8346\u5dde\u5e02",
+      "leval": "3",
+      "key": "001017004000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u5b9c\u660c\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u5b9c\u660c\u5e02",
+      "leval": "3",
+      "key": "001017005000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u8944\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u8944\u9633\u5e02",
+      "leval": "3",
+      "key": "001017006000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u9102\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u9102\u5dde\u5e02",
+      "leval": "3",
+      "key": "001017007000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u8346\u95e8\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u8346\u95e8\u5e02",
+      "leval": "3",
+      "key": "001017008000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u9ec4\u5188\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u9ec4\u5188\u5e02",
+      "leval": "3",
+      "key": "001017009000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u5b5d\u611f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u5b5d\u611f\u5e02",
+      "leval": "3",
+      "key": "001017010000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u54b8\u5b81\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u54b8\u5b81\u5e02",
+      "leval": "3",
+      "key": "001017011000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u6069\u65bd\u571f\u5bb6\u65cf\u82d7\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u6069\u65bd\u571f\u5bb6\u65cf\u82d7\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001017012000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u6c49\u6c5f\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u6c49\u6c5f\u5e02",
+      "leval": "3",
+      "key": "001017013000"
+    },
+    {
+      "court": "\u6e56\u5317\u7701\u968f\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u968f\u5dde\u5e02",
+      "leval": "3",
+      "key": "001017014000"
+    },
+    {
+      "court": "\u6b66\u6c49\u6d77\u4e8b\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u6b66\u6c49\u6d77\u4e8b\u6cd5\u9662",
+      "leval": "3",
+      "key": "001017015000"
+    },
+    {
+      "court": "\u6b66\u6c49\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u6e56\u5317",
+      "region": "\u6b66\u6c49\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001017016000"
+    }
+  ],
+  "\u6e56\u5357": [
+    {
+      "court": "\u6e56\u5357\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "",
+      "leval": "2",
+      "key": "001018000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u957f\u6c99\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u957f\u6c99\u5e02",
+      "leval": "3",
+      "key": "001018001000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u682a\u6d32\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u682a\u6d32\u5e02",
+      "leval": "3",
+      "key": "001018002000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u6e58\u6f6d\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u6e58\u6f6d\u5e02",
+      "leval": "3",
+      "key": "001018003000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u8861\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u8861\u9633\u5e02",
+      "leval": "3",
+      "key": "001018004000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u90b5\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u90b5\u9633\u5e02",
+      "leval": "3",
+      "key": "001018005000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u5cb3\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u5cb3\u9633\u5e02",
+      "leval": "3",
+      "key": "001018006000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u5e38\u5fb7\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u5e38\u5fb7\u5e02",
+      "leval": "3",
+      "key": "001018007000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u5f20\u5bb6\u754c\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u5f20\u5bb6\u754c\u5e02",
+      "leval": "3",
+      "key": "001018008000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u76ca\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u76ca\u9633\u5e02",
+      "leval": "3",
+      "key": "001018009000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u5a04\u5e95\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u5a04\u5e95\u5e02",
+      "leval": "3",
+      "key": "001018010000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u90f4\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u90f4\u5dde\u5e02",
+      "leval": "3",
+      "key": "001018011000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u6c38\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u6c38\u5dde\u5e02",
+      "leval": "3",
+      "key": "001018012000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u6000\u5316\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u6000\u5316\u5e02",
+      "leval": "3",
+      "key": "001018013000"
+    },
+    {
+      "court": "\u6e56\u5357\u7701\u6e58\u897f\u571f\u5bb6\u65cf\u82d7\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u6e58\u897f\u571f\u5bb6\u65cf\u82d7\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001018014000"
+    },
+    {
+      "court": "\u957f\u6c99\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u957f\u6c99\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "leval": "3",
+      "key": "001018015000"
+    },
+    {
+      "court": "\u8861\u9633\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u8861\u9633\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "leval": "3",
+      "key": "001018016000"
+    },
+    {
+      "court": "\u6000\u5316\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "province": "\u6e56\u5357",
+      "region": "\u6000\u5316\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "leval": "3",
+      "key": "001018017000"
+    }
+  ],
+  "\u5e7f\u4e1c": [
+    {
+      "court": "\u5e7f\u4e1c\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "",
+      "leval": "2",
+      "key": "001019000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u5e7f\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u5e7f\u5dde\u5e02",
+      "leval": "3",
+      "key": "001019001000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u97f6\u5173\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u97f6\u5173\u5e02",
+      "leval": "3",
+      "key": "001019002000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u6df1\u5733\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u6df1\u5733\u5e02",
+      "leval": "3",
+      "key": "001019003000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u73e0\u6d77\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u73e0\u6d77\u5e02",
+      "leval": "3",
+      "key": "001019004000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u6c55\u5934\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u6c55\u5934\u5e02",
+      "leval": "3",
+      "key": "001019005000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u4f5b\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u4f5b\u5c71\u5e02",
+      "leval": "3",
+      "key": "001019006000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u6c5f\u95e8\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u6c5f\u95e8\u5e02",
+      "leval": "3",
+      "key": "001019007000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u6e5b\u6c5f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u6e5b\u6c5f\u5e02",
+      "leval": "3",
+      "key": "001019008000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u8302\u540d\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u8302\u540d\u5e02",
+      "leval": "3",
+      "key": "001019009000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u4e2d\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u4e2d\u5c71\u5e02",
+      "leval": "3",
+      "key": "001019010000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u4e1c\u839e\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u4e1c\u839e\u5e02",
+      "leval": "3",
+      "key": "001019011000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u6885\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u6885\u5dde\u5e02",
+      "leval": "3",
+      "key": "001019012000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u60e0\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u60e0\u5dde\u5e02",
+      "leval": "3",
+      "key": "001019013000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u8087\u5e86\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u8087\u5e86\u5e02",
+      "leval": "3",
+      "key": "001019014000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u6c55\u5c3e\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u6c55\u5c3e\u5e02",
+      "leval": "3",
+      "key": "001019015000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u6cb3\u6e90\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u6cb3\u6e90\u5e02",
+      "leval": "3",
+      "key": "001019016000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u9633\u6c5f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u9633\u6c5f\u5e02",
+      "leval": "3",
+      "key": "001019017000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u6e05\u8fdc\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u6e05\u8fdc\u5e02",
+      "leval": "3",
+      "key": "001019018000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u6f6e\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u6f6e\u5dde\u5e02",
+      "leval": "3",
+      "key": "001019019000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u63ed\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u63ed\u9633\u5e02",
+      "leval": "3",
+      "key": "001019020000"
+    },
+    {
+      "court": "\u5e7f\u5dde\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u5e7f\u5dde\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001019021000"
+    },
+    {
+      "court": "\u5e7f\u5dde\u6d77\u4e8b\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u5e7f\u5dde\u6d77\u4e8b\u6cd5\u9662",
+      "leval": "3",
+      "key": "001019022000"
+    },
+    {
+      "court": "\u5e7f\u4e1c\u7701\u4e91\u6d6e\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u4e91\u6d6e\u5e02",
+      "leval": "3",
+      "key": "001019023000"
+    },
+    {
+      "court": "\u5e7f\u5dde\u77e5\u8bc6\u4ea7\u6743\u6cd5\u9662",
+      "province": "\u5e7f\u4e1c",
+      "region": "\u5e7f\u5dde\u77e5\u8bc6\u4ea7\u6743\u6cd5\u9662",
+      "leval": "3",
+      "key": "001019024000"
+    }
+  ],
+  "\u5e7f\u897f": [
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "",
+      "leval": "2",
+      "key": "001020000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u5357\u5b81\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u5357\u5b81\u5e02",
+      "leval": "3",
+      "key": "001020001000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u67f3\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u67f3\u5dde\u5e02",
+      "leval": "3",
+      "key": "001020002000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u6842\u6797\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u6842\u6797\u5e02",
+      "leval": "3",
+      "key": "001020003000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u68a7\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u68a7\u5dde\u5e02",
+      "leval": "3",
+      "key": "001020004000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u5317\u6d77\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u5317\u6d77\u5e02",
+      "leval": "3",
+      "key": "001020005000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u5d07\u5de6\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u5d07\u5de6\u5e02",
+      "leval": "3",
+      "key": "001020006000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u6765\u5bbe\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u6765\u5bbe\u5e02",
+      "leval": "3",
+      "key": "001020007000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u8d3a\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u8d3a\u5dde\u5e02",
+      "leval": "3",
+      "key": "001020009000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u7389\u6797\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u7389\u6797\u5e02",
+      "leval": "3",
+      "key": "001020010000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u767e\u8272\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u767e\u8272\u5e02",
+      "leval": "3",
+      "key": "001020011000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u6cb3\u6c60\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u6cb3\u6c60\u5e02",
+      "leval": "3",
+      "key": "001020012000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u94a6\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u94a6\u5dde\u5e02",
+      "leval": "3",
+      "key": "001020013000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u9632\u57ce\u6e2f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u9632\u57ce\u6e2f\u5e02",
+      "leval": "3",
+      "key": "001020014000"
+    },
+    {
+      "court": "\u5e7f\u897f\u58ee\u65cf\u81ea\u6cbb\u533a\u8d35\u6e2f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u8d35\u6e2f\u5e02",
+      "leval": "3",
+      "key": "001020015000"
+    },
+    {
+      "court": "\u5357\u5b81\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u5357\u5b81\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001020016000"
+    },
+    {
+      "court": "\u5317\u6d77\u6d77\u4e8b\u6cd5\u9662",
+      "province": "\u5e7f\u897f",
+      "region": "\u5317\u6d77\u6d77\u4e8b\u6cd5\u9662",
+      "leval": "3",
+      "key": "001020017000"
+    }
+  ],
+  "\u6d77\u5357": [
+    {
+      "court": "\u6d77\u5357\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d77\u5357",
+      "region": "",
+      "leval": "2",
+      "key": "001021000"
+    },
+    {
+      "court": "\u6d77\u5357\u7701\u6d77\u53e3\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d77\u5357",
+      "region": "\u6d77\u53e3\u5e02",
+      "leval": "3",
+      "key": "001021001000"
+    },
+    {
+      "court": "\u6d77\u5357\u7701\u4e09\u4e9a\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d77\u5357",
+      "region": "\u4e09\u4e9a\u5e02",
+      "leval": "3",
+      "key": "001021002000"
+    },
+    {
+      "court": "\u6d77\u5357\u7701\u7b2c\u4e00\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d77\u5357",
+      "region": "\u6d77\u53e3\u5e02",
+      "leval": "3",
+      "key": "001021003000"
+    },
+    {
+      "court": "\u6d77\u53e3\u6d77\u4e8b\u6cd5\u9662",
+      "province": "\u6d77\u5357",
+      "region": "\u6d77\u53e3\u5e02",
+      "leval": "3",
+      "key": "001021004000"
+    },
+    {
+      "court": "\u6d77\u5357\u7701\u7b2c\u4e8c\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d77\u5357",
+      "region": "",
+      "leval": "3",
+      "key": "001021005000"
+    },
+    {
+      "court": "\u6d77\u5357\u7701\u4e09\u6c99\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u6d77\u5357",
+      "region": "\u4e09\u6c99\u5e02",
+      "leval": "3",
+      "key": "001021006000"
+    }
+  ],
+  "\u91cd\u5e86": [
+    {
+      "court": "\u91cd\u5e86\u5e02\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u91cd\u5e86",
+      "region": "\u91cd\u5e86\u5e02",
+      "leval": "2",
+      "key": "001022000"
+    },
+    {
+      "court": "\u91cd\u5e86\u5e02\u7b2c\u4e00\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u91cd\u5e86",
+      "region": "\u91cd\u5e86\u5e02\u7b2c\u4e00\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001022001000"
+    },
+    {
+      "court": "\u91cd\u5e86\u5e02\u7b2c\u4e8c\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u91cd\u5e86",
+      "region": "\u91cd\u5e86\u5e02\u7b2c\u4e8c\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001022002000"
+    },
+    {
+      "court": "\u91cd\u5e86\u5e02\u7b2c\u4e09\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u91cd\u5e86",
+      "region": "\u91cd\u5e86\u5e02\u7b2c\u4e09\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001022003000"
+    },
+    {
+      "court": "\u91cd\u5e86\u5e02\u7b2c\u56db\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u91cd\u5e86",
+      "region": "\u91cd\u5e86\u5e02\u7b2c\u56db\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001022004000"
+    },
+    {
+      "court": "\u91cd\u5e86\u5e02\u7b2c\u4e94\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u91cd\u5e86",
+      "region": "\u91cd\u5e86\u5e02\u7b2c\u4e94\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662\u8f96\u533a",
+      "leval": "3",
+      "key": "001022005000"
+    }
+  ],
+  "\u56db\u5ddd": [
+    {
+      "court": "\u56db\u5ddd\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "",
+      "leval": "2",
+      "key": "001023000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u6210\u90fd\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u6210\u90fd\u5e02",
+      "leval": "3",
+      "key": "001023001000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u81ea\u8d21\u5e02\u4e2d\u7ea7\u4eba\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u81ea\u8d21\u5e02",
+      "leval": "3",
+      "key": "001023002000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u6500\u679d\u82b1\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u6500\u679d\u82b1\u5e02",
+      "leval": "3",
+      "key": "001023003000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u6cf8\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u6cf8\u5dde\u5e02",
+      "leval": "3",
+      "key": "001023004000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u5fb7\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u5fb7\u9633\u5e02",
+      "leval": "3",
+      "key": "001023005000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u7ef5\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u7ef5\u9633\u5e02",
+      "leval": "3",
+      "key": "001023006000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u5e7f\u5143\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u5e7f\u5143\u5e02",
+      "leval": "3",
+      "key": "001023007000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u9042\u5b81\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u9042\u5b81\u5e02",
+      "leval": "3",
+      "key": "001023008000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u5185\u6c5f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u5185\u6c5f\u5e02",
+      "leval": "3",
+      "key": "001023009000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u4e50\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u4e50\u5c71\u5e02",
+      "leval": "3",
+      "key": "001023010000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u5b9c\u5bbe\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u5b9c\u5bbe\u5e02",
+      "leval": "3",
+      "key": "001023011000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u5357\u5145\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u5357\u5145\u5e02",
+      "leval": "3",
+      "key": "001023012000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u8fbe\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u8fbe\u5dde\u5e02",
+      "leval": "3",
+      "key": "001023013000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u96c5\u5b89\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u96c5\u5b89\u5e02",
+      "leval": "3",
+      "key": "001023014000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u963f\u575d\u85cf\u65cf\u7f8c\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u963f\u575d\u85cf\u65cf\u7f8c\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001023015000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u7518\u5b5c\u85cf\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u7518\u5b5c\u85cf\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001023016000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u51c9\u5c71\u5f5d\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u51c9\u5c71\u5f5d\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001023017000"
+    },
+    {
+      "court": "\u6210\u90fd\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u6210\u90fd\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001023018000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u5e7f\u5b89\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u5e7f\u5b89\u5e02",
+      "leval": "3",
+      "key": "001023019000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u5df4\u4e2d\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u5df4\u4e2d\u5e02",
+      "leval": "3",
+      "key": "001023020000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u7709\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u7709\u5c71\u5e02",
+      "leval": "3",
+      "key": "001023021000"
+    },
+    {
+      "court": "\u56db\u5ddd\u7701\u8d44\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u56db\u5ddd",
+      "region": "\u8d44\u9633\u5e02",
+      "leval": "3",
+      "key": "001023022000"
+    }
+  ],
+  "\u8d35\u5dde": [
+    {
+      "court": "\u8d35\u5dde\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8d35\u5dde",
+      "region": "",
+      "leval": "2",
+      "key": "001024000"
+    },
+    {
+      "court": "\u8d35\u5dde\u7701\u8d35\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8d35\u5dde",
+      "region": "\u8d35\u9633\u5e02",
+      "leval": "3",
+      "key": "001024001000"
+    },
+    {
+      "court": "\u8d35\u5dde\u7701\u516d\u76d8\u6c34\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8d35\u5dde",
+      "region": "\u516d\u76d8\u6c34\u5e02",
+      "leval": "3",
+      "key": "001024002000"
+    },
+    {
+      "court": "\u8d35\u5dde\u7701\u9075\u4e49\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8d35\u5dde",
+      "region": "\u9075\u4e49\u5e02",
+      "leval": "3",
+      "key": "001024003000"
+    },
+    {
+      "court": "\u8d35\u5dde\u7701\u94dc\u4ec1\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8d35\u5dde",
+      "region": "\u94dc\u4ec1\u5e02",
+      "leval": "3",
+      "key": "001024004000"
+    },
+    {
+      "court": "\u8d35\u5dde\u7701\u9ed4\u897f\u5357\u5e03\u4f9d\u65cf\u82d7\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8d35\u5dde",
+      "region": "\u9ed4\u897f\u5357\u5e03\u4f9d\u65cf\u82d7\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001024005000"
+    },
+    {
+      "court": "\u8d35\u5dde\u7701\u6bd5\u8282\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8d35\u5dde",
+      "region": "\u6bd5\u8282\u5e02",
+      "leval": "3",
+      "key": "001024006000"
+    },
+    {
+      "court": "\u8d35\u5dde\u7701\u5b89\u987a\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8d35\u5dde",
+      "region": "\u5b89\u987a\u5e02",
+      "leval": "3",
+      "key": "001024007000"
+    },
+    {
+      "court": "\u8d35\u5dde\u7701\u9ed4\u4e1c\u5357\u82d7\u65cf\u4f97\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8d35\u5dde",
+      "region": "\u9ed4\u4e1c\u5357\u82d7\u65cf\u4f97\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001024008000"
+    },
+    {
+      "court": "\u8d35\u5dde\u7701\u9ed4\u5357\u5e03\u4f9d\u65cf\u82d7\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u8d35\u5dde",
+      "region": "\u9ed4\u5357\u5e03\u4f9d\u65cf\u82d7\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001024009000"
+    }
+  ],
+  "\u4e91\u5357": [
+    {
+      "court": "\u4e91\u5357\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "",
+      "leval": "2",
+      "key": "001025000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u6606\u660e\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u6606\u660e\u5e02",
+      "leval": "3",
+      "key": "001025001000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u662d\u901a\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u662d\u901a\u5e02",
+      "leval": "3",
+      "key": "001025003000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u66f2\u9756\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u66f2\u9756\u5e02",
+      "leval": "3",
+      "key": "001025004000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u7389\u6eaa\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u7389\u6eaa\u5e02",
+      "leval": "3",
+      "key": "001025005000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u666e\u6d31\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u666e\u6d31\u5e02",
+      "leval": "3",
+      "key": "001025006000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u4fdd\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u4fdd\u5c71\u5e02",
+      "leval": "3",
+      "key": "001025007000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u4e3d\u6c5f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u4e3d\u6c5f\u5e02",
+      "leval": "3",
+      "key": "001025008000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u4e34\u6ca7\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u4e34\u6ca7\u5e02",
+      "leval": "3",
+      "key": "001025009000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u695a\u96c4\u5f5d\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u695a\u96c4\u5f5d\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001025010000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u7ea2\u6cb3\u54c8\u5c3c\u65cf\u5f5d\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u7ea2\u6cb3\u54c8\u5c3c\u65cf\u5f5d\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001025011000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u6587\u5c71\u58ee\u65cf\u82d7\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u6587\u5c71\u58ee\u65cf\u82d7\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001025012000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u897f\u53cc\u7248\u7eb3\u50a3\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u897f\u53cc\u7248\u7eb3\u50a3\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001025013000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u5927\u7406\u767d\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u5927\u7406\u767d\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001025014000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u5fb7\u5b8f\u50a3\u65cf\u666f\u9887\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u5fb7\u5b8f\u50a3\u65cf\u666f\u9887\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001025015000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u6012\u6c5f\u5088\u50f3\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u6012\u6c5f\u5088\u50f3\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001025016000"
+    },
+    {
+      "court": "\u4e91\u5357\u7701\u8fea\u5e86\u85cf\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u8fea\u5e86\u85cf\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001025017000"
+    },
+    {
+      "court": "\u6606\u660e\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u4e91\u5357",
+      "region": "\u6606\u660e\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001025018000"
+    }
+  ],
+  "\u897f\u85cf": [
+    {
+      "court": "\u897f\u85cf\u81ea\u6cbb\u533a\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u897f\u85cf",
+      "region": "",
+      "leval": "2",
+      "key": "001026000"
+    },
+    {
+      "court": "\u897f\u85cf\u81ea\u6cbb\u533a\u62c9\u8428\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u897f\u85cf",
+      "region": "\u62c9\u8428\u5e02",
+      "leval": "3",
+      "key": "001026001000"
+    },
+    {
+      "court": "\u897f\u85cf\u81ea\u6cbb\u533a\u660c\u90fd\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u897f\u85cf",
+      "region": "\u660c\u90fd\u5e02",
+      "leval": "3",
+      "key": "001026002000"
+    },
+    {
+      "court": "\u897f\u85cf\u81ea\u6cbb\u533a\u5c71\u5357\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u897f\u85cf",
+      "region": "\u5c71\u5357\u5e02",
+      "leval": "3",
+      "key": "001026003000"
+    },
+    {
+      "court": "\u897f\u85cf\u81ea\u6cbb\u533a\u65e5\u5580\u5219\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u897f\u85cf",
+      "region": "\u65e5\u5580\u5219\u5e02",
+      "leval": "3",
+      "key": "001026004000"
+    },
+    {
+      "court": "\u897f\u85cf\u81ea\u6cbb\u533a\u90a3\u66f2\u5730\u533a\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u897f\u85cf",
+      "region": "\u90a3\u66f2\u5730\u533a",
+      "leval": "3",
+      "key": "001026005000"
+    },
+    {
+      "court": "\u897f\u85cf\u81ea\u6cbb\u533a\u963f\u91cc\u5730\u533a\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u897f\u85cf",
+      "region": "\u963f\u91cc\u5730\u533a",
+      "leval": "3",
+      "key": "001026006000"
+    },
+    {
+      "court": "\u897f\u85cf\u81ea\u6cbb\u533a\u6797\u829d\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u897f\u85cf",
+      "region": "\u6797\u829d\u5730\u533a",
+      "leval": "3",
+      "key": "001026007000"
+    }
+  ],
+  "\u9655\u897f": [
+    {
+      "court": "\u9655\u897f\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "",
+      "leval": "2",
+      "key": "001027000"
+    },
+    {
+      "court": "\u9655\u897f\u7701\u897f\u5b89\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u897f\u5b89\u5e02",
+      "leval": "3",
+      "key": "001027001000"
+    },
+    {
+      "court": "\u9655\u897f\u7701\u94dc\u5ddd\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u94dc\u5ddd\u5e02",
+      "leval": "3",
+      "key": "001027002000"
+    },
+    {
+      "court": "\u9655\u897f\u7701\u5b9d\u9e21\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u5b9d\u9e21\u5e02",
+      "leval": "3",
+      "key": "001027003000"
+    },
+    {
+      "court": "\u9655\u897f\u7701\u54b8\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u54b8\u9633\u5e02",
+      "leval": "3",
+      "key": "001027004000"
+    },
+    {
+      "court": "\u9655\u897f\u7701\u6e2d\u5357\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u6e2d\u5357\u5e02",
+      "leval": "3",
+      "key": "001027005000"
+    },
+    {
+      "court": "\u9655\u897f\u7701\u6c49\u4e2d\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u6c49\u4e2d\u5e02",
+      "leval": "3",
+      "key": "001027006000"
+    },
+    {
+      "court": "\u9655\u897f\u7701\u5b89\u5eb7\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u5b89\u5eb7\u5e02",
+      "leval": "3",
+      "key": "001027007000"
+    },
+    {
+      "court": "\u9655\u897f\u7701\u5546\u6d1b\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u5546\u6d1b\u5e02",
+      "leval": "3",
+      "key": "001027008000"
+    },
+    {
+      "court": "\u9655\u897f\u7701\u5ef6\u5b89\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u5ef6\u5b89\u5e02",
+      "leval": "3",
+      "key": "001027009000"
+    },
+    {
+      "court": "\u9655\u897f\u7701\u6986\u6797\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u6986\u6797\u5e02",
+      "leval": "3",
+      "key": "001027010000"
+    },
+    {
+      "court": "\u897f\u5b89\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u9655\u897f",
+      "region": "\u897f\u5b89\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001027011000"
+    }
+  ],
+  "\u7518\u8083": [
+    {
+      "court": "\u7518\u8083\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "",
+      "leval": "2",
+      "key": "001028000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u5170\u5dde\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u5170\u5dde\u5e02",
+      "leval": "3",
+      "key": "001028001000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u5609\u5cea\u5173\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u5609\u5cea\u5173\u5e02",
+      "leval": "3",
+      "key": "001028002000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u91d1\u660c\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u91d1\u660c\u5e02",
+      "leval": "3",
+      "key": "001028003000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u767d\u94f6\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u767d\u94f6\u5e02",
+      "leval": "3",
+      "key": "001028004000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u5929\u6c34\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u5929\u6c34\u5e02",
+      "leval": "3",
+      "key": "001028005000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u9152\u6cc9\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u9152\u6cc9\u5e02",
+      "leval": "3",
+      "key": "001028006000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u5f20\u6396\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u5f20\u6396\u5e02",
+      "leval": "3",
+      "key": "001028007000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u6b66\u5a01\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u6b66\u5a01\u5e02",
+      "leval": "3",
+      "key": "001028008000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u5b9a\u897f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u5b9a\u897f\u5e02",
+      "leval": "3",
+      "key": "001028009000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u9647\u5357\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u9647\u5357\u5e02",
+      "leval": "3",
+      "key": "001028010000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u5e73\u51c9\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u5e73\u51c9\u5e02",
+      "leval": "3",
+      "key": "001028011000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u5e86\u9633\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u5e86\u9633\u5e02",
+      "leval": "3",
+      "key": "001028012000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u4e34\u590f\u56de\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u4e34\u590f\u56de\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001028013000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u7518\u5357\u85cf\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u7518\u5357\u85cf\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001028014000"
+    },
+    {
+      "court": "\u7518\u8083\u77ff\u533a\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u5609\u5cea\u5173\u5e02",
+      "leval": "3",
+      "key": "001028015000"
+    },
+    {
+      "court": "\u7518\u8083\u7701\u6797\u533a\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "",
+      "leval": "3",
+      "key": "001028016000"
+    },
+    {
+      "court": "\u5170\u5dde\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "province": "\u7518\u8083",
+      "region": "\u5170\u5dde\u5e02",
+      "leval": "3",
+      "key": "001028017000"
+    }
+  ],
+  "\u9752\u6d77": [
+    {
+      "court": "\u9752\u6d77\u7701\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9752\u6d77",
+      "region": "",
+      "leval": "2",
+      "key": "001029000"
+    },
+    {
+      "court": "\u9752\u6d77\u7701\u897f\u5b81\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9752\u6d77",
+      "region": "\u897f\u5b81\u5e02",
+      "leval": "3",
+      "key": "001029001000"
+    },
+    {
+      "court": "\u9752\u6d77\u7701\u6d77\u4e1c\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9752\u6d77",
+      "region": "\u6d77\u4e1c\u5e02",
+      "leval": "3",
+      "key": "001029002000"
+    },
+    {
+      "court": "\u9752\u6d77\u7701\u6d77\u5317\u85cf\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9752\u6d77",
+      "region": "\u6d77\u5317\u85cf\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001029003000"
+    },
+    {
+      "court": "\u9752\u6d77\u7701\u9ec4\u5357\u85cf\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9752\u6d77",
+      "region": "\u9ec4\u5357\u85cf\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001029004000"
+    },
+    {
+      "court": "\u9752\u6d77\u7701\u6d77\u5357\u85cf\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9752\u6d77",
+      "region": "\u6d77\u5357\u85cf\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001029005000"
+    },
+    {
+      "court": "\u9752\u6d77\u7701\u679c\u6d1b\u85cf\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9752\u6d77",
+      "region": "\u679c\u6d1b\u85cf\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001029006000"
+    },
+    {
+      "court": "\u9752\u6d77\u7701\u7389\u6811\u85cf\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9752\u6d77",
+      "region": "\u7389\u6811\u85cf\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001029007000"
+    },
+    {
+      "court": "\u9752\u6d77\u7701\u6d77\u897f\u8499\u53e4\u65cf\u85cf\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u9752\u6d77",
+      "region": "\u6d77\u897f\u8499\u53e4\u65cf\u85cf\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001029008000"
+    },
+    {
+      "court": "\u897f\u5b81\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "province": "\u9752\u6d77",
+      "region": "\u897f\u5b81\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "leval": "3",
+      "key": "001029009000"
+    }
+  ],
+  "\u5b81\u590f": [
+    {
+      "court": "\u5b81\u590f\u56de\u65cf\u81ea\u6cbb\u533a\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b81\u590f",
+      "region": "",
+      "leval": "2",
+      "key": "001030000"
+    },
+    {
+      "court": "\u5b81\u590f\u56de\u65cf\u81ea\u6cbb\u533a\u94f6\u5ddd\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b81\u590f",
+      "region": "\u94f6\u5ddd\u5e02",
+      "leval": "3",
+      "key": "001030001000"
+    },
+    {
+      "court": "\u5b81\u590f\u56de\u65cf\u81ea\u6cbb\u533a\u77f3\u5634\u5c71\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b81\u590f",
+      "region": "\u77f3\u5634\u5c71\u5e02",
+      "leval": "3",
+      "key": "001030002000"
+    },
+    {
+      "court": "\u5b81\u590f\u56de\u65cf\u81ea\u6cbb\u533a\u5434\u5fe0\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b81\u590f",
+      "region": "\u5434\u5fe0\u5e02",
+      "leval": "3",
+      "key": "001030003000"
+    },
+    {
+      "court": "\u5b81\u590f\u56de\u65cf\u81ea\u6cbb\u533a\u56fa\u539f\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b81\u590f",
+      "region": "\u56fa\u539f\u5e02",
+      "leval": "3",
+      "key": "001030004000"
+    },
+    {
+      "court": "\u5b81\u590f\u56de\u65cf\u81ea\u6cbb\u533a\u4e2d\u536b\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u5b81\u590f",
+      "region": "\u4e2d\u536b\u5e02",
+      "leval": "3",
+      "key": "001030005000"
+    },
+    {
+      "court": "\u94f6\u5ddd\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "province": "\u5b81\u590f",
+      "region": "\u94f6\u5ddd\u94c1\u8def\u8fd0\u8f93\u6cd5\u9662",
+      "leval": "3",
+      "key": "001030006000"
+    }
+  ],
+  "\u65b0\u7586": [
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "",
+      "leval": "2",
+      "key": "001031000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u4e4c\u9c81\u6728\u9f50\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u4e4c\u9c81\u6728\u9f50\u5e02",
+      "leval": "3",
+      "key": "001031001000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u514b\u62c9\u739b\u4f9d\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u514b\u62c9\u739b\u4f9d\u5e02",
+      "leval": "3",
+      "key": "001031002000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u5410\u9c81\u756a\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u5410\u9c81\u756a\u5730\u533a",
+      "leval": "3",
+      "key": "001031004000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u54c8\u5bc6\u5e02\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u54c8\u5bc6\u5e02",
+      "leval": "3",
+      "key": "001031005000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u660c\u5409\u56de\u65cf\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u660c\u5409\u56de\u65cf\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001031006000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u535a\u5c14\u5854\u62c9\u8499\u53e4\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u535a\u5c14\u5854\u62c9\u8499\u53e4\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001031007000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u5df4\u97f3\u90ed\u695e\u8499\u53e4\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u5df4\u97f3\u90ed\u695e\u8499\u53e4\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001031008000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u963f\u514b\u82cf\u5730\u533a\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u963f\u514b\u82cf\u5730\u533a",
+      "leval": "3",
+      "key": "001031009000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u514b\u5b5c\u52d2\u82cf\u67ef\u5c14\u514b\u5b5c\u81ea\u6cbb\u5dde\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u514b\u5b5c\u52d2\u82cf\u67ef\u5c14\u514b\u5b5c\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001031010000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u5580\u4ec0\u5730\u533a\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u5580\u4ec0\u5730\u533a",
+      "leval": "3",
+      "key": "001031011000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u548c\u7530\u5730\u533a\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u548c\u7530\u5730\u533a",
+      "leval": "3",
+      "key": "001031012000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u9ad8\u7ea7\u4eba\u6c11\u6cd5\u9662\u4f0a\u7281\u54c8\u8428\u514b\u81ea\u6cbb\u5dde\u5206\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u4f0a\u7281\u54c8\u8428\u514b\u81ea\u6cbb\u5dde",
+      "leval": "3",
+      "key": "001031013000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u4f0a\u7281\u54c8\u8428\u514b\u81ea\u6cbb\u5dde\u5854\u57ce\u5730\u533a\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u5854\u57ce\u5730\u533a",
+      "leval": "3",
+      "key": "001031015000"
+    },
+    {
+      "court": "\u65b0\u7586\u7ef4\u543e\u5c14\u81ea\u6cbb\u533a\u4f0a\u7281\u54c8\u8428\u514b\u81ea\u6cbb\u5dde\u963f\u52d2\u6cf0\u5730\u533a\u4e2d\u7ea7\u4eba\u6c11\u6cd5\u9662",
+      "province": "\u65b0\u7586",
+      "region": "\u963f\u52d2\u6cf0\u5730\u533a",
+      "leval": "3",
+      "key": "001031016000"
+    },
+    {
+      "court": "\u4e4c\u9c81\u6728\u9f50\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662 ",
+      "province": "\u65b0\u7586",
+      "region": "\u4e4c\u9c81\u6728\u9f50\u94c1\u8def\u8fd0\u8f93\u4e2d\u7ea7\u6cd5\u9662",
+      "leval": "3",
+      "key": "001031017000"
+    }
+  ]
+}
