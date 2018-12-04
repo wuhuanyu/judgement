@@ -125,6 +125,6 @@ LONG_BREAK = 60 * 60 * 1.5
 LONG_BREAK_TIMES = 1.1
 LONG_BREAK_UP_BOUND = 60 * 60 * 2.5
 
-PROVINCE_DIR = '/home/stack/judgement_code/judgement_spider/util/provices'
+PROVINCE_DIR = '/home/stack/judgement_code/judgement_spider/util/provinces'
 MAX_TRIED_TIMES = 3
 STOP_DATE = '2018-01-01'
