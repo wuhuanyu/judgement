@@ -82,7 +82,7 @@ def construct_param(param_dict: dict):
 
     params = []
     for param_key in param_dict.keys():
-        if param_key != '裁判日期' and param_key != '上传日期':
+        if param_key != '裁判日期' and param_key != '上传日期' and param_key!='法院地域':
             if not param_value_exists(param_dict[param_key]):
                 raise Exception('Not a valid param key')
         params.append('{}:{}'.format(param_key, param_dict[param_key]))

@@ -15,4 +15,4 @@ START_INDEX = 1
 
 TIME_DELTA = timedelta(days=1)
 
-TIME_DELTA_REGION=3
+TIME_DELTA_REGION=timedelta(days=3)

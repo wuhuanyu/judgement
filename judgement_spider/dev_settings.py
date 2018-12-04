@@ -128,3 +128,4 @@ LONG_BREAK_UP_BOUND = 60 * 60 * 2.5
 
 PROVINCE_DIR='/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/util/provinces'
 MAX_TRIED_TIMES=3
+STOP_DATE='2018-01-01'

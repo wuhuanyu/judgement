@@ -17,11 +17,8 @@ from judgement_spider.util.toolbox import str_to_datetime, datetime_to_str, load
 import base64
 from judgement_spider.constant import FINISHED, REDIRECT, VALIDATION, UNKNOWN, SHUT_DOWN, CANCELLED, \
     DATE_FINISHED, NEED_RETRY
-from judgement_spider.constant import TIME_DELTA, START_DATE, START_INDEX
-from judgement_spider.constant import TIME_DELTA
+from judgement_spider.constant import TIME_DELTA, START_DATE, START_INDEX, TIME_DELTA_REGION
 from judgement_spider.util.toolbox import get_guid
-
-
 
 
 class JudgementSpider(scrapy.Spider):
@@ -30,18 +27,17 @@ class JudgementSpider(scrapy.Spider):
     order = "法院层级"
     direction = "asc"
 
-
     def __get_guid(self):
         def create_guid():
             return str(hex((int(((1 + random.random()) * 0x10000)) | 0)))[3:]
 
         return '{}{}-{}-{}{}-{}{}{}' \
             .format(
-            create_guid(), create_guid(),
-            create_guid(), create_guid(),
-            create_guid(), create_guid(),
-            create_guid(), create_guid()
-        )
+                create_guid(), create_guid(),
+                create_guid(), create_guid(),
+                create_guid(), create_guid(),
+                create_guid(), create_guid()
+            )
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
@@ -55,11 +51,12 @@ class JudgementSpider(scrapy.Spider):
         current_process = {
             'last_index': self.index_to_crawl,
             'last_date': datetime_to_str(self.date_to_crawl),
+            'last_province': self.province_to_crawl,
             'all_indexes': self.all_indexes,
             'last_finish_timestamp': str(datetime.now()),
             'done': 1 if reason == FINISHED else 0,
             'finish_reason': reason,
-            'last_tried_times':self.current_tried_times
+            'last_tried_times': self.current_tried_times
         }
 
         self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
@@ -79,9 +76,10 @@ class JudgementSpider(scrapy.Spider):
         self.last_date = None
         self.decoder = None
         self.param = None
-        self.regions=[]
+        self.provinces = []
 
-        self.current_tried_times=0
+        self.current_tried_times = 0
+        self.province_to_crawl = None
 
     def __construct_request_for_number(self, cbk, refresh=True):
 
@@ -117,8 +115,8 @@ class JudgementSpider(scrapy.Spider):
         :return:
         '''
         self.decoder = Decoder(self.settings.get('PUBLIC_DIR'))
-        for p in load_json(os.path.join(self.settings.get('PROVINCE_DIR'),'court_region.json')):
-            self.regions.append(p['name'])
+        for p in load_json(os.path.join(self.settings.get('PROVINCE_DIR'), 'court_region.json')):
+            self.provinces.append(p['name'])
 
         process_file = Path(self.settings.get('PERSIST_FILE'))
         settings = self.settings
@@ -129,51 +127,77 @@ class JudgementSpider(scrapy.Spider):
             last_index = last_process['last_index']
             last_date = str_to_datetime(last_process['last_date'])
             finish_reason = last_process['finish_reason']
-            last_tried_times=int(last_process['last_tried_times'])
-            # we finished
-            if finish_reason == FINISHED:
-                self.all_indexes = int(last_process['all_indexes'])
-                if last_index == self.all_indexes or last_index == settings.getint(
-                        'INDEXES_PER_DATE',
-                        20):
-                    self.date_to_crawl = last_date - TIME_DELTA
+            last_tried_times = int(last_process['last_tried_times'])
+            last_province = last_process['last_province']
+            last_province_idx = self.provinces.index(last_province)
+
+            need_change_param = False
+            # we finished or we meet the max index,change param,change province or date
+            if (finish_reason == FINISHED) and (last_index == self.all_indexes\
+                                           or last_index == settings.getint('INDEXES_PER_DEPTH',20)
+                                           ):
+                need_change_param=True
+            # we need retry but we have met max tried times and further we cannot chagne index because we have meet the max index
+            if (finish_reason==NEED_RETRY) and \
+                                                (last_tried_times==settings.getint('MAX_TRIED_TIMES',3)) and \
+                                                (last_index==self.all_indexes or last_index==settings.getint('INDEX_PER_DEPTH',20)):
+                need_change_param=True
+                
+        
+            elif finish_reason in [VALIDATION, REDIRECT, CANCELLED, SHUT_DOWN]:
+                pass
+            elif finish_reason == NEED_RETRY:
+                pass
+
+            if need_change_param:
+                # 1. keep province unchanged and change  date
+                # 2. change province and date from first
+                # we have not arrive the last province
+                if last_province_idx != len(self.provinces)-1:
+                    # we change date and keep province unchanged
+                    if datetime(2018, 1, 1) < last_date-TIME_DELTA_REGION:
+                        self.date_to_crawl = last_date-TIME_DELTA_REGION
+                        self.province_to_crawl = last_province
+                    else:
+                        # we can not change date, we change province:
+                        self.province_to_crawl = self.provinces[last_province_idx+1]
+                        self.date_to_crawl = str_to_datetime(START_DATE)
                     self.index_to_crawl = START_INDEX
-                    
+
                 else:
-                    self.date_to_crawl = last_date
-                    self.index_to_crawl = last_index + 1
+                    # we have arrive at the last province
+                    if datetime(2018, 1, 1) < last_date-TIME_DELTA_REGION:
+                        self.date_to_crawl = last_date-TIME_DELTA_REGION
+                        self.province_to_crawl = last_province
+                        self.index_to_crawl = START_INDEX
+                    else:
+                        # we have finish all province and all date in 2018
+                        pass
                 
                 self.current_tried_times=1
-            # we have not finish yet
-            elif finish_reason in [REDIRECT, VALIDATION, SHUT_DOWN, CANCELLED]:
-                self.date_to_crawl = last_date
-                self.index_to_crawl = last_index
-                self.current_tried_times=last_tried_times+1
-            elif finish_reason==NEED_RETRY:
-                self.date_to_crawl = last_date
-                self.index_to_crawl = last_index
-                if last_tried_times==self.settings.getint('MAX_TRIED_TIMES'):
-                    self.index_to_crawl=START_INDEX
-                    self.date_to_crawl=last_date-TIME_DELTA
-                    self.current_tried_times=1
-                else:
-                    self.date_to_crawl = last_date
-                    self.index_to_crawl = last_index
+            else:
+                # no need to change province or date,
+                self.date_to_crawl=last_date
+                self.province_to_crawl=last_province
+                if finish_reason in [REDIRECT,VALIDATION,SHUT_DOWN,CANCELLED]:
                     self.current_tried_times=last_tried_times+1
+                    self.index_to_crawl=last_index
+                else:
+                    self.index_to_crawl=last_index+1
+                    self.current_tried_times=1
 
-
-            # unknown shutdown reason
-            elif finish_reason in [UNKNOWN, DATE_FINISHED]:
-                self.date_to_crawl = last_date - TIME_DELTA
-                self.index_to_crawl = START_INDEX
-                self.current_tried_times=1
-        # we have nothing,start from scratch
         else:
             self.date_to_crawl = str_to_datetime(START_DATE)
             self.index_to_crawl = START_INDEX
-            self.current_tried_times=1
+            self.current_tried_times = 1
+            self.province_to_crawl = self.provinces[0]
+        
+        assert self.date_to_crawl is not None and \
+               self.province_to_crawl is not None and \
+               self.index_to_crawl is not None
 
-        self.logger.info('Date to crawl {},index to crawl {}'.format(
+        self.logger.info('Province to crawl {},date to crawl {},index to crawl {}'.format(
+            self.province_to_crawl,
             datetime_to_str(self.date_to_crawl),
             self.index_to_crawl
         ))
@@ -186,8 +210,9 @@ class JudgementSpider(scrapy.Spider):
             "案件类型": "刑事案件",
             "裁判日期": "{} TO {}".format(
                 datetime_to_str(self.date_to_crawl),
-                datetime_to_str(self.date_to_crawl)
-            )
+                datetime_to_str(self.date_to_crawl+TIME_DELTA_REGION)
+            ),
+            "法院地域":self.province_to_crawl
         }
         self.param = construct_param(param_dict)
 
@@ -303,7 +328,8 @@ class JudgementSpider(scrapy.Spider):
             ']"', ']') \
             .replace('＆ｌｄｑｕｏ;', '“').replace('＆ｒｄｑｕｏ;', '”')
 
-        self.logger.debug('returned data = {}'.format(response.body.decode('utf-8')))
+        self.logger.debug('returned data = {}'.format(
+            response.body.decode('utf-8')))
 
         # validate code
         if return_data == '"remind"' or return_data == '"remind key"':
