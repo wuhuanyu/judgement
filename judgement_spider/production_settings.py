@@ -128,4 +128,3 @@ LONG_BREAK_UP_BOUND = 60 * 60 * 2.5
 PROVINCE_DIR = '/home/stack/judgement_code/judgement_spider/util/provices'
 MAX_TRIED_TIMES = 3
 STOP_DATE = '2018-01-01'
-``
