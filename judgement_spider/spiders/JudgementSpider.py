@@ -286,7 +286,7 @@ class JudgementSpider(scrapy.Spider):
             data = json.loads(return_data)
             if len(data) == 0:
                 # self.logger.info('Dut to unknown error,close,response data={}'.format(data))
-                raise CloseSpider(UNKNOWN)
+                raise CloseSpider(NEED_RETRY)
             elif len(data) == 1:
                 self.logger.info(
                     'date {} index {} done,please change date.'.format(
