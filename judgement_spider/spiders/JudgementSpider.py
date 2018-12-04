@@ -22,11 +22,14 @@ from judgement_spider.constant import TIME_DELTA
 from judgement_spider.util.toolbox import get_guid
 
 
+
+
 class JudgementSpider(scrapy.Spider):
     name = "judgement"
     page = 10
     order = "法院层级"
     direction = "asc"
+
 
     def __get_guid(self):
         def create_guid():
@@ -55,7 +58,8 @@ class JudgementSpider(scrapy.Spider):
             'all_indexes': self.all_indexes,
             'last_finish_timestamp': str(datetime.now()),
             'done': 1 if reason == FINISHED else 0,
-            'finish_reason': reason
+            'finish_reason': reason,
+            'last_tried_times':self.current_tried_times
         }
 
         self.logger.info('Shutting down scrapy engine,persisting process file to {}'.format(
@@ -75,6 +79,9 @@ class JudgementSpider(scrapy.Spider):
         self.last_date = None
         self.decoder = None
         self.param = None
+        self.regions=[]
+
+        self.current_tried_times=0
 
     def __construct_request_for_number(self, cbk, refresh=True):
 
@@ -110,14 +117,19 @@ class JudgementSpider(scrapy.Spider):
         :return:
         '''
         self.decoder = Decoder(self.settings.get('PUBLIC_DIR'))
+        for p in load_json(os.path.join(self.settings.get('PROVINCE_DIR'),'court_region.json')):
+            self.regions.append(p['name'])
+
         process_file = Path(self.settings.get('PERSIST_FILE'))
         settings = self.settings
+
         # we have process_file
         if process_file.is_file():
             last_process: dict = load_json(self.settings.get('PERSIST_FILE'))
             last_index = last_process['last_index']
             last_date = str_to_datetime(last_process['last_date'])
             finish_reason = last_process['finish_reason']
+            last_tried_times=int(last_process['last_tried_times'])
             # we finished
             if finish_reason == FINISHED:
                 self.all_indexes = int(last_process['all_indexes'])
@@ -126,21 +138,40 @@ class JudgementSpider(scrapy.Spider):
                         20):
                     self.date_to_crawl = last_date - TIME_DELTA
                     self.index_to_crawl = START_INDEX
+                    
                 else:
                     self.date_to_crawl = last_date
                     self.index_to_crawl = last_index + 1
+                
+                self.current_tried_times=1
             # we have not finish yet
-            elif finish_reason in [REDIRECT, VALIDATION, SHUT_DOWN, CANCELLED, NEED_RETRY]:
+            elif finish_reason in [REDIRECT, VALIDATION, SHUT_DOWN, CANCELLED]:
                 self.date_to_crawl = last_date
                 self.index_to_crawl = last_index
+                self.current_tried_times=last_tried_times+1
+            elif finish_reason==NEED_RETRY:
+                self.date_to_crawl = last_date
+                self.index_to_crawl = last_index
+                if last_tried_times==self.settings.getint('MAX_TRIED_TIMES'):
+                    self.index_to_crawl=START_INDEX
+                    self.date_to_crawl=last_date-TIME_DELTA
+                    self.current_tried_times=1
+                else:
+                    self.date_to_crawl = last_date
+                    self.index_to_crawl = last_index
+                    self.current_tried_times=last_tried_times+1
+
+
             # unknown shutdown reason
             elif finish_reason in [UNKNOWN, DATE_FINISHED]:
                 self.date_to_crawl = last_date - TIME_DELTA
                 self.index_to_crawl = START_INDEX
+                self.current_tried_times=1
         # we have nothing,start from scratch
         else:
             self.date_to_crawl = str_to_datetime(START_DATE)
             self.index_to_crawl = START_INDEX
+            self.current_tried_times=1
 
         self.logger.info('Date to crawl {},index to crawl {}'.format(
             datetime_to_str(self.date_to_crawl),

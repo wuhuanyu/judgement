@@ -8,7 +8,6 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-
 BOT_NAME = 'judgement_spider'
 
 SPIDER_MODULES = ['judgement_spider.spiders']
@@ -82,7 +81,8 @@ AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # AUTOTHROTTLE_DEBUG = False
 # 每次请求5000毫秒延迟 随机
 DOWNLOAD_DELAY = 1
-INDEXES_PER_DATE = 20
+INDEXES_PER_DEPTH=20
+INDEXES_PER_DATE=20
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
@@ -127,3 +127,4 @@ LONG_BREAK_UP_BOUND = 60 * 60 * 2.5
 
 
 PROVINCE_DIR='/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/util/provinces'
+MAX_TRIED_TIMES=3
