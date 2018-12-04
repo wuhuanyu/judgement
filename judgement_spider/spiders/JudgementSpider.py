@@ -121,7 +121,7 @@ class JudgementSpider(scrapy.Spider):
         settings = self.settings
         param: dict = settings.getdict('PARAM')
 
-        self.date_to_crawl = param['date_to_crawl']
+        self.date_to_crawl = str_to_datetime(param['date_to_crawl'])
         self.current_tried_times = int(param['current_tried_times'])
         self.index_to_crawl = str(param['index_to_crawl'])
         self.province_to_crawl = param['province_to_crawl']
@@ -142,8 +142,10 @@ class JudgementSpider(scrapy.Spider):
             datetime_to_str(self.date_to_crawl),
             self.index_to_crawl
         ))
+        self.guid = self.__get_guid()
 
-    # first start request ford number and parse it
+    #first start request ford number and parse it
+
     def start_requests(self):
         self.__pre_request()
 
@@ -152,7 +154,9 @@ class JudgementSpider(scrapy.Spider):
         # this is not for refresh,it is our first time.
         yield self.__construct_request_for_number(self.parse_number, False)
 
-    def parse_number(self, response: scrapy.http.Response):
+    def parse_number(self,response:scrapy.http.Response):
+        if int(response.status) == 302 or int(response.status) == 301:
+            raise CloseSpider(REDIRECT)
         number = response.body.decode('utf-8')
         refresh = response.meta['refresh']
         self.logger.info("Get number:{}".format(number))
@@ -166,7 +170,7 @@ class JudgementSpider(scrapy.Spider):
         else:
             # we are not to refresh the number, so we need to proceed to get vjkl5
             # get vjkl5
-            url = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number=" + self.number + "&guid=" + self.guid + "&conditions=searchWord+1+AJLX++" + parse.quote(
+            url = "http://wenshu.court.gov.cn/List/List/?sorttype=1&number=&guid=" + self.guid + "&conditions=searchWord+1+AJLX++" + parse.quote(
                 self.param)
             headers = {
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
@@ -180,7 +184,7 @@ class JudgementSpider(scrapy.Spider):
 
     def parse_vjkl5(self, response: scrapy.http.Response):
         # todo move the redirect check to some middleware or ...
-        status_code = response.status
+        status_code = int(response.status)
         if status_code == 302 or status_code == 301:
             self.logger.error(
                 'Unfortunately, we meet redirect,shutting down the spider')
@@ -243,6 +247,9 @@ class JudgementSpider(scrapy.Spider):
                                  callback=self.parse_data)
 
     def parse_data(self, response: scrapy.http.Response):
+        status = int(response.status)
+        if status == 301 or status == 302:
+            raise CloseSpider(REDIRECT)
 
         def construct_validate_code_request(cbk):
             check_code_url = 'http://wenshu.court.gov.cn/User/ValidateCode'
@@ -329,6 +336,9 @@ class JudgementSpider(scrapy.Spider):
                                          )
 
     def get_court_info_download(self, res: scrapy.http.Response):
+        status = int(res.status)
+        if status == 301 or status == 302:
+            raise CloseSpider(REDIRECT)
         doc_id = res.meta['doc_id']
         judgement_info = res.meta['judgement_info']
         return_data = res.body.decode("utf-8").replace('\\', '')
@@ -341,7 +351,7 @@ class JudgementSpider(scrapy.Spider):
         if len(read_count) == 0 or len(court_title) == 0 or len(court_date) == 0 or len(
                 court_content) == 0:
             self.logger.error(
-                'Met parse error when crawl {} and we return from the method'.format(doc_id))
+                'Met parse error when crawl {} and we retrn from the method'.format(doc_id))
             return
             # raise CloseSpider(CANCELLED)
 
@@ -407,6 +417,9 @@ class JudgementSpider(scrapy.Spider):
         )
 
     def parse_word(self, res: scrapy.http.Response):
+        status = int(res.status)
+        if status == 301 or status == 302:
+            raise CloseSpider(REDIRECT)
         html_name: str = res.meta['html_name']
         word_name = html_name.encode("utf-8")
 

@@ -80,7 +80,7 @@ AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
 # AUTOTHROTTLE_DEBUG = False
 # 每次请求1000毫秒延迟 随机
-DOWNLOAD_DELAY = 4
+DOWNLOAD_DELAY = 7
 INDEXES_PER_DATE = 20
 INDEXES_PER_DEPTH = 20
 
@@ -98,7 +98,7 @@ LOG_FILE = "/tmp/judgement_log"
 
 RUNNER_LOG = "/home/stack/runner.log"
 
-REDIRECTED_ENABLED = False
+REDIRECT_ENABLED = False
 
 DOCS_DIR = "/home/stack/judgement_docs"
 LOGS_DIR = "/home/stack/judgement_logs"
@@ -128,3 +128,5 @@ LONG_BREAK_UP_BOUND = 60 * 60 * 2.5
 PROVINCE_DIR = '/home/stack/judgement_code/judgement_spider/util/provinces'
 MAX_TRIED_TIMES = 3
 STOP_DATE = '2018-01-01'
+
+HTTPERROR_ALLOWED_CODES  =[302,301]

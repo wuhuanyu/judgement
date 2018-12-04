@@ -3,7 +3,7 @@ Spider manager to manage spider,
 configure param and some other dirty work
 '''
 from judgement_spider.util.toolbox import load_json, dump_json, construct_param, datetime_to_str, str_to_datetime
-from judgement_spider.constant import FINISHED, NEED_RETRY, VALIDATION, REDIRECT, CANCELLED, SHUT_DOWN
+from judgement_spider.constant import FINISHED, NEED_RETRY, VALIDATION, REDIRECT, CANCELLED, SHUT_DOWN,DATE_FINISHED
 from judgement_spider.constant import TIME_DELTA, TIME_DELTA_REGION
 from judgement_spider.constant import START_DATE, START_INDEX
 from datetime import datetime
@@ -64,9 +64,11 @@ class SpiderManager:
                 need_change_param = True
             # we need retry but we have met max tried times and further we cannot chagne index because we have meet the max index
             if (finish_reason == NEED_RETRY) and \
-                (last_tried_times == settings.getint('MAX_TRIED_TIMES', 3)) and \
+                (last_tried_times == settings.getint('MAX_TRIED_TIMES', 2)) and \
                     (last_index == all_indexes or last_index == settings.getint('INDEX_PER_DEPTH', 20)):
                 need_change_param = True
+            if finish_reason==DATE_FINISHED:
+                need_change_param=True
 
             elif finish_reason in [VALIDATION, REDIRECT, CANCELLED, SHUT_DOWN]:
                 pass
@@ -103,14 +105,14 @@ class SpiderManager:
                 # no need to change province or date,
                 date_to_crawl = last_date
                 province_to_crawl = last_province
-                if finish_reason in [REDIRECT, VALIDATION, SHUT_DOWN, CANCELLED]:
+                if finish_reason in [REDIRECT, VALIDATION, SHUT_DOWN, CANCELLED,NEED_RETRY]:
                     current_tried_times = last_tried_times+1
                     index_to_crawl = last_index
                 else:
                     index_to_crawl = last_index+1
                     current_tried_times = 1
             next_process={
-                'date_to_crawl':date_to_crawl,
+                'date_to_crawl':datetime_to_str(date_to_crawl),
                 'province_to_crawl':province_to_crawl,
                 'index_to_crawl':index_to_crawl,
                 'current_tried_times':current_tried_times
