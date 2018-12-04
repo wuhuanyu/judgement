@@ -16,6 +16,8 @@ from judgement_spider.util.user_agents import user_agents
 from judgement_spider.constant import FINISHED, REDIRECT, VALIDATION, UNKNOWN, SHUT_DOWN, CANCELLED, \
     DATE_FINISHED, NEED_RETRY
 
+from judgement_spider.util.spider_manager import SpiderManager
+
 if "Darwin" in platform.platform():
     settings_file_path = 'judgement_spider.dev_settings'
 elif "Linux" in platform.platform():
@@ -61,9 +63,15 @@ def main():
         os.mkdir(log_dir)
     settings.set('LOG_FILE', os.path.join(log_dir, '{}.log'.format(time_str)))
 
-    process = CrawlerProcess(settings=settings)
-    process.crawl(JudgementSpider)
-    process.start()
+    manager = SpiderManager(settings)
+    manager.configure()
+    manager.start_spider()
+    # config=manager.configure()
+    # manager.start_spider(config)
+
+    # process = CrawlerProcess(settings=settings)
+    # process.crawl(JudgementSpider)
+    # process.start()
 
 
 def last_finish_reason():

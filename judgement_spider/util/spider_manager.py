@@ -8,18 +8,12 @@ from judgement_spider.constant import TIME_DELTA, TIME_DELTA_REGION
 from judgement_spider.constant import START_DATE, START_INDEX
 from datetime import datetime
 from scrapy.crawler import CrawlerProcess,CrawlerRunner
-from judgement_spider.spiders import JudgementSpider
-
-# default_process = construct_param({
-
-#     '案件类型': '刑事案件',
-#     '裁判日期': '{} TO {}'.format('2018-09-17', datetime_to_str(str_to_datetime('2018-09-17')+TIME_DELTA_REGION)),
-#     '法院地域': '北京市'
-    
-# })
+import os 
+from pathlib import Path
+from judgement_spider.spiders.JudgementSpider import JudgementSpider
 
 default_process={
-    'date_to_crawl':'2018-09-17',
+    'date_to_crawl':'2018-09-13',
     'province_to_crawl':'北京市',
     'index_to_crawl':1,
     'current_tried_times':1,
@@ -27,11 +21,13 @@ default_process={
 
 
 class SpiderManager:
-    def __init__(self, process_file_path, settings, provinces_file_path, default_process=default_process):
-        self.process_file_path = process_file_path
+    def __init__(self,settings,default_process=default_process):
+        self.process_file_path = settings.get('PERSIST_FILE')
         self.next_process: dict = None
         self.default_process = default_process
         self.settings = settings
+        
+        provinces_file_path=os.path.join(settings.get('PROVINCE_DIR'),'court_region.json')
 
         self.provinces = []
         for p in load_json(provinces_file_path):
@@ -41,8 +37,8 @@ class SpiderManager:
         settings = self.settings
         next_process: dict = None
 
-        if self.process_file_path is None:
-            next_process = default_process
+        if not Path(self.process_file_path).is_file():
+            next_process=default_process
         else:
             date_to_crawl = None
             index_to_crawl = None
@@ -50,7 +46,7 @@ class SpiderManager:
             current_tried_times = None
 
             last_process: dict = load_json(self.process_file_path)
-            last_index = last_process['last_index']
+            last_index = int(last_process['last_index'])
             last_date = str_to_datetime(last_process['last_date'])
             finish_reason = last_process['finish_reason']
             last_tried_times = int(last_process['last_tried_times'])
@@ -121,8 +117,9 @@ class SpiderManager:
             }
         self.settings.set('PARAM',next_process)
         self.settings.set('MANAGER',self)
+        
     
-    def start_spider(self,next_process):
+    def start_spider(self):
         p=CrawlerProcess(settings=self.settings)
         p.crawl(JudgementSpider)
         p.start()

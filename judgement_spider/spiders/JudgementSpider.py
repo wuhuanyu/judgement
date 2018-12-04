@@ -17,9 +17,8 @@ from judgement_spider.util.toolbox import str_to_datetime, datetime_to_str, load
 import base64
 from judgement_spider.constant import FINISHED, REDIRECT, VALIDATION, UNKNOWN, SHUT_DOWN, CANCELLED, \
     DATE_FINISHED, NEED_RETRY
-from judgement_spider.constant import TIME_DELTA, START_DATE, START_INDEX, TIME_DELTA_REGION
+from judgement_spider.constant import TIME_DELTA, START_DATE, START_INDEX, TIME_DELTA_REGION, TIME_SPAN
 from judgement_spider.util.toolbox import get_guid
-from judgement_spider.util.spider_manager import SpiderManager
 
 
 class JudgementSpider(scrapy.Spider):
@@ -68,7 +67,6 @@ class JudgementSpider(scrapy.Spider):
             manager.engine_shutdown_cbk(current_process)
 
             self.logger.info('Persist process file completed')
-
 
     def __init__(self, *a, **kwargs):
         super(JudgementSpider, self).__init__(*a, **kwargs)
@@ -123,8 +121,8 @@ class JudgementSpider(scrapy.Spider):
         settings = self.settings
         param: dict = settings.getdict('PARAM')
 
-        self.date_to_crawl: str = param['date_to_crawl']
-        self.current_tried_times = param['current_tried_times']
+        self.date_to_crawl = param['date_to_crawl']
+        self.current_tried_times = int(param['current_tried_times'])
         self.index_to_crawl = str(param['index_to_crawl'])
         self.province_to_crawl = param['province_to_crawl']
 
@@ -134,90 +132,10 @@ class JudgementSpider(scrapy.Spider):
             '案件类型': '刑事案件',
             '法院地域': self.province_to_crawl,
             '裁判日期': '{} TO {}'.format(
-                self.date_to_crawl,
-                datetime_to_str(str_to_datetime(
-                    self.date_to_crawl)+TIME_DELTA_REGION)
+                datetime_to_str(self.date_to_crawl),
+                datetime_to_str(self.date_to_crawl+TIME_SPAN)
             )
         })
-        # for p in load_json(os.path.join(self.settings.get('PROVINCE_DIR'), 'court_region.json')):
-        #     self.provinces.append(p['name'])
-
-        # process_file = Path(self.settings.get('PERSIST_FILE'))
-        # settings = self.settings
-
-        # # we have process_file
-        # if process_file.is_file():
-        #     last_process: dict = load_json(self.settings.get('PERSIST_FILE'))
-        #     last_index = last_process['last_index']
-        #     last_date = str_to_datetime(last_process['last_date'])
-        #     finish_reason = last_process['finish_reason']
-        #     last_tried_times = int(last_process['last_tried_times'])
-        #     last_province = last_process['last_province']
-        #     last_province_idx = self.provinces.index(last_province)
-
-        #     need_change_param = False
-        #     # we finished or we meet the max index,change param,change province or date
-        #     if (finish_reason == FINISHED) and (last_index == self.all_indexes\
-        #                                    or last_index == settings.getint('INDEXES_PER_DEPTH',20)
-        #                                    ):
-        #         need_change_param=True
-        #     # we need retry but we have met max tried times and further we cannot chagne index because we have meet the max index
-        #     if (finish_reason==NEED_RETRY) and \
-        #                                         (last_tried_times==settings.getint('MAX_TRIED_TIMES',3)) and \
-        #                                         (last_index==self.all_indexes or last_index==settings.getint('INDEX_PER_DEPTH',20)):
-        #         need_change_param=True
-
-        #     elif finish_reason in [VALIDATION, REDIRECT, CANCELLED, SHUT_DOWN]:
-        #         pass
-        #     elif finish_reason == NEED_RETRY:
-        #         pass
-
-        #     if need_change_param:
-        #         # 1. keep province unchanged and change  date
-        #         # 2. change province and date from first
-        #         # we have not arrive the last province
-        #         if last_province_idx != len(self.provinces)-1:
-        #             # we change date and keep province unchanged
-        #             if datetime(2018, 1, 1) < last_date-TIME_DELTA_REGION:
-        #                 self.date_to_crawl = last_date-TIME_DELTA_REGION
-        #                 self.province_to_crawl = last_province
-        #             else:
-        #                 # we can not change date, we change province:
-        #                 self.province_to_crawl = self.provinces[last_province_idx+1]
-        #                 self.date_to_crawl = str_to_datetime(START_DATE)
-        #             self.index_to_crawl = START_INDEX
-
-        #         else:
-        #             # we have arrive at the last province
-        #             if datetime(2018, 1, 1) < last_date-TIME_DELTA_REGION:
-        #                 self.date_to_crawl = last_date-TIME_DELTA_REGION
-        #                 self.province_to_crawl = last_province
-        #                 self.index_to_crawl = START_INDEX
-        #             else:
-        #                 # we have finish all province and all date in 2018
-        #                 pass
-
-        #         self.current_tried_times=1
-        #     else:
-        #         # no need to change province or date,
-        #         self.date_to_crawl=last_date
-        #         self.province_to_crawl=last_province
-        #         if finish_reason in [REDIRECT,VALIDATION,SHUT_DOWN,CANCELLED]:
-        #             self.current_tried_times=last_tried_times+1
-        #             self.index_to_crawl=last_index
-        #         else:
-        #             self.index_to_crawl=last_index+1
-        #             self.current_tried_times=1
-
-        # else:
-        #     self.date_to_crawl = str_to_datetime(START_DATE)
-        #     self.index_to_crawl = START_INDEX
-        #     self.current_tried_times = 1
-        #     self.province_to_crawl = self.provinces[0]
-
-        # assert self.date_to_crawl is not None and \
-        #        self.province_to_crawl is not None and \
-        #        self.index_to_crawl is not None
 
         self.logger.info('Province to crawl {},date to crawl {},index to crawl {}'.format(
             self.province_to_crawl,
@@ -228,16 +146,6 @@ class JudgementSpider(scrapy.Spider):
     # first start request ford number and parse it
     def start_requests(self):
         self.__pre_request()
-
-        # param_dict = {
-        #     "案件类型": "刑事案件",
-        #     "裁判日期": "{} TO {}".format(
-        #         datetime_to_str(self.date_to_crawl),
-        #         datetime_to_str(self.date_to_crawl+TIME_DELTA_REGION)
-        #     ),
-        #     "法院地域": self.province_to_crawl
-        # }
-        # self.param = construct_param(param_dict)
 
         self.guid = self.__get_guid()
         self.logger.info('Generate guid={}'.format(self.guid))
