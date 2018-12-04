@@ -83,7 +83,7 @@ class SpiderManager:
                 # we have not arrive the last province
                 if last_province_idx != len(self.provinces)-1:
                     # we change date and keep province unchanged
-                    if str_to_datetime(settings.get('STOP_DATE', '2018-09-17')) < last_date-TIME_DELTA_REGION:
+                    if str_to_datetime(settings.get('STOP_DATE', '2018-01-01')) < last_date-TIME_DELTA_REGION:
                         date_to_crawl = last_date-TIME_DELTA_REGION
                         province_to_crawl = last_province
                     else:
@@ -94,7 +94,7 @@ class SpiderManager:
 
                 else:
                     # we have arrive at the last province
-                    if str_to_datetime(settings.get('STOP_DATE', '2018-09-17')) < last_date-TIME_DELTA_REGION:
+                    if str_to_datetime(settings.get('STOP_DATE', '2018-01-01')) < last_date-TIME_DELTA_REGION:
                         date_to_crawl = last_date-TIME_DELTA_REGION
                         province_to_crawl = last_province
                         index_to_crawl = START_INDEX
