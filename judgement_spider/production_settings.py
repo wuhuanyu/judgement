@@ -82,6 +82,7 @@ AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # 每次请求1000毫秒延迟 随机
 DOWNLOAD_DELAY = 4
 INDEXES_PER_DATE = 20
+INDEXES_PER_DEPTH = 20
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
@@ -123,3 +124,8 @@ LONG_BREAK = 60 * 60 * 1.5
 # if we  met validation code the second time,the long break time will be 60*60*1.5*1.1 and so on until the the long break
 LONG_BREAK_TIMES = 1.1
 LONG_BREAK_UP_BOUND = 60 * 60 * 2.5
+
+PROVINCE_DIR = '/home/stack/judgement_code/judgement_spider/util/provices'
+MAX_TRIED_TIMES = 3
+STOP_DATE = '2018-01-01'
+``
