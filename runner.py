@@ -86,7 +86,7 @@ def run_monitor():
         current_date_str = current_date()
         today_docs_dir = os.path.join(settings.get('DOCS_DIR'), current_date_str)
         if Path(today_docs_dir).is_dir():
-            count = len([name for name in os.listdir(today_docs_dir) if os.path.isfile(name)])
+            count = len([name for name in os.listdir(today_docs_dir)])
             mail_sender.send_email('Count', 'Date:{}, count={}'.format(current_date_str, count))
         time.sleep(settings.getint('MAIL_REPORT_INTERVAL', 60 * 60 * 4))
 
