@@ -81,6 +81,7 @@ def last_finish_reason():
 
 
 def run_monitor():
+    logger.info('Mail progress started,pid={}'.format(os.getpid()))
     while True:
         current_date_str = current_date()
         today_docs_dir = os.path.join(settings.get('DOCS_DIR'), current_date_str)
