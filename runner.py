@@ -17,6 +17,7 @@ from judgement_spider.constant import FINISHED, REDIRECT, VALIDATION, UNKNOWN, S
     DATE_FINISHED, NEED_RETRY
 
 from judgement_spider.util.spider_manager import SpiderManager
+from judgement_spider.util.email.sender import Sender
 
 if "Darwin" in platform.platform():
     settings_file_path = 'judgement_spider.dev_settings'
@@ -32,8 +33,10 @@ settings = get_project_settings()
 runner_log_path = settings.get('RUNNER_LOG', '/tmp/runner.log')
 logger = Logger('runner.py', runner_log_path)
 
+mail_sender = Sender()
 
-def main():
+
+def run_spider():
     # try:
     logger.info('A child progress started,pid={} '.format(os.getpid()))
     time_str = current_time()
@@ -66,12 +69,6 @@ def main():
     manager = SpiderManager(settings)
     manager.configure()
     manager.start_spider()
-    # config=manager.configure()
-    # manager.start_spider(config)
-
-    # process = CrawlerProcess(settings=settings)
-    # process.crawl(JudgementSpider)
-    # process.start()
 
 
 def last_finish_reason():
@@ -83,20 +80,34 @@ def last_finish_reason():
     return reason
 
 
-# todo 捕捉异常，发送邮件
-# todo 统计功能,发送邮件
+def run_monitor():
+    while True:
+        current_date_str = current_date()
+        today_docs_dir = os.path.join(settings.get('DOCS_DIR'), current_date_str)
+        if Path(today_docs_dir).is_dir():
+            count = len([name for name in os.listdir(today_docs_dir) if os.path.isfile(name)])
+            mail_sender.send_email('Count', 'Date:{}, count={}'.format(current_date_str, count))
+        time.sleep(settings.getint('MAIL_REPORT_INTERVAL', 60 * 60 * 4))
+
+
 if __name__ == '__main__':
 
     is_long_break = False
     logger.info('Main progress started,pid={} '.format(os.getpid()))
-    # todo 指数退避？
-    # initial_long_break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.2)
+
+    mail_process = mp.Process(target=run_monitor)
+    mail_process.start()
 
     while True:
-        p = mp.Process(target=main)
+        p = mp.Process(target=run_spider)
         p.start()
         p.join()
         reason_ = last_finish_reason()
+        if reason_ in [REDIRECT, VALIDATION, NEED_RETRY]:
+            try:
+                mail_sender.send_email('Alert', 'A {} has happened!'.format(reason_))
+            except:
+                pass
         break_time = settings.getint('SHORT_BREAK', 60 * 18)
         last_long_break_time = None
 
