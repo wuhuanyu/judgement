@@ -11,13 +11,15 @@ from scrapy.crawler import CrawlerProcess,CrawlerRunner
 import os 
 from pathlib import Path
 from judgement_spider.spiders.JudgementSpider import JudgementSpider
-
+import logging
 default_process={
     'date_to_crawl':'2018-09-13',
     'province_to_crawl':'北京市',
     'index_to_crawl':1,
     'current_tried_times':1,
 }
+
+logger=logging.getLogger(__name__)
 
 
 class SpiderManager:
@@ -46,6 +48,8 @@ class SpiderManager:
             current_tried_times = None
 
             last_process: dict = load_json(self.process_file_path)
+
+            logging.info('Last process is {}'.format(last_process))
             last_index = int(last_process['last_index'])
             last_date = str_to_datetime(last_process['last_date'])
             finish_reason = last_process['finish_reason']
@@ -58,14 +62,14 @@ class SpiderManager:
 
             need_change_param = False
             # we finished or we meet the max index,change param,change province or date
-            if (finish_reason == FINISHED) and (last_index == all_indexes
-                                                or last_index == settings.getint('INDEXES_PER_DEPTH', 20)
+            if (finish_reason == FINISHED) and (last_index >= all_indexes
+                                                or last_index >= settings.getint('INDEXES_PER_DEPTH', 20)
                                                 ):
                 need_change_param = True
             # we need retry but we have met max tried times and further we cannot chagne index because we have meet the max index
             if (finish_reason == NEED_RETRY) and \
                 (last_tried_times == settings.getint('MAX_TRIED_TIMES', 2)) and \
-                    (last_index == all_indexes or last_index == settings.getint('INDEX_PER_DEPTH', 20)):
+                    (last_index >= all_indexes or last_index >= settings.getint('INDEX_PER_DEPTH', 20)):
                 need_change_param = True
             if finish_reason==DATE_FINISHED:
                 need_change_param=True
@@ -115,8 +119,10 @@ class SpiderManager:
                 'date_to_crawl':datetime_to_str(date_to_crawl),
                 'province_to_crawl':province_to_crawl,
                 'index_to_crawl':index_to_crawl,
-                'current_tried_times':current_tried_times
+                'current_tried_times':current_tried_times,
+                'last_all_indexes':last_process['all_indexes']
             }
+        logger.info('Process to feed is {}'.format(next_process))
         self.settings.set('PARAM',next_process)
         self.settings.set('MANAGER',self)
         
@@ -127,5 +133,6 @@ class SpiderManager:
         p.start()
     
     def engine_shutdown_cbk(self,process:dict):
+        logger.info('Process to save is {}'.format(process))
         dump_json(self.process_file_path, process)
 

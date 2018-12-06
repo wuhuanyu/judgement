@@ -55,7 +55,7 @@ class JudgementSpider(scrapy.Spider):
                 'last_index': self.index_to_crawl,
                 'last_date': datetime_to_str(self.date_to_crawl),
                 'last_province': self.province_to_crawl,
-                'all_indexes': self.all_indexes,
+                'all_indexes': self.all_indexes if self.all_indexes is not None else self.last_all_indexes,
                 'last_finish_timestamp': str(datetime.now()),
                 'done': 1 if reason == FINISHED else 0,
                 'finish_reason': reason,
@@ -77,7 +77,6 @@ class JudgementSpider(scrapy.Spider):
         self.index_to_crawl = None
         self.last_index = None
         self.all_indexes = None
-        self.last_date = None
         self.decoder = None
         self.param = None
         self.provinces = []
@@ -125,6 +124,7 @@ class JudgementSpider(scrapy.Spider):
         self.current_tried_times = int(param['current_tried_times'])
         self.index_to_crawl = str(param['index_to_crawl'])
         self.province_to_crawl = param['province_to_crawl']
+        self.last_all_indexes=param['last_all_indexes']
 
         self.decoder = Decoder(self.settings.get('PUBLIC_DIR'))
 
@@ -266,8 +266,6 @@ class JudgementSpider(scrapy.Spider):
             ']"', ']') \
             .replace('＆ｌｄｑｕｏ;', '“').replace('＆ｒｄｑｕｏ;', '”')
 
-        self.logger.debug('returned data = {}'.format(
-            response.body.decode('utf-8')))
 
         # validate code
         if return_data == '"remind"' or return_data == '"remind key"':
@@ -280,7 +278,6 @@ class JudgementSpider(scrapy.Spider):
             # and we get json
             data = json.loads(return_data)
             if len(data) == 0:
-                # self.logger.info('Dut to unknown error,close,response data={}'.format(data))
                 raise CloseSpider(NEED_RETRY)
             elif len(data) == 1:
                 self.logger.info(
