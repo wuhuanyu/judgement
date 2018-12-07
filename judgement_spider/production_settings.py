@@ -132,3 +132,5 @@ STOP_DATE = '2018-01-01'
 HTTPERROR_ALLOWED_CODES = [302, 301]
 
 MAIL_REPORT_INTERVAL = 60 * 60 * 4
+
+EMAIL_CONFIG_PATH="/home/stack/judgement_code/.email.json"

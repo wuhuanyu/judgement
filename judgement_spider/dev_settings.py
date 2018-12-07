@@ -131,3 +131,6 @@ STOP_DATE = '2018-01-01'
 HTTPERROR_ALLOWED_CODES = [302, 301]
 
 MAIL_REPORT_INTERVAL = 60 * 2
+
+
+EMAIL_CONFIG_PATH="/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/.email.json"

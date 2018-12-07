@@ -33,7 +33,7 @@ settings = get_project_settings()
 runner_log_path = settings.get('RUNNER_LOG', '/tmp/runner.log')
 logger = Logger('runner.py', runner_log_path)
 
-mail_sender = Sender()
+mail_sender = Sender(settings.get('EMAIL_CONFIG_PATH'))
 
 
 def run_spider():
