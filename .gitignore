@@ -10,3 +10,4 @@ judgement_spider/util/split.jpg
 nohup.out
 .vscode/
 .cookie.json
+.email.json
