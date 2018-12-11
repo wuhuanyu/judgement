@@ -9,6 +9,9 @@ SHUT_DOWN = "shutdown"
 CANCELLED = "cancelled"
 DATE_FINISHED = "date_finished"
 NEED_RETRY = "need_retry"
+NETWORK_ERROR="network_error"
+
+
 
 START_DATE = "2018-9-13"
 START_INDEX = 1

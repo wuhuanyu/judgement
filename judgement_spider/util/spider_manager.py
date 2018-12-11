@@ -3,7 +3,7 @@ Spider manager to manage spider,
 configure param and some other dirty work
 '''
 from judgement_spider.util.toolbox import load_json, dump_json, construct_param, datetime_to_str, str_to_datetime
-from judgement_spider.constant import FINISHED, NEED_RETRY, VALIDATION, REDIRECT, CANCELLED, SHUT_DOWN,DATE_FINISHED
+from judgement_spider.constant import FINISHED, NEED_RETRY, VALIDATION, REDIRECT, CANCELLED, SHUT_DOWN,DATE_FINISHED,NETWORK_ERROR
 from judgement_spider.constant import TIME_DELTA, TIME_DELTA_REGION
 from judgement_spider.constant import START_DATE, START_INDEX
 from datetime import datetime
@@ -112,6 +112,9 @@ class SpiderManager:
                 if finish_reason in [REDIRECT, VALIDATION, SHUT_DOWN, CANCELLED,NEED_RETRY]:
                     current_tried_times = last_tried_times+1
                     index_to_crawl = last_index
+                elif finish_reason==NETWORK_ERROR:
+                    current_tried_times=last_tried_times
+                    index_to_crawl=last_index
                 else:
                     index_to_crawl = last_index+1
                     current_tried_times = 1

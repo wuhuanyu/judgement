@@ -14,7 +14,7 @@ from judgement_spider.util.toolbox import current_time, current_date, load_json
 from judgement_spider.util.logger import Logger
 from judgement_spider.util.user_agents import user_agents
 from judgement_spider.constant import FINISHED, REDIRECT, VALIDATION, UNKNOWN, SHUT_DOWN, CANCELLED, \
-    DATE_FINISHED, NEED_RETRY
+    DATE_FINISHED, NEED_RETRY, NETWORK_ERROR
 
 from judgement_spider.util.spider_manager import SpiderManager
 from judgement_spider.util.email.sender import Sender
@@ -66,6 +66,8 @@ def run_spider():
         os.mkdir(log_dir)
     settings.set('LOG_FILE', os.path.join(log_dir, '{}.log'.format(time_str)))
 
+    settings.set('CURRENT_DATE_STR',current_date_str)
+
     manager = SpiderManager(settings)
     manager.configure()
     manager.start_spider()
@@ -84,10 +86,15 @@ def run_monitor():
     logger.info('Mail progress started,pid={}'.format(os.getpid()))
     while True:
         current_date_str = current_date()
-        today_docs_dir = os.path.join(settings.get('DOCS_DIR'), current_date_str)
+        today_docs_dir = os.path.join(
+            settings.get('DOCS_DIR'), current_date_str)
         if Path(today_docs_dir).is_dir():
             count = len([name for name in os.listdir(today_docs_dir)])
-            mail_sender.send_email('Count', 'Date:{}, count={}'.format(current_date_str, count))
+            try:
+                mail_sender.send_email(
+                    'Count', 'Date:{}, count={}'.format(current_date_str, count))
+            except:
+                pass
         time.sleep(settings.getint('MAIL_REPORT_INTERVAL', 60 * 60 * 4))
 
 
@@ -95,7 +102,6 @@ if __name__ == '__main__':
 
     is_long_break = False
     logger.info('Main progress started,pid={} '.format(os.getpid()))
-
     mail_process = mp.Process(target=run_monitor)
     mail_process.start()
 
@@ -106,11 +112,15 @@ if __name__ == '__main__':
         reason_ = last_finish_reason()
         if reason_ in [REDIRECT, VALIDATION, NEED_RETRY]:
             try:
-                mail_sender.send_email('Alert', 'A {} has happened!'.format(reason_))
+                mail_sender.send_email(
+                    'Alert', 'A {} has happened!'.format(reason_))
             except:
                 pass
+
+        if reason_ == NETWORK_ERROR:
+            break_time = settings.getint('NETWORK_ERROR_INTERVAL', 30)
+
         break_time = settings.getint('SHORT_BREAK', 60 * 18)
-        last_long_break_time = None
 
         if reason_ in [REDIRECT, VALIDATION]:
             break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.5)

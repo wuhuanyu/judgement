@@ -16,9 +16,11 @@ from judgement_spider.util.toolbox import str_to_datetime, datetime_to_str, load
     construct_param
 import base64
 from judgement_spider.constant import FINISHED, REDIRECT, VALIDATION, UNKNOWN, SHUT_DOWN, CANCELLED, \
-    DATE_FINISHED, NEED_RETRY
+    DATE_FINISHED, NEED_RETRY,NETWORK_ERROR
 from judgement_spider.constant import TIME_DELTA, START_DATE, START_INDEX, TIME_DELTA_REGION, TIME_SPAN
 from judgement_spider.util.toolbox import get_guid
+from twisted.internet.error import DNSLookupError
+from twisted.python.failure import Failure
 
 
 class JudgementSpider(scrapy.Spider):
@@ -46,6 +48,13 @@ class JudgementSpider(scrapy.Spider):
         crawler.signals.connect(
             spider.engine_shutdown_cbk, signal=signals.spider_closed)
         return spider
+
+    def error_cbk(self,failure:Failure):
+        if failure.check(DNSLookupError):
+            self.logger.error('Meet network error. Shutting down engine')
+            raise CloseSpider(NETWORK_ERROR)
+
+        # pass
 
     def engine_shutdown_cbk(self, reason):
         settings = self.settings
@@ -107,7 +116,9 @@ class JudgementSpider(scrapy.Spider):
                                   headers=headers,
                                   # if refresh is true,then we donnot need to initial request for vjkl5 and so on
                                   meta={'refresh': refresh},
-                                  callback=cbk)
+                                  callback=cbk,
+                                  errback=self.error_cbk
+                                  )
 
     def __construct_request_for_check_code(self, callback):
         pass
@@ -180,7 +191,7 @@ class JudgementSpider(scrapy.Spider):
                 'User-Agent': self.settings.get('UA')
             }
 
-            yield scrapy.Request(url=url, headers=headers, method="GET", callback=self.parse_vjkl5)
+            yield scrapy.Request(url=url, headers=headers, method="GET", callback=self.parse_vjkl5,errback=self.error_cbk)
 
     def parse_vjkl5(self, response: scrapy.http.Response):
         # todo move the redirect check to some middleware or ...
@@ -243,8 +254,12 @@ class JudgementSpider(scrapy.Spider):
             "guid": self.guid
         }
         self.logger.debug("Post form data={}".format(data))
-        yield scrapy.FormRequest(url=url, method="POST", formdata=data, headers=headers,
-                                 callback=self.parse_data)
+        yield scrapy.FormRequest(url=url, 
+                                 method="POST", 
+                                 formdata=data, 
+                                 headers=headers,
+                                 callback=self.parse_data,
+                                 errback=self.error_cbk)
 
     def parse_data(self, response: scrapy.http.Response):
         status = int(response.status)
@@ -260,6 +275,7 @@ class JudgementSpider(scrapy.Spider):
             return scrapy.Request(url=check_code_url,
                                   headers=headers,
                                   callback=cbk,
+                                  errback=self.error_cbk
                                   )
 
         return_data = response.body.decode('utf-8').replace('\\', '').replace('"[', '[').replace(
@@ -329,6 +345,7 @@ class JudgementSpider(scrapy.Spider):
                                          meta={'doc_id': doc_id,
                                                'judgement_info': data_dict},
                                          callback=self.get_court_info_download,
+                                         errback=self.error_cbk,
                                          priority=400
                                          )
 
@@ -410,6 +427,7 @@ class JudgementSpider(scrapy.Spider):
             formdata=html_2_word_data,
             meta={'html_name': html_name},
             callback=self.parse_word,
+            errback=self.error_cbk,
             priority=500
         )
 
@@ -455,7 +473,8 @@ class JudgementSpider(scrapy.Spider):
         yield scrapy.FormRequest(url=check_url,
                                  formdata=data,
                                  headers=headers,
-                                 callback=self.process_check_validate_code_result
+                                 callback=self.process_check_validate_code_result,
+                                 errback=self.error_cbk,
                                  )
 
     def process_check_validate_code_result(self, response: scrapy.http.Response):

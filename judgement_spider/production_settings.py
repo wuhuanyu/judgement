@@ -80,7 +80,7 @@ AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
 # AUTOTHROTTLE_DEBUG = False
 # 每次请求1000毫秒延迟 随机
-DOWNLOAD_DELAY = 6
+DOWNLOAD_DELAY = 4
 INDEXES_PER_DATE = 20
 INDEXES_PER_DEPTH = 20
 
@@ -93,7 +93,7 @@ INDEXES_PER_DEPTH = 20
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 LOG_ENABLED = True
-RETRY_TIMES = 7
+RETRY_TIMES = 15
 LOG_FILE = "/tmp/judgement_log"
 
 RUNNER_LOG = "/home/stack/runner.log"
@@ -134,3 +134,5 @@ HTTPERROR_ALLOWED_CODES = [302, 301]
 MAIL_REPORT_INTERVAL = 60 * 60 * 4
 
 EMAIL_CONFIG_PATH="/home/stack/judgement_code/.email.json"
+
+NETWORK_ERROR_RETRY_INTERVAL=30

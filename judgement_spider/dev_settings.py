@@ -134,3 +134,5 @@ MAIL_REPORT_INTERVAL = 60 * 2
 
 
 EMAIL_CONFIG_PATH="/Users/stack/code/py3/wenshu/judgement_spider/judgement_spider/.email.json"
+
+NETWORK_ERROR_RETRY_INTERVAL=30
