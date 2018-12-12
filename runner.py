@@ -110,6 +110,8 @@ if __name__ == '__main__':
         p.start()
         p.join()
         reason_ = last_finish_reason()
+        break_time = settings.getint('SHORT_BREAK', 60 * 18)
+
         if reason_ in [REDIRECT, VALIDATION, NEED_RETRY]:
             try:
                 mail_sender.send_email(
@@ -118,12 +120,11 @@ if __name__ == '__main__':
                 pass
 
         if reason_ == NETWORK_ERROR:
-            break_time = settings.getint('NETWORK_ERROR_INTERVAL', 30)
-
-        break_time = settings.getint('SHORT_BREAK', 60 * 18)
+            break_time = settings.getint('NETWORK_ERROR_RETRY_INTERVAL', 30)
 
         if reason_ in [REDIRECT, VALIDATION]:
             break_time = settings.getint('LONG_BREAK', 60 * 60 * 1.5)
+
         if reason_ in [NEED_RETRY, UNKNOWN]:
             break_time = 120
 
