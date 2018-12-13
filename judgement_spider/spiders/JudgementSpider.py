@@ -19,7 +19,7 @@ from judgement_spider.constant import FINISHED, REDIRECT, VALIDATION, UNKNOWN, S
     DATE_FINISHED, NEED_RETRY,NETWORK_ERROR
 from judgement_spider.constant import TIME_DELTA, START_DATE, START_INDEX, TIME_DELTA_REGION, TIME_SPAN
 from judgement_spider.util.toolbox import get_guid
-from twisted.internet.error import DNSLookupError
+from twisted.internet.error import DNSLookupError,TCPTimedOutError
 from twisted.python.failure import Failure
 
 
