@@ -50,11 +50,10 @@ class JudgementSpider(scrapy.Spider):
         return spider
 
     def error_cbk(self,failure:Failure):
-        if failure.check(DNSLookupError):
+        if failure.check(DNSLookupError) or failure.check(TCPTimedOutError):
             self.logger.error('Meet network error. Shutting down engine')
             raise CloseSpider(NETWORK_ERROR)
 
-        # pass
 
     def engine_shutdown_cbk(self, reason):
         settings = self.settings
