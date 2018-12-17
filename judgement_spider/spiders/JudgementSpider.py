@@ -249,7 +249,7 @@ class JudgementSpider(scrapy.Spider):
             "Order": self.order,
             "Direction": self.direction,
             "vl5x": self.vl5x,
-            "number": construct_number(referer),
+            "number": self.number,
             "guid": self.guid
         }
         self.logger.debug("Post form data={}".format(data))
